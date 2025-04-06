@@ -6,7 +6,12 @@ class ItBuilding1fScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scrollbar(
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('IT 융합대학 1층 지도'),
+      ),
+  
+    body: Scrollbar(
       controller: _scrollController,
       thumbVisibility: true,
       child: SingleChildScrollView(
@@ -30,7 +35,8 @@ class ItBuilding1fScreen extends StatelessWidget {
             Positioned(left: 850, top: 250, child: roomButton(context, '1125')),
             Positioned(left: 950, top: 250, child: roomButton(context, '1128')),
             Positioned(left: 100, top: 450, child: roomButton(context, '1006')),
-          ],
+            ],
+          ),
         ),
       ),
     );

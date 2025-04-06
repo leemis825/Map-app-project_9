@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'it_building_1f_screen.dart';
+import 'it_building_2f_screen.dart';
+import 'it_building_3f_screen.dart';
+import 'it_building_4f_screen.dart';
+import 'it_building_5f_screen.dart';
+import 'it_building_6f_screen.dart';
+import 'it_building_7f_screen.dart';
+import 'it_building_8f_screen.dart';
+import 'it_building_9f_screen.dart';
+import 'it_building_10f_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   @override
@@ -12,13 +21,18 @@ class _MenuScreenState extends State<MenuScreen> {
   int selectedFloor = 1;
   bool showFloorButtons = false;
 
-  final List<int> floors = [1, 2, 3, 4, 5];
+  final List<int> floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   final Map<int, Color> floorMaps = {
-    1: Colors.lightBlue[100]!,
-    2: Colors.green[100]!,
-    3: Colors.orange[100]!,
-    4: Colors.purple[100]!,
-    5: Colors.red[100]!,
+    1: Colors.lightBlue,
+    2: Colors.green,
+    3: Colors.orange,
+    4: Colors.purple,
+    5: Colors.red,
+    6: Colors.yellow,
+    7: Colors.brown,
+    8: Colors.teal,
+    9: Colors.cyan,
+    10: Colors.amber,
   };
 
   void showHelp() {
@@ -46,10 +60,7 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
         backgroundColor: Theme.of(context).primaryColor,
         actions: [
-          IconButton(
-            icon: Icon(Icons.help_outline),
-            onPressed: showHelp,
-          ),
+          IconButton(icon: Icon(Icons.help_outline), onPressed: showHelp),
         ],
       ),
       drawer: Drawer(
@@ -99,27 +110,41 @@ class _MenuScreenState extends State<MenuScreen> {
         ),
       ),
 
-      // 본문
+      // 📋 본문
       body: Stack(
         children: [
-          // ✅ 1층 지도 화면 삽입
           if (selectedFloor == 1)
             ItBuilding1fScreen()
-          else //다른 층들 아직 적용 안 함
+          else if (selectedFloor == 2)
+            ItBuilding2fScreen()
+          else if (selectedFloor == 3)
+            ItBuilding3fScreen()
+          else if (selectedFloor == 4)
+            ItBuilding4fScreen()
+          else if (selectedFloor == 5)
+            ItBuilding5fScreen()
+          else if (selectedFloor == 6)
+            ItBuilding6fScreen()
+          else if (selectedFloor == 7)
+            ItBuilding7fScreen()
+          else if (selectedFloor == 8)
+            ItBuilding8fScreen()
+          else if (selectedFloor == 9)
+            ItBuilding9fScreen()
+          else if (selectedFloor == 10)
+            ItBuilding10fScreen()
+          else
             Container(
-              color: floorMaps[selectedFloor],
+              color: floorMaps[selectedFloor] ?? Colors.grey,
               child: Center(
-                child: Text(
-                  '현재 층: $selectedFloor층',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                ),
+                child: Text('현재 층: $selectedFloor층'),
               ),
             ),
 
-          // 층 선택 버튼
+          // 📍 층 선택 버튼
           Positioned(
-            top: 20,
-            left: 20,
+            top: 15,
+            left: 900,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -135,7 +160,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   Container(
                     margin: EdgeInsets.only(top: 10),
                     height: 200,
-                    width: 80,
+                    width: 100,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       border: Border.all(color: Colors.black),
