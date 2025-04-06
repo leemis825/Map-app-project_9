@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -13,7 +13,7 @@ import 'it_building_10f_screen.dart';
 class FloorSelectorScreen extends StatelessWidget {
   final List<Map<String, dynamic>> floors = [
     {'floor': '1층', 'screen': ItBuilding1fScreen()},
-    {'floor': '2층', 'screen': ItBuilding2fScreen()}, 
+    {'floor': '2층', 'screen': ItBuilding2fScreen()},
     {'floor': '3층', 'screen': ItBuilding3fScreen()},
     {'floor': '4층', 'screen': ItBuilding4fScreen()},
     {'floor': '5층', 'screen': ItBuilding5fScreen()},
@@ -52,3 +52,4 @@ class FloorSelectorScreen extends StatelessWidget {
     );
   }
 }
+*/
