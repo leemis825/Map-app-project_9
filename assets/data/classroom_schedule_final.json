@@ -1,0 +1,5098 @@
+{
+  "2104-2": [
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "논리회로",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "논리회로",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "논리회로",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "논리회로",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "컴퓨터네트워크",
+      "section": "1",
+      "professor": "신석주"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터네트워크",
+      "section": "1",
+      "professor": "신석주"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "컴퓨터네트워크",
+      "section": "1",
+      "professor": "신석주"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터네트워크",
+      "section": "1",
+      "professor": "신석주"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "2",
+      "professor": "신석주"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "2",
+      "professor": "신석주"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "2",
+      "professor": "신석주"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "2",
+      "professor": "신석주"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터그래픽스",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "컴퓨터그래픽스",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터그래픽스",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "컴퓨터그래픽스",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기자기학1",
+      "section": "4",
+      "professor": "이진이"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전기자기학1",
+      "section": "4",
+      "professor": "이진이"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기자기학1",
+      "section": "4",
+      "professor": "이진이"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전기자기학1",
+      "section": "4",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "데이터구조",
+      "section": "4",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "데이터구조",
+      "section": "4",
+      "professor": "송기범"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "데이터구조",
+      "section": "4",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "데이터구조",
+      "section": "4",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전자정보통신공학개론",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "전자정보통신공학개론",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "16:00",
+      "subject": "네트워크보안",
+      "section": "2",
+      "professor": "이광옥"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "강화학습설계",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "강화학습설계",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "강화학습설계",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "강화학습설계",
+      "section": "1",
+      "professor": "김원열"
+    }
+  ],
+  "2221": [
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "논리회로",
+      "section": "3",
+      "professor": "최광석"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "논리회로",
+      "section": "3",
+      "professor": "최광석"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "논리회로",
+      "section": "3",
+      "professor": "최광석"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "논리회로",
+      "section": "3",
+      "professor": "최광석"
+    },
+    {
+      "day": "월",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "소프트웨어공학",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "소프트웨어공학",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "월",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "소프트웨어공학",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "소프트웨어공학",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론",
+      "section": "1",
+      "professor": "박정진"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "회로이론",
+      "section": "1",
+      "professor": "박정진"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론",
+      "section": "1",
+      "professor": "박정진"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "회로이론",
+      "section": "1",
+      "professor": "박정진"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "1",
+      "professor": "노순국"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "1",
+      "professor": "노순국"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "인공지능개론",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "인공지능개론",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "인공지능개론",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "인공지능개론",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "공학수학1",
+      "section": "23",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "공학수학1",
+      "section": "23",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "공학수학1",
+      "section": "23",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "공학수학1",
+      "section": "23",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "공학수학1",
+      "section": "24",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "공학수학1",
+      "section": "24",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "공학수학1",
+      "section": "24",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "공학수학1",
+      "section": "24",
+      "professor": "최동유"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "전기전자일반",
+      "section": "2",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기전자일반",
+      "section": "2",
+      "professor": "최동유"
+    },
+    {
+      "day": "월",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "1",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "13",
+      "professor": "최동유"
+    }
+  ],
+  "3228": [
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "논리회로",
+      "section": "4",
+      "professor": "이지민"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "논리회로",
+      "section": "4",
+      "professor": "이지민"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "통신이론",
+      "section": "2",
+      "professor": "노순국"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "2",
+      "professor": "노순국"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "컴퓨터구조",
+      "section": "1",
+      "professor": "김범훈"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터구조",
+      "section": "3",
+      "professor": "모상만"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "컴퓨터구조",
+      "section": "3",
+      "professor": "모상만"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "컴퓨터구조",
+      "section": "5",
+      "professor": "모상만"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터구조",
+      "section": "5",
+      "professor": "모상만"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "컴퓨터구조",
+      "section": "5",
+      "professor": "모상만"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터구조",
+      "section": "5",
+      "professor": "모상만"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "이산수학",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "이산수학",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "네트워크보안",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "네트워크보안",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "네트워크보안",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "네트워크보안",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "보안기술최신동향",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "보안기술최신동향",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "4차산업신기술개론",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "4차산업신기술개론",
+      "section": "2",
+      "professor": "이금분"
+    }
+  ],
+  "3128": [
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "논리회로",
+      "section": "4",
+      "professor": "이지민"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "논리회로",
+      "section": "4",
+      "professor": "이지민"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "제어공학",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "제어공학",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "이산수학",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "이산수학",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "디지털신호처리",
+      "section": "1",
+      "professor": "김윤학"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "디지털신호처리",
+      "section": "1",
+      "professor": "김윤학"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "데이터구조",
+      "section": "3",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "데이터구조",
+      "section": "3",
+      "professor": "송기범"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "데이터구조",
+      "section": "3",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "데이터구조",
+      "section": "3",
+      "professor": "송기범"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "5",
+      "professor": "문지윤"
+    },
+    {
+      "day": "월",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "6",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "16:30",
+      "subject": "기계학습",
+      "section": "2",
+      "professor": "정호엽"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:30",
+      "subject": "기계학습",
+      "section": "2",
+      "professor": "정호엽"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "16:30",
+      "subject": "기계학습",
+      "section": "2",
+      "professor": "정호엽"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:30",
+      "subject": "기계학습",
+      "section": "2",
+      "professor": "정호엽"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "보안기술최신동향",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "보안기술최신동향",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "2",
+      "professor": "심재홍"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "2",
+      "professor": "심재홍"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "2",
+      "professor": "심재홍"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "유닉스시스템프로그래밍",
+      "section": "2",
+      "professor": "심재홍"
+    }
+  ],
+  "2119": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "논리회로",
+      "section": "5",
+      "professor": "최광석"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "논리회로",
+      "section": "5",
+      "professor": "최광석"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "논리회로",
+      "section": "5",
+      "professor": "최광석"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "논리회로",
+      "section": "5",
+      "professor": "최광석"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "전기전자일반",
+      "section": "2",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기전자일반",
+      "section": "2",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "9",
+      "professor": "김성기"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "11",
+      "professor": "정현숙"
+    }
+  ],
+  "2122": [
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "데이터통신",
+      "section": "1",
+      "professor": "이충규"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "데이터통신",
+      "section": "1",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "데이터통신",
+      "section": "1",
+      "professor": "이충규"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "데이터통신",
+      "section": "1",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "디지탈시스템",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "디지탈시스템",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "10",
+      "professor": "안드레스"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "신기술산업체현장실습1",
+      "section": "1",
+      "professor": "김성환"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "산학프로젝트1",
+      "section": "5",
+      "professor": "정현숙"
+    }
+  ],
+  "3124": [
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "16:00",
+      "subject": "데이터통신",
+      "section": "2",
+      "professor": "염찬욱"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "통신이론",
+      "section": "4",
+      "professor": "문정훈"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "통신이론",
+      "section": "4",
+      "professor": "문정훈"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "통신이론",
+      "section": "4",
+      "professor": "문정훈"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "통신이론",
+      "section": "4",
+      "professor": "문정훈"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "제어공학",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "제어공학",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "제어공학",
+      "section": "2",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "제어공학",
+      "section": "2",
+      "professor": "유성현"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "제어공학",
+      "section": "2",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "제어공학",
+      "section": "2",
+      "professor": "유성현"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "수치해석",
+      "section": "9",
+      "professor": "이진이"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "수치해석",
+      "section": "9",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "수치해석",
+      "section": "9",
+      "professor": "이진이"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "수치해석",
+      "section": "9",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "전기자기학1",
+      "section": "5",
+      "professor": "오순수"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기자기학1",
+      "section": "5",
+      "professor": "오순수"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "로봇공학",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "로봇공학",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "로봇공학",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "로봇공학",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "디지털신호처리",
+      "section": "1",
+      "professor": "김윤학"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "디지털신호처리",
+      "section": "1",
+      "professor": "김윤학"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "34",
+      "professor": "유성현"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전자정보통신공학개론",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "전자정보통신공학개론",
+      "section": "3",
+      "professor": "김윤학"
+    }
+  ],
+  "2228": [
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "전기자기학",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기자기학",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "전기자기학",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기자기학",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "디지탈시스템",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "디지탈시스템",
+      "section": "1",
+      "professor": "유성현"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "1",
+      "professor": "노순국"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "1",
+      "professor": "노순국"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전자회로1",
+      "section": "1",
+      "professor": "황석승"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "전자회로1",
+      "section": "1",
+      "professor": "황석승"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "데이터베이스",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "데이터베이스",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "데이터베이스",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "데이터베이스",
+      "section": "1",
+      "professor": "신영숙"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기전자일반",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "전기전자일반",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기전자일반",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "전기전자일반",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "마이크로프로세서응용설계",
+      "section": "1",
+      "professor": "최광석"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "마이크로프로세서응용설계",
+      "section": "1",
+      "professor": "최광석"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "마이크로프로세서응용설계",
+      "section": "1",
+      "professor": "최광석"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "마이크로프로세서응용설계",
+      "section": "1",
+      "professor": "최광석"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "1",
+      "professor": "강희선"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "1",
+      "professor": "강희선"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "1",
+      "professor": "강희선"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "1",
+      "professor": "강희선"
+    }
+  ],
+  "3224": [
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "통신이론",
+      "section": "2",
+      "professor": "노순국"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "통신이론",
+      "section": "2",
+      "professor": "노순국"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "제어공학",
+      "section": "3",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "제어공학",
+      "section": "3",
+      "professor": "유성현"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "제어공학",
+      "section": "3",
+      "professor": "유성현"
+    },
+    {
+      "day": "수",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "제어공학",
+      "section": "3",
+      "professor": "유성현"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "컴퓨터구조",
+      "section": "4",
+      "professor": "장경성"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전자회로1",
+      "section": "2",
+      "professor": "여인준"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "전자회로1",
+      "section": "2",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전자회로1",
+      "section": "2",
+      "professor": "여인준"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "전자회로1",
+      "section": "2",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "28",
+      "professor": "남승민"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "28",
+      "professor": "남승민"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "28",
+      "professor": "남승민"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "28",
+      "professor": "남승민"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "8",
+      "professor": "남승민"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "물리전자공학",
+      "section": "2",
+      "professor": "남승민"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "물리전자공학",
+      "section": "2",
+      "professor": "남승민"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "물리전자공학",
+      "section": "2",
+      "professor": "남승민"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "물리전자공학",
+      "section": "2",
+      "professor": "남승민"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "AI신호및시스템",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "AI신호및시스템",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "AI신호및시스템",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "AI신호및시스템",
+      "section": "1",
+      "professor": "김원열"
+    }
+  ],
+  "3108": [
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "통신이론",
+      "section": "3",
+      "professor": "이충규"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "통신이론",
+      "section": "3",
+      "professor": "이충규"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "통신이론",
+      "section": "3",
+      "professor": "이충규"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "통신이론",
+      "section": "3",
+      "professor": "이충규"
+    },
+    {
+      "day": "월",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "전자정보통신공학개론",
+      "section": "2",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "전자정보통신공학개론",
+      "section": "2",
+      "professor": "이충규"
+    },
+    {
+      "day": "월",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "전자정보통신공학개론",
+      "section": "2",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "전자정보통신공학개론",
+      "section": "2",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전자정보통신공학개론",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "전자정보통신공학개론",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "물리전자공학",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "물리전자공학",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "물리전자공학",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "물리전자공학",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "산업체특강1",
+      "section": "1",
+      "professor": "김성환"
+    }
+  ],
+  "2105-1": [
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "3",
+      "professor": "김준형"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터네트워크",
+      "section": "3",
+      "professor": "김준형"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "컴퓨터네트워크",
+      "section": "3",
+      "professor": "김준형"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터네트워크",
+      "section": "3",
+      "professor": "김준형"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기자기학1",
+      "section": "3",
+      "professor": "이진이"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기자기학1",
+      "section": "3",
+      "professor": "이진이"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기자기학1",
+      "section": "3",
+      "professor": "이진이"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "전기자기학1",
+      "section": "3",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "26",
+      "professor": "고낙용"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "26",
+      "professor": "고낙용"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "26",
+      "professor": "고낙용"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "26",
+      "professor": "고낙용"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "무선통신",
+      "section": "1",
+      "professor": "변재영"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "무선통신",
+      "section": "1",
+      "professor": "변재영"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "무선통신",
+      "section": "1",
+      "professor": "변재영"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "무선통신",
+      "section": "1",
+      "professor": "변재영"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "전자정보통신공학개론",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "전자정보통신공학개론",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "정보보호",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "정보보호",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "정보보호",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "정보보호",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "3",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "4",
+      "professor": "유성현"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "초고주파공학",
+      "section": "1",
+      "professor": "오순수"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "초고주파공학",
+      "section": "1",
+      "professor": "오순수"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "소프트웨어응용",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "소프트웨어응용",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "4차산업신기술개론",
+      "section": "1",
+      "professor": "조영주"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "4차산업신기술개론",
+      "section": "1",
+      "professor": "조영주"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "4차산업신기술개론",
+      "section": "1",
+      "professor": "조영주"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "4차산업신기술개론",
+      "section": "1",
+      "professor": "조영주"
+    }
+  ],
+  "3120": [
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터구조",
+      "section": "3",
+      "professor": "모상만"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "컴퓨터구조",
+      "section": "3",
+      "professor": "모상만"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "이산수학",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "이산수학",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "이산수학",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "이산수학",
+      "section": "1",
+      "professor": "심수정"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "인터넷보안",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "인터넷보안",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "인터넷보안",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "인터넷보안",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "계산적사고와문제해결",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "계산적사고와문제해결",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "계산적사고와문제해결",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "계산적사고와문제해결",
+      "section": "1",
+      "professor": "김성기"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "계산적사고와문제해결",
+      "section": "2",
+      "professor": "김성기"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "계산적사고와문제해결",
+      "section": "2",
+      "professor": "김성기"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "계산적사고와문제해결",
+      "section": "2",
+      "professor": "김성기"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "계산적사고와문제해결",
+      "section": "2",
+      "professor": "김성기"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "아날로그회로설계",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "아날로그회로설계",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "아날로그회로설계",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "아날로그회로설계",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "4차산업신기술개론",
+      "section": "2",
+      "professor": "이금분"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "4차산업신기술개론",
+      "section": "2",
+      "professor": "이금분"
+    }
+  ],
+  "9210": [
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "수치해석",
+      "section": "6",
+      "professor": "문지윤"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "수치해석",
+      "section": "6",
+      "professor": "문지윤"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "수치해석",
+      "section": "6",
+      "professor": "문지윤"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "수치해석",
+      "section": "6",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "디지털시스템설계실험",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "14:00",
+      "subject": "디지털시스템설계실험",
+      "section": "2",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "16",
+      "professor": "오순수"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "17:00",
+      "subject": "IoT융합실험",
+      "section": "1",
+      "professor": "임상길"
+    }
+  ],
+  "3210": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "수치해석",
+      "section": "7",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "수치해석",
+      "section": "7",
+      "professor": "문지윤"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "수치해석",
+      "section": "7",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "수치해석",
+      "section": "7",
+      "professor": "문지윤"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "40",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "40",
+      "professor": "문지윤"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "40",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "40",
+      "professor": "문지윤"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "6",
+      "professor": "유경호"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "6",
+      "professor": "유경호"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "6",
+      "professor": "유경호"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "6",
+      "professor": "유경호"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "9",
+      "professor": "유경호"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "9",
+      "professor": "유경호"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "9",
+      "professor": "유경호"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "9",
+      "professor": "유경호"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "1",
+      "professor": "김정인"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "1",
+      "professor": "김정인"
+    },
+    {
+      "day": "금",
+      "start": "16:00",
+      "end": "19:00",
+      "subject": "AI융합요소 설계 및 실습",
+      "section": "1",
+      "professor": "강경호"
+    }
+  ],
+  "1225": [
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "수치해석",
+      "section": "8",
+      "professor": "정교일"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "36",
+      "professor": "염홍기"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "36",
+      "professor": "염홍기"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "36",
+      "professor": "염홍기"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "36",
+      "professor": "염홍기"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "10",
+      "professor": "신영숙"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "10",
+      "professor": "신영숙"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "10",
+      "professor": "신영숙"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "10",
+      "professor": "신영숙"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "17:00",
+      "subject": "객체지향프로그래밍",
+      "section": "8",
+      "professor": "정유선"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "1",
+      "professor": "김정인"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "1",
+      "professor": "김정인"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "10",
+      "professor": "임상길"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "10",
+      "professor": "임상길"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "10",
+      "professor": "임상길"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "10",
+      "professor": "임상길"
+    }
+  ],
+  "6210": [
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론1",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "회로이론1",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론1",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "회로이론1",
+      "section": "1",
+      "professor": "여인준"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "29",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "신호및시스템",
+      "section": "1",
+      "professor": "임상길"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "신호및시스템",
+      "section": "1",
+      "professor": "임상길"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "신호및시스템",
+      "section": "1",
+      "professor": "임상길"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "신호및시스템",
+      "section": "1",
+      "professor": "임상길"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "7",
+      "professor": "임상길"
+    }
+  ],
+  "2105-2": [
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "회로이론1",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "회로이론1",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "회로이론1",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "회로이론1",
+      "section": "2",
+      "professor": "고낙용"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "신호및시스템",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "신호및시스템",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "신호및시스템",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "신호및시스템",
+      "section": "3",
+      "professor": "김윤학"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "나노전자소자",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "나노전자소자",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "13:00",
+      "subject": "초고주파공학",
+      "section": "1",
+      "professor": "오순수"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "초고주파공학",
+      "section": "1",
+      "professor": "오순수"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "컴퓨터비전",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터비전",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "컴퓨터비전",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "컴퓨터비전",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "소프트웨어응용",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "소프트웨어응용",
+      "section": "1",
+      "professor": "염홍기"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "산학프로젝트1",
+      "section": "4",
+      "professor": "모상만"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "산학프로젝트1",
+      "section": "6",
+      "professor": "강문수"
+    }
+  ],
+  "2225": [
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론1",
+      "section": "3",
+      "professor": "반성범"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "회로이론1",
+      "section": "3",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "회로이론1",
+      "section": "3",
+      "professor": "반성범"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "회로이론1",
+      "section": "3",
+      "professor": "반성범"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "전기자기학1",
+      "section": "5",
+      "professor": "오순수"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기자기학1",
+      "section": "5",
+      "professor": "오순수"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전자회로1",
+      "section": "1",
+      "professor": "황석승"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "전자회로1",
+      "section": "1",
+      "professor": "황석승"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "27",
+      "professor": "이진이"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "27",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "공학수학1",
+      "section": "27",
+      "professor": "이진이"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "공학수학1",
+      "section": "27",
+      "professor": "이진이"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "13:00",
+      "subject": "신호및시스템",
+      "section": "2",
+      "professor": "반성범"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "2",
+      "professor": "이진이"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "나노전자소자",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "수",
+      "start": "11:00",
+      "end": "12:00",
+      "subject": "나노전자소자",
+      "section": "1",
+      "professor": "최현식"
+    }
+  ],
+  "1209": [
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "18:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "29",
+      "professor": "이현희"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "18:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "30",
+      "professor": "이현희"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "13:00",
+      "subject": "객체지향프로그래밍",
+      "section": "7",
+      "professor": "정유선"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "13:00",
+      "subject": "데이터구조",
+      "section": "5",
+      "professor": "김형주"
+    },
+    {
+      "day": "금",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "데이터구조",
+      "section": "6",
+      "professor": "김형주"
+    }
+  ],
+  "6221": [
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "35",
+      "professor": "곽근창"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "35",
+      "professor": "곽근창"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "35",
+      "professor": "곽근창"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "35",
+      "professor": "곽근창"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "16:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "30",
+      "professor": "곽근창"
+    }
+  ],
+  "2210": [
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "37",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "37",
+      "professor": "문지윤"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "37",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습",
+      "section": "37",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "기초프로그래밍",
+      "section": "2",
+      "professor": "장경성"
+    },
+    {
+      "day": "금",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "2",
+      "professor": "장경성"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "기초프로그래밍",
+      "section": "2",
+      "professor": "장경성"
+    },
+    {
+      "day": "금",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "2",
+      "professor": "장경성"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "WEB프로그래밍",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "WEB프로그래밍",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "WEB프로그래밍",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "WEB프로그래밍",
+      "section": "1",
+      "professor": "이건우"
+    }
+  ],
+  "8206": [
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "정보통신응용실험1",
+      "section": "1",
+      "professor": "변재영"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "정보통신응용실험1",
+      "section": "2",
+      "professor": "변재영"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "디지털회로실험",
+      "section": "1",
+      "professor": "최광석"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "2",
+      "professor": "변재영"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "2",
+      "professor": "변재영"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "2",
+      "professor": "변재영"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "2",
+      "professor": "변재영"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "2",
+      "professor": "김준형"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "2",
+      "professor": "김준형"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "11:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "2",
+      "professor": "김준형"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "멀티미디어시스템설계",
+      "section": "2",
+      "professor": "김준형"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "기초프로그래밍",
+      "section": "8",
+      "professor": "이범식"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "8",
+      "professor": "이범식"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "기초프로그래밍",
+      "section": "8",
+      "professor": "이범식"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "8",
+      "professor": "이범식"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "11:30",
+      "subject": "딥러닝기초",
+      "section": "4",
+      "professor": "이범식"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:30",
+      "subject": "딥러닝기초",
+      "section": "4",
+      "professor": "이범식"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "11:30",
+      "subject": "딥러닝기초",
+      "section": "4",
+      "professor": "이범식"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:30",
+      "subject": "딥러닝기초",
+      "section": "4",
+      "professor": "이범식"
+    }
+  ],
+  "3208": [
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "9",
+      "professor": "김준형"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "9",
+      "professor": "김준형"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "9",
+      "professor": "김준형"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "프로그래밍언어및실습1",
+      "section": "9",
+      "professor": "김준형"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자바프로그래밍",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자바프로그래밍",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자바프로그래밍",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자바프로그래밍",
+      "section": "1",
+      "professor": "김준형"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "오픈소스SW개론",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "오픈소스SW개론",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "오픈소스SW개론",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "오픈소스SW개론",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "금",
+      "start": "13:00",
+      "end": "16:00",
+      "subject": "AI컴퓨터비전",
+      "section": "1",
+      "professor": "안영은"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "클라우드및가상화",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "클라우드및가상화",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "화",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "클라우드및가상화",
+      "section": "1",
+      "professor": "이건우"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "클라우드및가상화",
+      "section": "1",
+      "professor": "이건우"
+    }
+  ],
+  "8210": [
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "디지털회로실험",
+      "section": "2",
+      "professor": "김종우"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "정보통신기초실험1",
+      "section": "1",
+      "professor": "최동유"
+    },
+    {
+      "day": "금",
+      "start": "12:00",
+      "end": "15:00",
+      "subject": "정보통신기초실험1",
+      "section": "2",
+      "professor": "최동유"
+    },
+    {
+      "day": "금",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "정보통신기초실험1",
+      "section": "3",
+      "professor": "최동유"
+    }
+  ],
+  "8221": [
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "2",
+      "professor": "이건우"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "3",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "3",
+      "professor": "최동유"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "3",
+      "professor": "최동유"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "3",
+      "professor": "최동유"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "10:30",
+      "subject": "데이터구조",
+      "section": "1",
+      "professor": "이범식"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:30",
+      "subject": "데이터구조",
+      "section": "1",
+      "professor": "이범식"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "10:30",
+      "subject": "데이터구조",
+      "section": "1",
+      "professor": "이범식"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "10:30",
+      "subject": "데이터구조",
+      "section": "1",
+      "professor": "이범식"
+    }
+  ],
+  "7210": [
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "자바프로그래밍",
+      "section": "3",
+      "professor": "류창주"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "3",
+      "professor": "류창주"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "자바프로그래밍",
+      "section": "3",
+      "professor": "류창주"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "자바프로그래밍",
+      "section": "3",
+      "professor": "류창주"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "객체지향프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "객체지향프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "1",
+      "professor": "심재홍"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "7",
+      "professor": "이금분"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "7",
+      "professor": "이금분"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "7",
+      "professor": "이금분"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "7",
+      "professor": "이금분"
+    }
+  ],
+  "1122": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "31",
+      "professor": "황석승"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "15:00",
+      "subject": "전자정보통신공학개론",
+      "section": "4",
+      "professor": "정교일"
+    }
+  ],
+  "7225": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "32",
+      "professor": "오순수"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "32",
+      "professor": "오순수"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "2",
+      "professor": "정현숙"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "2",
+      "professor": "정현숙"
+    },
+    {
+      "day": "월",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "2",
+      "professor": "정현숙"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "객체지향프로그래밍",
+      "section": "2",
+      "professor": "정현숙"
+    }
+  ],
+  "9225": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "32",
+      "professor": "오순수"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "32",
+      "professor": "오순수"
+    }
+  ],
+  "9206": [
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "13:00",
+      "subject": "CAPSTONE DESIGN 1",
+      "section": "33",
+      "professor": "최현식"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "전자기초실험",
+      "section": "3",
+      "professor": "염홍기"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "19:00",
+      "subject": "전자기초실험",
+      "section": "80",
+      "professor": "이충규"
+    }
+  ],
+  "10210": [
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "3",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "3",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "3",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "객체지향프로그래밍",
+      "section": "3",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "기초프로그래밍",
+      "section": "11",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "11",
+      "professor": "송기범"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "기초프로그래밍",
+      "section": "11",
+      "professor": "송기범"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "11",
+      "professor": "송기범"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "13:00",
+      "subject": "인공지능응용",
+      "section": "1",
+      "professor": "최철웅"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "산학프로젝트1",
+      "section": "3",
+      "professor": "양희덕"
+    }
+  ],
+  "10221": [
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "객체지향프로그래밍",
+      "section": "4",
+      "professor": "안영은"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "객체지향프로그래밍",
+      "section": "4",
+      "professor": "안영은"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "객체지향프로그래밍",
+      "section": "4",
+      "professor": "안영은"
+    },
+    {
+      "day": "목",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "객체지향프로그래밍",
+      "section": "4",
+      "professor": "안영은"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "5",
+      "professor": "임희경"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "기초프로그래밍",
+      "section": "5",
+      "professor": "임희경"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "5",
+      "professor": "임희경"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "기초프로그래밍",
+      "section": "5",
+      "professor": "임희경"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "6",
+      "professor": "임희경"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "6",
+      "professor": "임희경"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "6",
+      "professor": "임희경"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "6",
+      "professor": "임희경"
+    }
+  ],
+  "7221": [
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "5",
+      "professor": "강문수"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "5",
+      "professor": "강문수"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "5",
+      "professor": "강문수"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "객체지향프로그래밍",
+      "section": "5",
+      "professor": "강문수"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "IOT시스템기초",
+      "section": "1",
+      "professor": "안드레스"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "IOT시스템기초",
+      "section": "1",
+      "professor": "안드레스"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "IOT시스템기초",
+      "section": "1",
+      "professor": "안드레스"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "IOT시스템기초",
+      "section": "1",
+      "professor": "안드레스"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "IOT시스템기초",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "IOT시스템기초",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "IOT시스템기초",
+      "section": "2",
+      "professor": "안드레스"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "IOT시스템기초",
+      "section": "2",
+      "professor": "안드레스"
+    }
+  ],
+  "9221": [
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "전자기초실험",
+      "section": "1",
+      "professor": "임상길"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "전자기초실험",
+      "section": "2",
+      "professor": "이충규"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "13:00",
+      "subject": "전자기초실험",
+      "section": "4",
+      "professor": "임상길"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "17:00",
+      "subject": "반도체소자실험",
+      "section": "1",
+      "professor": "최현식"
+    },
+    {
+      "day": "금",
+      "start": "12:00",
+      "end": "15:00",
+      "subject": "반도체소자실험",
+      "section": "2",
+      "professor": "문정훈"
+    },
+    {
+      "day": "금",
+      "start": "15:00",
+      "end": "18:00",
+      "subject": "반도체소자실험",
+      "section": "3",
+      "professor": "문정훈"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "12:00",
+      "subject": "반도체소자실험",
+      "section": "4",
+      "professor": "남승민"
+    }
+  ],
+  "1125": [
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "12",
+      "professor": "김준형"
+    },
+    {
+      "day": "목",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "14",
+      "professor": "신영숙"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터과학개론",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "컴퓨터과학개론",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "컴퓨터과학개론",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "10:00",
+      "subject": "컴퓨터과학개론",
+      "section": "1",
+      "professor": "김현일"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "13:00",
+      "subject": "(기업주도)자동차SW설계",
+      "section": "3",
+      "professor": "권은주"
+    }
+  ],
+  "4218": [
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "15",
+      "professor": "김원열"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "오픈소스SW개론",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "오픈소스SW개론",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "월",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "오픈소스SW개론",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "오픈소스SW개론",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기계학습",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "목",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기계학습",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자연어처리",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자연어처리",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "월",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자연어처리",
+      "section": "1",
+      "professor": "김원열"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "자연어처리",
+      "section": "1",
+      "professor": "김원열"
+    }
+  ],
+  "4225": [
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "14:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "16",
+      "professor": "최규호"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "디지털미디어의이해",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "디지털미디어의이해",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "15:00",
+      "subject": "디지털미디어의이해",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "디지털미디어의이해",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "AI헬스케어",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "AI헬스케어",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "AI헬스케어",
+      "section": "1",
+      "professor": "최규호"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "AI헬스케어",
+      "section": "1",
+      "professor": "최규호"
+    }
+  ],
+  "1101": [
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "신입생세미나(나의삶,나의진로)",
+      "section": "17",
+      "professor": "성우석"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기차설계및제작1",
+      "section": "1",
+      "professor": "성우석"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기차설계및제작1",
+      "section": "1",
+      "professor": "성우석"
+    },
+    {
+      "day": "수",
+      "start": "15:00",
+      "end": "16:00",
+      "subject": "전기차설계및제작1",
+      "section": "1",
+      "professor": "성우석"
+    },
+    {
+      "day": "목",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "전기차설계및제작1",
+      "section": "1",
+      "professor": "성우석"
+    }
+  ],
+  "2220": [
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "1",
+      "professor": "김범훈"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "1",
+      "professor": "김범훈"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "1",
+      "professor": "김범훈"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "1",
+      "professor": "김범훈"
+    }
+  ],
+  "3304": [
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "2",
+      "professor": "박아론"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "2",
+      "professor": "박아론"
+    },
+    {
+      "day": "화",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "2",
+      "professor": "박아론"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "MATLAB프로그래밍및실습",
+      "section": "2",
+      "professor": "박아론"
+    }
+  ],
+  "10225": [
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "3",
+      "professor": "정호엽"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "3",
+      "professor": "정호엽"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "3",
+      "professor": "정호엽"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "3",
+      "professor": "정호엽"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "4",
+      "professor": "정호엽"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "4",
+      "professor": "정호엽"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "4",
+      "professor": "정호엽"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "기초프로그래밍",
+      "section": "4",
+      "professor": "정호엽"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "13:00",
+      "subject": "빅데이터프로그래밍",
+      "section": "1",
+      "professor": "조영주"
+    }
+  ],
+  "6225": [
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "9",
+      "professor": "곽근창"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "9",
+      "professor": "곽근창"
+    },
+    {
+      "day": "화",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기초프로그래밍",
+      "section": "9",
+      "professor": "곽근창"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "기초프로그래밍",
+      "section": "9",
+      "professor": "곽근창"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "오픈소스하드웨어",
+      "section": "1",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "오픈소스하드웨어",
+      "section": "1",
+      "professor": "문지윤"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "11:00",
+      "subject": "오픈소스하드웨어",
+      "section": "1",
+      "professor": "문지윤"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "15:00",
+      "subject": "오픈소스하드웨어",
+      "section": "1",
+      "professor": "문지윤"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "AI기반SW프로그래밍",
+      "section": "11",
+      "professor": "이충규"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "AI기반SW프로그래밍",
+      "section": "11",
+      "professor": "이충규"
+    },
+    {
+      "day": "화",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "AI기반SW프로그래밍",
+      "section": "11",
+      "professor": "이충규"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "AI기반SW프로그래밍",
+      "section": "11",
+      "professor": "이충규"
+    }
+  ],
+  "1103": [
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "3",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "3",
+      "professor": "전찬준"
+    },
+    {
+      "day": "월",
+      "start": "15:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "3",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "16:00",
+      "end": "17:00",
+      "subject": "기계학습",
+      "section": "3",
+      "professor": "전찬준"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "빅데이터분석",
+      "section": "1",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "빅데이터분석",
+      "section": "1",
+      "professor": "전찬준"
+    },
+    {
+      "day": "월",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "빅데이터분석",
+      "section": "1",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "빅데이터분석",
+      "section": "1",
+      "professor": "전찬준"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "빅데이터분석",
+      "section": "2",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "빅데이터분석",
+      "section": "2",
+      "professor": "전찬준"
+    },
+    {
+      "day": "월",
+      "start": "12:00",
+      "end": "14:00",
+      "subject": "빅데이터분석",
+      "section": "2",
+      "professor": "전찬준"
+    },
+    {
+      "day": "수",
+      "start": "14:00",
+      "end": "16:00",
+      "subject": "빅데이터분석",
+      "section": "2",
+      "professor": "전찬준"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "서버웹프로그래밍",
+      "section": "1",
+      "professor": "정현숙"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "서버웹프로그래밍",
+      "section": "1",
+      "professor": "정현숙"
+    },
+    {
+      "day": "화",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "서버웹프로그래밍",
+      "section": "1",
+      "professor": "정현숙"
+    },
+    {
+      "day": "목",
+      "start": "10:00",
+      "end": "12:00",
+      "subject": "서버웹프로그래밍",
+      "section": "1",
+      "professor": "정현숙"
+    },
+    {
+      "day": "목",
+      "start": "13:00",
+      "end": "16:00",
+      "subject": "클라우드및가상화",
+      "section": "2",
+      "professor": "최철웅"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "딥러닝기초",
+      "section": "2",
+      "professor": "김원열"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "딥러닝기초",
+      "section": "2",
+      "professor": "김원열"
+    },
+    {
+      "day": "화",
+      "start": "16:00",
+      "end": "18:00",
+      "subject": "딥러닝기초",
+      "section": "2",
+      "professor": "김원열"
+    },
+    {
+      "day": "목",
+      "start": "17:00",
+      "end": "18:00",
+      "subject": "딥러닝기초",
+      "section": "2",
+      "professor": "김원열"
+    },
+    {
+      "day": "금",
+      "start": "10:00",
+      "end": "13:00",
+      "subject": "(기업주도)UNITY기반실감콘텐츠프로젝트실무",
+      "section": "1",
+      "professor": "김대우"
+    }
+  ],
+  "1006-6": [
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "월",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "화",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "수",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "목",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    },
+    {
+      "day": "금",
+      "start": "09:00",
+      "end": "18:00",
+      "subject": "NHN SW프로젝트",
+      "section": "2",
+      "professor": "양희덕"
+    }
+  ]
+}
