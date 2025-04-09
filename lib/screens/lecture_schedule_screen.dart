@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/lecture_data.dart'; // ✅ 데이터 가져오기
+import '../data/lecture_data.dart'; // ✅ LectureDataManager 가져오기
 
 class LectureScheduleScreen extends StatefulWidget {
   final String roomName;
@@ -35,7 +35,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                hintText: '강의실 번호를 입력하세요 (예: 2119)',
+                hintText: '강의실 번호를 입력하세요 (예: 3228)',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
@@ -87,7 +87,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
 
     return Table(
       border: TableBorder.all(color: Colors.grey),
-      defaultColumnWidth: FixedColumnWidth(80), // ✨ 열 너비 늘리기
+      defaultColumnWidth: FixedColumnWidth(80),
       children: [
         // 🗓️ 요일 헤더
         TableRow(
@@ -111,7 +111,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     );
   }
 
-  // 요일 헤더 셀
   Widget _buildHeaderCell(String day) {
     return Container(
       alignment: Alignment.center,
@@ -123,7 +122,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     );
   }
 
-  // 시간 셀 (왼쪽)
   Widget _buildTimeCell(String time) {
     return Container(
       alignment: Alignment.center,
@@ -135,34 +133,23 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     );
   }
 
-  // 수업 셀
   Widget _buildLectureCell(String roomName, String day, String time) {
-    String period = time.split('\n')[0]; // 0A, 1A, 이런 것
-    final lectures = lectureData.where((lecture) => lecture['강의실'] == roomName).toList();
+    String period = time.split('\n')[0]; // 예: "1A"
+    final lectures = LectureDataManager.getLecturesForRoom(roomName); // ✅ 강의실별 데이터 가져오기
 
     for (var lecture in lectures) {
-      List<String> slots = lecture['강의시간']!.split(',');
-
-      for (var slot in slots) {
-        if (slot.startsWith(day)) {
-          var rangeWithTime = slot.substring(2).split('(')[0]; // "9A~9B"
-          var range = rangeWithTime.split('~');
-
-          String start = range[0].trim();
-          String end = range[1].trim();
-
-          if (_isPeriodInRange(period, start, end)) {
-            return Container(
-              alignment: Alignment.center,
-              padding: const EdgeInsets.all(4),
-              color: Colors.lightBlueAccent, // 💙 수업 있는 칸 색상
-              child: Text(
-                '${lecture['과목명']}\n${lecture['교수']}',
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontSize: 10),
-              ),
-            );
-          }
+      if (lecture['day'] == day) {
+        if (_isPeriodInTimeRange(period, lecture['start'], lecture['end'])) {
+          return Container(
+            alignment: Alignment.center,
+            padding: const EdgeInsets.all(4),
+            color: Colors.lightBlueAccent,
+            child: Text(
+              '${lecture['subject']}\n${lecture['professor']}',
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 10),
+            ),
+          );
         }
       }
     }
@@ -174,15 +161,22 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     );
   }
 
-  // 🔥 현재 시간(period)이 start ~ end 범위에 포함되는지 확인
-  bool _isPeriodInRange(String period, String start, String end) {
-    final Map<String, int> periodOrder = {
-      '0A': 0, '0B': 1, '1A': 2, '1B': 3, '2A': 4, '2B': 5, '3A': 6, '3B': 7,
-      '4A': 8, '4B': 9, '5A': 10, '5B': 11, '6A': 12, '6B': 13, '7A': 14, '7B': 15,
-      '8A': 16, '8B': 17, '9A': 18, '9B': 19, '10A': 20, '10B': 21, '11A': 22, '11B': 23,
-      '12A': 24, '12B': 25, '13A': 26, '13B': 27, '14A': 28, '14B': 29, '15A': 30, '15B': 31,
+  bool _isPeriodInTimeRange(String period, String startTime, String endTime) {
+    final periodOrder = {
+      '0A': '08:00', '0B': '08:30', '1A': '09:00', '1B': '09:30',
+      '2A': '10:00', '2B': '10:30', '3A': '11:00', '3B': '11:30',
+      '4A': '12:00', '4B': '12:30', '5A': '13:00', '5B': '13:30',
+      '6A': '14:00', '6B': '14:30', '7A': '15:00', '7B': '15:30',
+      '8A': '16:00', '8B': '16:30', '9A': '17:00', '9B': '17:30',
+      '10A': '18:00', '10B': '18:30', '11A': '19:00', '11B': '19:30',
+      '12A': '20:00', '12B': '20:30', '13A': '21:00', '13B': '21:30',
+      '14A': '22:00', '14B': '22:30', '15A': '23:00', '15B': '23:30',
     };
 
-    return periodOrder[period]! >= periodOrder[start]! && periodOrder[period]! <= periodOrder[end]!;
+    if (!periodOrder.containsKey(period)) return false;
+
+    String periodTime = periodOrder[period]!;
+
+    return (periodTime.compareTo(startTime) >= 0 && periodTime.compareTo(endTime) <= 0);
   }
 }

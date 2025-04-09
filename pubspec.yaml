@@ -37,6 +37,7 @@ flutter:
     - assets/images/it_building_8f_map.png
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
+    - assets/data/classroom_schedule_final.json # JSON 파일 추가 (강의실 시간표 데이터)
 
 
   # (추후 필요하면 여기서 폰트(fonts) 추가 가능)
