@@ -1,8 +1,19 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
+import 'lecture_schedule_screen.dart';
 
 class ItBuilding3fScreen extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController(); // ✅ 스크롤 컨트롤러
+  final double imageWidth = 1749; // 도면 원본 가로 크기
+  final double imageHeight = 799; // 도면 원본 세로 크기
+
+  final List<RoomInfo> rooms = [
+    RoomInfo(name: '3108', left: 405, top: 430),
+    RoomInfo(name: '3208', left: 415, top: 100),
+    RoomInfo(name: '3210', left: 685, top: 100),
+    RoomInfo(name: '3224', left: 1270, top: 100),
+    RoomInfo(name: '3228', left: 1480, top: 100),
+    RoomInfo(name: '3120', left: 1070, top: 280),
+    RoomInfo(name: '3128', left: 1280, top: 280),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -10,113 +21,52 @@ class ItBuilding3fScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('IT융합대학 3층 지도'),
       ),
-      body: Scrollbar(
-        controller: _scrollController,
-        thumbVisibility: true,
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          child: Stack(
-            children: [
-              Image.asset(
-                'assets/images/it_building_3f_map.png', // ✅ 3층 도면
-                fit: BoxFit.contain,
-              ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double screenHeight = constraints.maxHeight;
+          double scale = screenHeight / imageHeight;
+          double scaledImageWidth = imageWidth * scale;
 
-              // 강의실 버튼들 (3층 강의실)
-              Positioned(
-                left: 80, top: 170,
-                child: roomButton(context, '3104'),
+          return Scrollbar(
+            thumbVisibility: true,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: SizedBox(
+                width: scaledImageWidth,
+                height: screenHeight,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/it_building_3f_map.png',
+                      fit: BoxFit.fill,
+                      width: scaledImageWidth,
+                      height: screenHeight,
+                    ),
+
+                    // 클릭 가능한 강의실들
+                    ...rooms.map((room) {
+                      double left = room.left / imageWidth * scaledImageWidth;
+                      double top = room.top / imageHeight * screenHeight;
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: clickableRoomArea(context, room.name),
+                      );
+                    }).toList(),
+                  ],
+                ),
               ),
-              Positioned(
-                left: 180, top: 170,
-                child: roomButton(context, '3104-1'),
-              ),
-              Positioned(
-                left: 260, top: 170,
-                child: roomButton(context, '3104-3'),
-              ),
-              Positioned(
-                left: 340, top: 170,
-                child: roomButton(context, '3104-4'),
-              ),
-              Positioned(
-                left: 420, top: 170,
-                child: roomButton(context, '3104-5'),
-              ),
-              Positioned(
-                left: 500, top: 250,
-                child: roomButton(context, '3108'),
-              ),
-              Positioned(
-                left: 580, top: 250,
-                child: roomButton(context, '3108-1'),
-              ),
-              Positioned(
-                left: 660, top: 250,
-                child: roomButton(context, '3108-2'),
-              ),
-              Positioned(
-                left: 800, top: 100,
-                child: roomButton(context, '3203'),
-              ),
-              Positioned(
-                left: 900, top: 100,
-                child: roomButton(context, '3208'),
-              ),
-              Positioned(
-                left: 1000, top: 100,
-                child: roomButton(context, '3210-1'),
-              ),
-              Positioned(
-                left: 1100, top: 100,
-                child: roomButton(context, '3210'),
-              ),
-              Positioned(
-                left: 1200, top: 100,
-                child: roomButton(context, '3214'),
-              ),
-              Positioned(
-                left: 1350, top: 100,
-                child: roomButton(context, '3220'),
-              ),
-              Positioned(
-                left: 1450, top: 100,
-                child: roomButton(context, '3224'),
-              ),
-              Positioned(
-                left: 1550, top: 100,
-                child: roomButton(context, '3228'),
-              ),
-              Positioned(
-                left: 1400, top: 200,
-                child: roomButton(context, '3120'),
-              ),
-              Positioned(
-                left: 1500, top: 200,
-                child: roomButton(context, '3128'),
-              ),
-              // 📌 추가 필요한 강의실 있으면 또 추가 가능
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  // ✅ 강의실 버튼 위젯
-  Widget roomButton(BuildContext context, String roomName) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.deepPurple,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Colors.deepPurple),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      ),
-      onPressed: () {
+  // 클릭 가능한 컴포넌트 (텍스트 있는 투명 박스)
+  Widget clickableRoomArea(BuildContext context, String roomName) {
+    return GestureDetector(
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -124,7 +74,28 @@ class ItBuilding3fScreen extends StatelessWidget {
           ),
         );
       },
-      child: Text(roomName, style: const TextStyle(fontWeight: FontWeight.bold)),
+      child: Container(
+        width: 80,
+        height: 50,
+        alignment: Alignment.center,
+        color: Colors.transparent, // 개발 시 확인용: Colors.red.withOpacity(0.3)
+        child: Text(
+          roomName,
+          style: const TextStyle(
+            color: Colors.deepPurple,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     );
   }
+}
+
+// 강의실 위치 정보 클래스
+class RoomInfo {
+  final String name;
+  final double left;
+  final double top;
+
+  RoomInfo({required this.name, required this.left, required this.top});
 }

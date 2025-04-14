@@ -25,59 +25,39 @@ class ItBuilding2fScreen extends StatelessWidget {
 
               // 강의실 버튼들 (2층 강의실)
               Positioned(
-                left: 80, top: 170,
-                child: roomButton(context, '2104'),
-              ),
-              Positioned(
-                left: 230, top: 170,
-                child: roomButton(context, '2115-1'),
-              ),
-              Positioned(
-                left: 380, top: 170,
+                left: 370, top: 525,
                 child: roomButton(context, '2105-2'),
               ),
               Positioned(
-                left: 600, top: 100,
-                child: roomButton(context, '2204'),
+                left: 370, top: 370,
+                child: roomButton(context, '2115-1'),
               ),
               Positioned(
-                left: 700, top: 100,
-                child: roomButton(context, '2205'),
+                left: 150, top: 370,
+                child: roomButton(context, '2104-1'),
               ),
               Positioned(
-                left: 800, top: 100,
-                child: roomButton(context, '2210-1'),
+                left: 150, top: 525,
+                child: roomButton(context, '2104-2'),
               ),
               Positioned(
-                left: 900, top: 100,
-                child: roomButton(context, '2210'),
-              ),
-              Positioned(
-                left: 1000, top: 100,
-                child: roomButton(context, '2211'),
-              ),
-              Positioned(
-                left: 700, top: 150,
+                left: 900, top: 250,
                 child: roomButton(context, '2119'),
               ),
               Positioned(
-                left: 1250, top: 170,
+                left: 470, top: 100,
+                child: roomButton(context, '2210'),
+              ),
+              Positioned(
+                left: 1035, top: 250,
                 child: roomButton(context, '2122'),
               ),
               Positioned(
-                left: 1350, top: 170,
-                child: roomButton(context, '2125'),
-              ),
-              Positioned(
-                left: 1450, top: 170,
-                child: roomButton(context, '2128'),
-              ),
-              Positioned(
-                left: 1500, top: 100,
+                left: 1150, top: 100,
                 child: roomButton(context, '2225'),
               ),
               Positioned(
-                left: 1600, top: 100,
+                left: 1305, top: 100,
                 child: roomButton(context, '2228'),
               ),
               // 📌 추가로 필요한 강의실은 계속 추가 가능
