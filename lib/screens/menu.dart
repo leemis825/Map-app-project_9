@@ -24,18 +24,7 @@ class _MenuScreenState extends State<MenuScreen> {
   bool showFloorButtons = false;
 
   final List<int> floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  final Map<int, Color> floorMaps = {
-    1: Colors.lightBlue,
-    2: Colors.green,
-    3: Colors.orange,
-    4: Colors.purple,
-    5: Colors.red,
-    6: Colors.yellow,
-    7: Colors.brown,
-    8: Colors.teal,
-    9: Colors.cyan,
-    10: Colors.amber,
-  };
+
 
   void showHelp() {
     ScaffoldMessenger.of(context).showSnackBar(
@@ -135,18 +124,12 @@ class _MenuScreenState extends State<MenuScreen> {
             ItBuilding9fScreen()
           else if (selectedFloor == 10)
             ItBuilding10fScreen()
-          else
-            Container(
-              color: floorMaps[selectedFloor] ?? Colors.grey,
-              child: Center(
-                child: Text('현재 층: $selectedFloor층'),
-              ),
-            ),
+    ,
 
           // 📍 층 선택 버튼
           Positioned(
-            top: 15,
-            left: 900,
+            top: 5,
+            left: 325,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
