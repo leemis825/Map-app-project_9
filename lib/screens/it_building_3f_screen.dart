@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 
 class ItBuilding3fScreen extends StatelessWidget {
-<<<<<<< HEAD
-  final ScrollController _scrollController = ScrollController();
-
-  ItBuilding3fScreen({super.key}); // ✅ 스크롤 컨트롤러
-=======
   final double imageWidth = 1749; // 도면 원본 가로 크기
   final double imageHeight = 799; // 도면 원본 세로 크기
 
@@ -19,7 +14,8 @@ class ItBuilding3fScreen extends StatelessWidget {
     RoomInfo(name: '3120', left: 1070, top: 280),
     RoomInfo(name: '3128', left: 1280, top: 280),
   ];
->>>>>>> yefin
+
+  ItBuilding3fScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
