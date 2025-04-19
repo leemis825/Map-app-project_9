@@ -11,6 +11,7 @@ class CampusMapScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal, // 가로 스크롤 활성화
+        physics: BouncingScrollPhysics(),  // 물리적 스크롤 효과를 추가
         child: Row(
           children: [
             Stack(

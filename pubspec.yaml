@@ -7,25 +7,23 @@ version: 1.0.0+1 # 앱 버전
 environment:
   sdk: ^3.7.2 # Dart SDK 버전
 
-# 📦 여기부터 의존성 패키지 (dependencies) 설치 부분
 dependencies:
   flutter:
     sdk: flutter
-
   cupertino_icons: ^1.0.8 # iOS 스타일 아이콘 사용
+  flutter_svg: ^2.0.7    # svg 패키지
+  google_fonts: ^6.1.0  # google_fonts를 dependencies 아래에 추가
 
-# 📦 여기부터 테스트, 린트(lint) 설정 (개발 전용 패키지)
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^5.0.0 # 코딩 스타일 체크 도구 (좋은 코드 쓰게 도와줌)
 
-# 📦 여기부터 Flutter 설정 (assets, fonts 등)
 flutter:
   uses-material-design: true # 머티리얼 디자인 사용 (기본 Flutter 아이콘 사용 가능)
 
   assets: # 📷 앱에 이미지 추가할 때
+    - assets/images/logo.png
     - assets/images/campus_map.png
     - assets/images/it_building_1f_map.png # assets/images 폴더 안에 있는 모든 이미지 사용 가능
     - assets/images/it_building_2f_map.png
@@ -38,6 +36,4 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/data/classroom_schedule_final.json # JSON 파일 추가 (강의실 시간표 데이터)
-
-
-  # (추후 필요하면 여기서 폰트(fonts) 추가 가능)
+    - assets/icons/

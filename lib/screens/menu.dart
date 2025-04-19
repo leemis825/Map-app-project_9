@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart';
+//import 'lecture_schedule_screen.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -127,7 +127,7 @@ class _MenuScreenState extends State<MenuScreen> {
           // 📍 층 선택 버튼
           Positioned(
             top: 5,
-            left: 325,
+            left: 310,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
