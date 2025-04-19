@@ -4,7 +4,7 @@ import '../data/lecture_data.dart'; // ✅ LectureDataManager 가져오기
 class LectureScheduleScreen extends StatefulWidget {
   final String roomName;
 
-  const LectureScheduleScreen({required this.roomName, Key? key}) : super(key: key);
+  const LectureScheduleScreen({required this.roomName, super.key});
 
   @override
   _LectureScheduleScreenState createState() => _LectureScheduleScreenState();
@@ -96,7 +96,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
               height: 50,
               color: Colors.white,
             ),
-            ...days.map((day) => _buildHeaderCell(day)).toList(),
+            ...days.map((day) => _buildHeaderCell(day)),
           ],
         ),
         // ⏰ 시간표 본문
@@ -104,7 +104,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
           TableRow(
             children: [
               _buildTimeCell(time),
-              ...days.map((day) => _buildLectureCell(currentRoomName, day, time)).toList(),
+              ...days.map((day) => _buildLectureCell(currentRoomName, day, time)),
             ],
           ),
       ],

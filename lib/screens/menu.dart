@@ -12,6 +12,8 @@ import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
 
 class MenuScreen extends StatefulWidget {
+  const MenuScreen({super.key});
+
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }
@@ -196,8 +198,8 @@ class _MenuScreenState extends State<MenuScreen> {
           padding: EdgeInsets.all(16.0),
           child: FloatingActionButton(
             onPressed: moveToCurrentLocation,
-            child: Icon(Icons.my_location),
             backgroundColor: Colors.blue,
+            child: Icon(Icons.my_location),
           ),
         ),
       ),

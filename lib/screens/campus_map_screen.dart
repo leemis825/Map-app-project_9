@@ -3,6 +3,8 @@ import 'home_screen.dart'; // ✅ HomeScreen 가져오기
 import 'menu.dart'; // ✅ 층 선택 화면 가져오기
 
 class CampusMapScreen extends StatelessWidget {
+  const CampusMapScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

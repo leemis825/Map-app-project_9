@@ -4,6 +4,8 @@ import 'lecture_schedule_screen.dart';
 class ItBuilding1fScreen extends StatelessWidget {
   final ScrollController _scrollController = ScrollController();
 
+  ItBuilding1fScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

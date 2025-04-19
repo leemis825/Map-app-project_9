@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
 
 class ItBuilding7fScreen extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController(); // ✅ 스크롤 컨트롤러
+  final ScrollController _scrollController = ScrollController();
+
+  ItBuilding7fScreen({super.key}); // ✅ 스크롤 컨트롤러
 
   @override
   Widget build(BuildContext context) {

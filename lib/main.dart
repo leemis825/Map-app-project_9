@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'screens/campus_map_screen.dart';  
 import 'screens/login_screen.dart'; // ✅ 로그인 화면 추가
 import 'data/lecture_data.dart'; // ✅ 강의시간표 데이터 추가 (new)
 
