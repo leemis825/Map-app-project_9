@@ -13,6 +13,7 @@ dependencies:
   cupertino_icons: ^1.0.8 # iOS 스타일 아이콘 사용
   flutter_svg: ^2.0.7    # svg 패키지
   google_fonts: ^6.1.0  # google_fonts를 dependencies 아래에 추가
+  intl: ^0.18.1         # 시간 패키지
 
 dev_dependencies:
   flutter_test:
