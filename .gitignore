@@ -32,7 +32,9 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-local.properties
+android/local.properties
+android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java
+macos/Flutter/GeneratedPluginRegistrant.swift
 # Symbolication related
 app.*.symbols
 
