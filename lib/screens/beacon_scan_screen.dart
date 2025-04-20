@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_beacon/flutter_beacon.dart';
+import 'package:dchs_flutter_beacon/dchs_flutter_beacon.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BeaconScanScreen extends StatefulWidget {

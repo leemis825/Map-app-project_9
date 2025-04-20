@@ -14,7 +14,7 @@ dependencies:
   cupertino_icons: ^1.0.8         # ✅ 최신 버전 유지
   flutter_svg: ^2.0.9             # ✅ 더 구체적인 버전 선택
   google_fonts: ^6.1.0            # ✅ 동일
-  flutter_beacon: ^0.5.0          # ✅ 비콘 스캔용
+  dchs_flutter_beacon: ^0.6.4         # ✅ 비콘 스캔용
   cloud_firestore: ^4.9.0         # ✅ Firestore 데이터베이스
   firebase_core: ^2.27.0          # ✅ Firebase 초기화용
   permission_handler: ^11.3.1     # ✅ 위치 권한 요청
