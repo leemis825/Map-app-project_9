@@ -21,4 +21,30 @@ class LectureDataManager {
   static List<dynamic> getLecturesForRoom(String roomName) {
     return _data[roomName] ?? [];
   }
+
+  // ✅ 강의명 또는 교수명으로 검색 (전 강의실 대상)
+  static List<Map<String, dynamic>> searchLecturesByKeyword(String keyword) {
+    keyword = keyword.toLowerCase();
+    List<Map<String, dynamic>> results = [];
+
+    _data.forEach((roomName, lectures) {
+      for (var lecture in lectures) {
+        final subject = lecture['subject']?.toLowerCase() ?? '';
+        final professor = lecture['professor']?.toLowerCase() ?? '';
+
+        if (subject.contains(keyword) || professor.contains(keyword)) {
+          results.add({
+            'roomName': roomName,
+            'day': lecture['day'],
+            'start': lecture['start'],
+            'end': lecture['end'],
+            'subject': lecture['subject'],
+            'professor': lecture['professor'],
+          });
+        }
+      }
+    });
+
+    return results;
+  }
 }

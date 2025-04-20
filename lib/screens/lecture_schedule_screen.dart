@@ -13,6 +13,7 @@ class LectureScheduleScreen extends StatefulWidget {
 class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   late String currentRoomName;
   final TextEditingController _controller = TextEditingController();
+  List<Map<String, dynamic>> suggestions = [];
 
   final List<String> days = ['월', '화', '수', '목', '금'];
   final List<String> periods = [
@@ -37,10 +38,32 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     currentRoomName = widget.roomName;
     _controller.text = widget.roomName;
 
-    // ⏱️ 시간 → 교시 문자열 매핑
     for (int i = 0; i < timeText.length; i++) {
       timeToPeriod[timeText[i]] = periods[i];
     }
+  }
+
+  void _handleSearch(String keyword) {
+    keyword = keyword.trim();
+    if (_dataContainsRoom(keyword)) {
+      setState(() {
+        currentRoomName = keyword;
+        suggestions.clear();
+      });
+    } else {
+      setState(() {
+        suggestions = LectureDataManager.searchLecturesByKeyword(keyword);
+        if (suggestions.isEmpty) {
+          suggestions = [
+            {'subject': '검색 결과 없음', 'roomName': '', 'professor': ''}
+          ];
+        }
+      });
+    }
+  }
+
+  bool _dataContainsRoom(String roomName) {
+    return LectureDataManager.getLecturesForRoom(roomName).isNotEmpty;
   }
 
   @override
@@ -50,27 +73,59 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF004098),
         title: Text('$currentRoomName 강의실 시간표'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.help_outline),
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
-          // 🔍 강의실 검색창
           Padding(
             padding: const EdgeInsets.all(8),
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
-                hintText: '강의실 번호를 입력하세요 (예: 3228)',
+                hintText: '강의실, 강의명, 교수명 검색',
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(),
               ),
-              onSubmitted: (value) {
-                setState(() {
-                  currentRoomName = value;
-                });
-              },
+              onChanged: _handleSearch,
+              onSubmitted: _handleSearch,
             ),
           ),
-          // 📋 시간표 테이블
+          if (suggestions.isNotEmpty)
+            Container(
+              height: 150,
+              padding: const EdgeInsets.symmetric(horizontal: 8),
+              child: ListView.builder(
+                itemCount: suggestions.length.clamp(0, 3),
+                itemBuilder: (context, index) {
+                  final item = suggestions[index];
+                  if (item['subject'] == '검색 결과 없음') {
+                    return ListTile(
+                      title: Text('🔍 ${_controller.text}에 대한 결과가 없습니다.'),
+                    );
+                  }
+                  return ListTile(
+                    title: Text('📘 ${item['subject']} (${item['roomName']})'),
+                    subtitle: Text('👨‍🏫 ${item['professor']}'),
+                    onTap: () {
+                      setState(() {
+                        currentRoomName = item['roomName'];
+                        _controller.text = item['roomName'];
+                        suggestions.clear();
+                      });
+                    },
+                  );
+                },
+              ),
+            ),
           Expanded(
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
@@ -88,7 +143,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   Widget _buildMergedTimeTable() {
     final lectures = LectureDataManager.getLecturesForRoom(currentRoomName);
 
-    // 🧱 시간표 테이블 초기화
     Map<String, Map<String, Map<String, dynamic>?>> table = {};
     for (var day in days) {
       table[day] = {};
@@ -97,7 +151,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       }
     }
 
-    // 📌 강의 정보 채우기
     for (var lecture in lectures) {
       String? day = lecture['day'];
       String? start = lecture['start'];
@@ -124,14 +177,12 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
 
     List<TableRow> rows = [];
 
-    // 🗓️ 요일 헤더
     rows.add(
       TableRow(
         children: [
           Container(
             height: 50,
             alignment: Alignment.center,
-            color: Colors.white,
             child: const Text('시간'),
           ),
           ...days.map(
@@ -141,10 +192,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
               color: const Color(0xFF7DA7D9),
               child: Text(
                 day,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
+                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
               ),
             ),
           ),
@@ -152,26 +200,20 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       ),
     );
 
-    Set<String> rendered = {}; // 중복 렌더 방지용
+    Set<String> rendered = {};
 
     for (int i = 0; i < periods.length; i++) {
       List<Widget> rowCells = [];
 
-      // ⏰ 왼쪽 시간 셀
       rowCells.add(
         Container(
           height: 40,
           alignment: Alignment.center,
           color: Colors.grey[100],
-          child: Text(
-            '${periods[i]}\n${timeText[i]}',
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 10),
-          ),
+          child: Text('${periods[i]}\n${timeText[i]}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 10)),
         ),
       );
 
-      // 📅 각 요일별 셀
       for (var day in days) {
         String key = '$day-${periods[i]}';
         var cell = table[day]![periods[i]];
@@ -201,11 +243,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                 child: Text(
                   '${cell['subject']}\n${cell['professor']}',
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -224,7 +262,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
         0: const FixedColumnWidth(60),
         for (int i = 1; i <= days.length; i++) i: const FixedColumnWidth(80),
       },
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
       children: rows,
     );
   }
