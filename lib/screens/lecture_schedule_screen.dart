@@ -1,39 +1,61 @@
 import 'package:flutter/material.dart';
-import '../data/lecture_data.dart'; // 강의 데이터를 가져오는 클래스
+import '../data/lecture_data.dart';
 
-// 강의실 시간표 화면을 나타내는 StatefulWidget
 class LectureScheduleScreen extends StatefulWidget {
-  final String roomName; // 초기 강의실 이름
+  final String roomName;
 
   const LectureScheduleScreen({required this.roomName, super.key});
 
   @override
-  _LectureScheduleScreenState createState() => _LectureScheduleScreenState();
+  State<LectureScheduleScreen> createState() => _LectureScheduleScreenState();
 }
 
 class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
-  late String currentRoomName; // 현재 표시 중인 강의실 이름
-  final TextEditingController _controller = TextEditingController(); // 검색창 입력 컨트롤러
+  late String currentRoomName;
+  final TextEditingController _controller = TextEditingController();
+
+  // 요일 및 교시 정보
+  final List<String> days = ['월', '화', '수', '목', '금'];
+  final List<String> periods = [
+    '0A', '0B', '1A', '1B', '2A', '2B', '3A', '3B',
+    '4A', '4B', '5A', '5B', '6A', '6B', '7A', '7B',
+    '8A', '8B', '9A', '9B', '10A', '10B', '11A', '11B',
+    '12A', '12B', '13A', '13B', '14A', '14B', '15A', '15B',
+  ];
+  final List<String> timeText = [
+    '08:00', '08:30', '09:00', '09:30', '10:00', '10:30',
+    '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+    '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',
+    '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
+    '20:00', '20:30', '21:00', '21:30', '22:00', '22:30',
+    '23:00', '23:30',
+  ];
+  final Map<String, String> timeToPeriod = {};
 
   @override
   void initState() {
     super.initState();
-    currentRoomName = widget.roomName; // 초기 강의실 설정
-    _controller.text = widget.roomName; // 텍스트 필드에도 초기값 설정
+    currentRoomName = widget.roomName;
+    _controller.text = widget.roomName;
+
+    // 시간 → 교시 매핑
+    for (int i = 0; i < timeText.length; i++) {
+      timeToPeriod[timeText[i]] = periods[i];
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // ✅ 앱 전체 배경을 흰색으로 설정
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('$currentRoomName 강의실 시간표'), // 상단 제목
+        backgroundColor: const Color(0xFF004098),
+        title: Text('$currentRoomName 강의실 시간표'),
       ),
       body: Column(
         children: [
-          // 🔍 검색창 위젯
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8),
             child: TextField(
               controller: _controller,
               decoration: const InputDecoration(
@@ -48,14 +70,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
               },
             ),
           ),
-          // 📋 시간표 표 출력 부분
           Expanded(
-            child: Scrollbar(
-              thumbVisibility: true,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: _buildTimeTable(),
-              ),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: _buildMergedTimeTable(),
             ),
           ),
         ],
@@ -63,124 +81,152 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     );
   }
 
-  // 시간표 테이블을 구성하는 함수
-  Widget _buildTimeTable() {
-    final List<String> days = ['월', '화', '수', '목', '금'];
-    final List<String> times = [
-      '0A\n08:00', '0B\n08:30', '1A\n09:00', '1B\n09:30',
-      '2A\n10:00', '2B\n10:30', '3A\n11:00', '3B\n11:30',
-      '4A\n12:00', '4B\n12:30', '5A\n13:00', '5B\n13:30',
-      '6A\n14:00', '6B\n14:30', '7A\n15:00', '7B\n15:30',
-      '8A\n16:00', '8B\n16:30', '9A\n17:00', '9B\n17:30',
-      '10A\n18:00', '10B\n18:30', '11A\n19:00', '11B\n19:30',
-      '12A\n20:00', '12B\n20:30', '13A\n21:00', '13B\n21:30',
-      '14A\n22:00', '14B\n22:30', '15A\n23:00', '15B\n23:30',
-    ];
+  // 시간표 생성 함수
+  Widget _buildMergedTimeTable() {
+    final lectures = LectureDataManager.getLecturesForRoom(currentRoomName);
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final double timeColumnWidth = 60;
-        final double dayColumnWidth = (constraints.maxWidth - timeColumnWidth) / 5;
+    // 중복 제거를 위한 강의 ID 문자열 생성 함수
+    String getLectureId(Map<String, dynamic> lecture) {
+      return '${lecture['day']}-${lecture['start']}-${lecture['end']}-${lecture['subject']}-${lecture['professor']}';
+    }
 
-        return Table(
-          border: TableBorder.all(color: Colors.grey),
-          columnWidths: {
-            0: const FixedColumnWidth(60),
-            for (int i = 1; i <= 5; i++) i: FixedColumnWidth(dayColumnWidth),
-          },
-          children: [
-            TableRow(
-              children: [
-                Container(height: 50, color: Colors.white),
-                ...days.map((day) => _buildHeaderCell(day)).toList(),
-              ],
-            ),
-            for (var time in times)
-              TableRow(
-                children: [
-                  _buildTimeCell(time),
-                  ...days.map((day) => _buildLectureCell(currentRoomName, day, time)).toList(),
-                ],
-              ),
-          ],
-        );
-      },
-    );
-  }
+    final seenLectureIds = <String>{};
 
-  Widget _buildHeaderCell(String day) {
-    return TableCell(
-      verticalAlignment: TableCellVerticalAlignment.fill,
-      child: Container(
-        alignment: Alignment.center,
-        color: Colors.pink[50],
-        constraints: const BoxConstraints(minHeight: 20),
-        child: Text(
-          day,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTimeCell(String time) {
-    return TableCell(
-      verticalAlignment: TableCellVerticalAlignment.fill,
-      child: Container(
-        alignment: Alignment.center,
-        color: Colors.grey[200],
-        constraints: const BoxConstraints(minHeight: 40),
-        child: Text(
-          time,
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLectureCell(String roomName, String day, String time) {
-    String period = time.split('\n')[0];
-    final lectures = LectureDataManager.getLecturesForRoom(roomName);
-
-    for (var lecture in lectures) {
-      if (lecture['day'] == day) {
-        if (_isPeriodInTimeRange(period, lecture['start'], lecture['end'])) {
-          return Container(
-            alignment: Alignment.center,
-            padding: const EdgeInsets.all(10),
-            color: Colors.lightBlueAccent,
-            child: Text(
-              '${lecture['subject']}\n${lecture['professor']}',
-              textAlign: TextAlign.center,
-              style: const TextStyle(fontSize: 10),
-            ),
-          );
-        }
+    // 시간표 초기화
+    Map<String, Map<String, Map<String, dynamic>?>> table = {};
+    for (var day in days) {
+      table[day] = {};
+      for (var period in periods) {
+        table[day]![period] = null;
       }
     }
 
-    return Container(
-      alignment: Alignment.center,
-      constraints: const BoxConstraints(minHeight: 40),
-      child: const Text(''),
+    // 데이터 채우기 (중복 방지 포함)
+    for (var lecture in lectures) {
+      final id = getLectureId(lecture);
+      if (seenLectureIds.contains(id)) continue;
+      seenLectureIds.add(id);
+
+      String? day = lecture['day'];
+      String? start = lecture['start'];
+      String? end = lecture['end'];
+      if (day == null || start == null || end == null) continue;
+
+      String? startPeriod = timeToPeriod[start];
+      String? endPeriod = timeToPeriod[end];
+      if (startPeriod == null || endPeriod == null) continue;
+
+      int startIdx = periods.indexOf(startPeriod);
+      int endIdx = periods.indexOf(endPeriod);
+      if (startIdx == -1 || endIdx == -1) continue;
+
+      for (int i = startIdx; i <= endIdx; i++) {
+        table[day]![periods[i]] = {
+          'subject': lecture['subject'],
+          'professor': lecture['professor'],
+          'isStart': i == startIdx,
+          'rowSpan': endIdx - startIdx + 1,
+        };
+      }
+    }
+
+    List<TableRow> rows = [];
+
+    // 헤더 행 (요일)
+    rows.add(
+      TableRow(
+        children: [
+          Container(
+            height: 50,
+            alignment: Alignment.center,
+            child: const Text('시간'),
+          ),
+          ...days.map(
+            (day) => Container(
+              height: 50,
+              alignment: Alignment.center,
+              color: const Color(0xFF7DA7D9),
+              child: Text(
+                day,
+                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
-  }
 
-  bool _isPeriodInTimeRange(String period, String startTime, String endTime) {
-    final periodOrder = {
-      '0A': '08:00', '0B': '08:30', '1A': '09:00', '1B': '09:30',
-      '2A': '10:00', '2B': '10:30', '3A': '11:00', '3B': '11:30',
-      '4A': '12:00', '4B': '12:30', '5A': '13:00', '5B': '13:30',
-      '6A': '14:00', '6B': '14:30', '7A': '15:00', '7B': '15:30',
-      '8A': '16:00', '8B': '16:30', '9A': '17:00', '9B': '17:30',
-      '10A': '18:00', '10B': '18:30', '11A': '19:00', '11B': '19:30',
-      '12A': '20:00', '12B': '20:30', '13A': '21:00', '13B': '21:30',
-      '14A': '22:00', '14B': '22:30', '15A': '23:00', '15B': '23:30',
-    };
+    Set<String> rendered = {};
 
-    if (!periodOrder.containsKey(period)) return false;
+    // 각 교시(행)별로 테이블 구성
+    for (int i = 0; i < periods.length; i++) {
+      List<Widget> rowCells = [];
 
-    String periodTime = periodOrder[period]!;
-    return (periodTime.compareTo(startTime) >= 0 && periodTime.compareTo(endTime) <= 0);
+      // 시간 표시 열
+      rowCells.add(Container(
+        height: 40,
+        alignment: Alignment.center,
+        color: Colors.grey[100],
+        child: Text('${periods[i]}\n${timeText[i]}', textAlign: TextAlign.center, style: const TextStyle(fontSize: 10)),
+      ));
+
+      for (var day in days) {
+        String key = '$day-${periods[i]}';
+        var cell = table[day]![periods[i]];
+
+        if (rendered.contains(key)) {
+          rowCells.add(const SizedBox.shrink());
+          continue;
+        }
+
+        if (cell == null) {
+          rowCells.add(Container(height: 40));
+        } else if (cell['isStart'] == true) {
+          int rowSpan = cell['rowSpan'];
+          for (int r = 1; r < rowSpan; r++) {
+            if (i + r < periods.length) {
+              rendered.add('$day-${periods[i + r]}');
+            }
+          }
+
+          rowCells.add(
+            TableCell(
+              verticalAlignment: TableCellVerticalAlignment.fill,
+              child: Container(
+                height: 40.0 * rowSpan,
+                alignment: Alignment.center,
+                color: const Color(0xFF7DA7D9),
+                child: Text(
+                  '${cell['subject']}\n${cell['professor']}',
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 10,
+                  ),
+                ),
+              ),
+            ),
+          );
+        } else {
+          rowCells.add(Container(height: 40));
+        }
+      }
+
+      rows.add(TableRow(children: rowCells));
+    }
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Table(
+        border: TableBorder.all(color: Colors.grey),
+        columnWidths: {
+          0: const FixedColumnWidth(60),
+          for (int i = 1; i <= days.length; i++) i: const FixedColumnWidth(80),
+        },
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        children: rows,
+      ),
+    );
   }
 }

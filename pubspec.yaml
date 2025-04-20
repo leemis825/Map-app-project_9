@@ -14,6 +14,19 @@ dependencies:
 
   cupertino_icons: ^1.0.8 # iOS 스타일 아이콘 사용
 
+  # ✅ 비콘 수신용 패키지
+  flutter_beacon: ^0.5.1
+
+  # ✅ BLE 위치 권한 요청용
+  permission_handler: ^11.0.0
+
+  # ✅ UUID 관련 유틸
+  uuid: ^4.2.1
+
+  # ✅ Firebase 관련 추가
+  firebase_core: ^2.27.0
+  cloud_firestore: ^4.8.3
+
 # 📦 여기부터 테스트, 린트(lint) 설정 (개발 전용 패키지)
 dev_dependencies:
   flutter_test:
@@ -27,7 +40,7 @@ flutter:
 
   assets: # 📷 앱에 이미지 추가할 때
     - assets/images/campus_map.png
-    - assets/images/it_building_1f_map.png # assets/images 폴더 안에 있는 모든 이미지 사용 가능
+    - assets/images/it_building_1f_map.png
     - assets/images/it_building_2f_map.png
     - assets/images/it_building_3f_map.png
     - assets/images/it_building_4f_map.png
@@ -38,6 +51,5 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/data/classroom_schedule_final.json # JSON 파일 추가 (강의실 시간표 데이터)
-
 
   # (추후 필요하면 여기서 폰트(fonts) 추가 가능)
