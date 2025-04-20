@@ -1,88 +1,100 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
+import 'package:flutter_svg/flutter_svg.dart';
+import 'lecture_schedule_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../models/models.dart'; // 공통 모델 불러오기
 
 class ItBuilding5fScreen extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController();
+  final double imageWidth = 1758; // 도면 원본 가로 크기
+  final double imageHeight = 796; // 도면 원본 세로 크기
 
-  ItBuilding5fScreen({super.key}); // ✅ 스크롤 컨트롤러
+  final List<RoomInfo> rooms = [
+    // 예: RoomInfo(name: '5123', left: 420, top: 300),
+  ];
+
+  // 아이콘 정보 리스트
+  final List<IconInfo> icons = [
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 80, top: 319), //계단 (왼쪽에서부터)
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 852, top: 290), //계단 2
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 1665, top: 384), //계단 3
+    IconInfo(asset: 'assets/icons/elevator.svg', left: 998, top: 283), //엘레베이터
+    //IconInfo(asset: 'assets/icons/toilet.svg', left: 300, top: 100),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('IT융합대학 5층 지도'),
-      ),
-      body: Scrollbar(
-        controller: _scrollController,
-        thumbVisibility: true,
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          child: Stack(
-            children: [
-              Image.asset(
-                'assets/images/it_building_5f_map.png', // ✅ 5층 도면
-                fit: BoxFit.contain,
+      appBar: AppBar(title: const Text('IT융합대학 5층 지도')),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double screenHeight = constraints.maxHeight;
+          double scale = screenHeight / imageHeight;
+          double scaledImageWidth = imageWidth * scale;
+
+          return Scrollbar(
+            thumbVisibility: true,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: SizedBox(
+                width: scaledImageWidth,
+                height: screenHeight,
+                child: Stack(
+                  children: [
+                    // 도면 이미지
+                    Image.asset(
+                      'assets/images/it_building_5f_map.png',
+                      fit: BoxFit.fill,
+                      width: scaledImageWidth,
+                      height: screenHeight,
+                    ),
+
+                    // 강의실
+                    ...rooms.map((room) {
+                      double left = room.left / imageWidth * scaledImageWidth;
+                      double top = room.top / imageHeight * screenHeight;
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: clickableRoomArea(context, room.name),
+                      );
+                    }),
+
+                    // 아이콘 배치
+                    ...icons.map((icon) {
+                      double left = icon.left / imageWidth * scaledImageWidth;
+                      double top = icon.top / imageHeight * screenHeight;
+
+                      // stairs.svg일 경우만 크기 다르게 지정
+                      bool isStairs = icon.asset.contains('stairs');
+
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: SvgPicture.asset(
+                          icon.asset,
+                          width: isStairs ? 24 : 36, // stairs는 24, 나머지는 36
+                          height: isStairs ? 24 : 36,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      );
+                    }),
+                  ],
+                ),
               ),
-
-              // 강의실 버튼들 (5층 강의실)
-              Positioned(left: 80, top: 150, child: roomButton(context, '5205-1')),
-              Positioned(left: 160, top: 150, child: roomButton(context, '5205')),
-              Positioned(left: 240, top: 150, child: roomButton(context, '5209')),
-              Positioned(left: 320, top: 150, child: roomButton(context, '5212')),
-              Positioned(left: 400, top: 150, child: roomButton(context, '5213')),
-              Positioned(left: 480, top: 150, child: roomButton(context, '5219')),
-              Positioned(left: 560, top: 150, child: roomButton(context, '5220')),
-              Positioned(left: 640, top: 150, child: roomButton(context, '5221')),
-              Positioned(left: 720, top: 150, child: roomButton(context, '5222')),
-              Positioned(left: 800, top: 150, child: roomButton(context, '5223')),
-              Positioned(left: 880, top: 150, child: roomButton(context, '5224')),
-              Positioned(left: 960, top: 150, child: roomButton(context, '5227-1')),
-              Positioned(left: 1040, top: 150, child: roomButton(context, '5227-2')),
-              Positioned(left: 1120, top: 150, child: roomButton(context, '5227-3')),
-              Positioned(left: 1200, top: 150, child: roomButton(context, '5227-4')),
-              Positioned(left: 1280, top: 150, child: roomButton(context, '5227-5')),
-              Positioned(left: 1360, top: 150, child: roomButton(context, '5227-6')),
-
-              // 아래쪽 강의실
-              Positioned(left: 500, top: 300, child: roomButton(context, '5111')),
-              Positioned(left: 600, top: 300, child: roomButton(context, '5114')),
-              Positioned(left: 700, top: 300, child: roomButton(context, '5117')),
-              Positioned(left: 800, top: 300, child: roomButton(context, '5118')),
-              Positioned(left: 900, top: 300, child: roomButton(context, '5119')),
-              Positioned(left: 1000, top: 300, child: roomButton(context, '5120')),
-              Positioned(left: 1100, top: 300, child: roomButton(context, '5121')),
-              Positioned(left: 1200, top: 300, child: roomButton(context, '5122')),
-              Positioned(left: 1300, top: 300, child: roomButton(context, '5123')),
-              Positioned(left: 1400, top: 300, child: roomButton(context, '5125')),
-              Positioned(left: 1500, top: 300, child: roomButton(context, '5126')),
-              Positioned(left: 1580, top: 300, child: roomButton(context, '5126-1')),
-              Positioned(left: 1660, top: 300, child: roomButton(context, '5126-2')),
-              Positioned(left: 1740, top: 300, child: roomButton(context, '5126-3')),
-              Positioned(left: 1820, top: 300, child: roomButton(context, '5126-4')),
-              Positioned(left: 1900, top: 300, child: roomButton(context, '5126-5')),
-              Positioned(left: 1980, top: 300, child: roomButton(context, '5126-6')),
-              Positioned(left: 2060, top: 300, child: roomButton(context, '5126-7')),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  // ✅ 강의실 버튼 위젯
-  Widget roomButton(BuildContext context, String roomName) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.deepPurple,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Colors.deepPurple),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      ),
-      onPressed: () {
+  // 강의실 클릭 위젯
+  Widget clickableRoomArea(BuildContext context, String roomName) {
+    return GestureDetector(
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -90,7 +102,21 @@ class ItBuilding5fScreen extends StatelessWidget {
           ),
         );
       },
-      child: Text(roomName, style: const TextStyle(fontWeight: FontWeight.bold)),
+      child: Container(
+        width: 80,
+        height: 50,
+        alignment: Alignment.center,
+        color: Colors.transparent,
+        child: Text(
+          roomName,
+          style: GoogleFonts.doHyeon(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+          ),
+        ),
+      ),
     );
   }
 }
+

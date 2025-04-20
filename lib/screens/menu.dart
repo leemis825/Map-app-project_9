@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart';
+//import 'lecture_schedule_screen.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -12,8 +12,6 @@ import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
-
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }
@@ -129,7 +127,7 @@ class _MenuScreenState extends State<MenuScreen> {
           // 📍 층 선택 버튼
           Positioned(
             top: 5,
-            left: 325,
+            left: 310,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -181,8 +179,8 @@ class _MenuScreenState extends State<MenuScreen> {
           padding: EdgeInsets.all(16.0),
           child: FloatingActionButton(
             onPressed: moveToCurrentLocation,
-            backgroundColor: Colors.blue,
             child: Icon(Icons.my_location),
+            backgroundColor: Colors.blue,
           ),
         ),
       ),

@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
+import '../models/models.dart'; // 공통 모델 불러오기
 
 class ItBuilding10fScreen extends StatelessWidget {
-  final ScrollController _scrollController = ScrollController();
+  final double imageWidth = 1758; // 10층 도면 원본 가로 크기
+  final double imageHeight = 802; // 10층 도면 원본 세로 크기
 
-  ItBuilding10fScreen({super.key}); // ✅ 스크롤 컨트롤러
+  final List<RoomInfo> rooms = [
+    RoomInfo(name: '10210', left: 535, top: 280),
+    RoomInfo(name: '10221', left: 1115, top: 280),
+    RoomInfo(name: '10225', left: 1320, top: 280),
+  ];
+
+  final List<IconInfo> icons = [
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 79, top: 322),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 847, top: 295),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 1657, top: 385),
+    IconInfo(asset: 'assets/icons/elevator.svg', left: 990, top: 288),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -12,70 +27,73 @@ class ItBuilding10fScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('IT융합대학 10층 지도'),
       ),
-      body: Scrollbar(
-        controller: _scrollController,
-        thumbVisibility: true,
-        child: SingleChildScrollView(
-          controller: _scrollController,
-          scrollDirection: Axis.horizontal,
-          child: Stack(
-            children: [
-              Image.asset(
-                'assets/images/it_building_10f_map.png', // ✅ 10층 도면
-                fit: BoxFit.contain,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          double screenHeight = constraints.maxHeight;
+          double scale = screenHeight / imageHeight;
+          double scaledImageWidth = imageWidth * scale;
+
+          return Scrollbar(
+            thumbVisibility: true,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: SizedBox(
+                width: scaledImageWidth,
+                height: screenHeight,
+                child: Stack(
+                  children: [
+                    Image.asset(
+                      'assets/images/it_building_10f_map.png',
+                      fit: BoxFit.fill,
+                      width: scaledImageWidth,
+                      height: screenHeight,
+                    ),
+
+                    // ✅ 강의실 버튼들
+                    ...rooms.map((room) {
+                      double left = room.left / imageWidth * scaledImageWidth;
+                      double top = room.top / imageHeight * screenHeight;
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: clickableRoomArea(context, room.name),
+                      );
+                    }).toList(),
+
+                    // ✅ 계단 및 엘리베이터 아이콘
+                    ...icons.map((icon) {
+                      double left = icon.left / imageWidth * scaledImageWidth;
+                      double top = icon.top / imageHeight * screenHeight;
+                      bool isStairs = icon.asset.contains('stairs');
+
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: SvgPicture.asset(
+                          icon.asset,
+                          width: isStairs ? 24 : 36,
+                          height: isStairs ? 24 : 36,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
+                      );
+                    }).toList(),
+                  ],
+                ),
               ),
-
-              // 왼쪽 강의실
-              Positioned(left: 80, top: 150, child: roomButton(context, '10202')),
-              Positioned(left: 180, top: 150, child: roomButton(context, '10206')),
-              Positioned(left: 280, top: 150, child: roomButton(context, '10210')),
-              Positioned(left: 360, top: 150, child: roomButton(context, '10212')),
-              Positioned(left: 440, top: 150, child: roomButton(context, '10213')),
-
-              // 아래쪽 강의실
-              Positioned(left: 80, top: 300, child: roomButton(context, '10103')),
-              Positioned(left: 160, top: 300, child: roomButton(context, '10105')),
-              Positioned(left: 240, top: 300, child: roomButton(context, '10106')),
-              Positioned(left: 320, top: 300, child: roomButton(context, '10108')),
-              Positioned(left: 400, top: 300, child: roomButton(context, '10109')),
-              Positioned(left: 480, top: 300, child: roomButton(context, '10111')),
-              Positioned(left: 560, top: 300, child: roomButton(context, '10112')),
-              Positioned(left: 640, top: 300, child: roomButton(context, '10114')),
-
-              // 오른쪽 강의실
-              Positioned(left: 750, top: 150, child: roomButton(context, '10221')),
-              Positioned(left: 850, top: 150, child: roomButton(context, '10225')),
-              Positioned(left: 950, top: 150, child: roomButton(context, '10228')),
-
-              // 오른쪽 아래 강의실
-              Positioned(left: 750, top: 300, child: roomButton(context, '10117')),
-              Positioned(left: 830, top: 300, child: roomButton(context, '10119')),
-              Positioned(left: 910, top: 300, child: roomButton(context, '10120')),
-              Positioned(left: 990, top: 300, child: roomButton(context, '10122')),
-              Positioned(left: 1070, top: 300, child: roomButton(context, '10123')),
-              Positioned(left: 1150, top: 300, child: roomButton(context, '10125')),
-              Positioned(left: 1230, top: 300, child: roomButton(context, '10126')),
-              Positioned(left: 1310, top: 300, child: roomButton(context, '10128')),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 
-  // ✅ 강의실 버튼 위젯
-  Widget roomButton(BuildContext context, String roomName) {
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.deepPurple,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-          side: const BorderSide(color: Colors.deepPurple),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-      ),
-      onPressed: () {
+  // ✅ 강의실 클릭 영역
+  Widget clickableRoomArea(BuildContext context, String roomName) {
+    return GestureDetector(
+      onTap: () {
         Navigator.push(
           context,
           MaterialPageRoute(
@@ -83,7 +101,20 @@ class ItBuilding10fScreen extends StatelessWidget {
           ),
         );
       },
-      child: Text(roomName, style: const TextStyle(fontWeight: FontWeight.bold)),
+      child: Container(
+        width: 80,
+        height: 50,
+        alignment: Alignment.center,
+        color: Colors.transparent,
+        child: Text(
+          roomName,
+          style: GoogleFonts.doHyeon(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+          ),
+        ),
+      ),
     );
   }
 }

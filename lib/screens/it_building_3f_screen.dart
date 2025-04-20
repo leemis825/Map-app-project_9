@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import '../models/models.dart'; // 공통 모델 불러오기
 
 class ItBuilding3fScreen extends StatelessWidget {
-  final double imageWidth = 1749; // 도면 원본 가로 크기
-  final double imageHeight = 799; // 도면 원본 세로 크기
+  final double imageWidth = 1749; // 3층 도면의 원본 가로 크기
+  final double imageHeight = 799; // 3층 도면의 원본 세로 크기
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '3108', left: 405, top: 430),
@@ -15,7 +18,13 @@ class ItBuilding3fScreen extends StatelessWidget {
     RoomInfo(name: '3128', left: 1280, top: 280),
   ];
 
-  ItBuilding3fScreen({super.key});
+  final List<IconInfo> icons = [
+    // 계단 아이콘 4개
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 72, top: 150),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 843, top: 121),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 1652, top: 212),
+    IconInfo(asset: 'assets/icons/elevator.svg', left: 986, top: 115),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +47,7 @@ class ItBuilding3fScreen extends StatelessWidget {
                 height: screenHeight,
                 child: Stack(
                   children: [
+                    // 배경 도면 이미지
                     Image.asset(
                       'assets/images/it_building_3f_map.png',
                       fit: BoxFit.fill,
@@ -45,7 +55,7 @@ class ItBuilding3fScreen extends StatelessWidget {
                       height: screenHeight,
                     ),
 
-                    // 클릭 가능한 강의실들
+                    // 강의실 버튼
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -53,6 +63,27 @@ class ItBuilding3fScreen extends StatelessWidget {
                         left: left,
                         top: top,
                         child: clickableRoomArea(context, room.name),
+                      );
+                    }).toList(),
+
+                    // 계단 및 엘리베이터 아이콘
+                    ...icons.map((icon) {
+                      double left = icon.left / imageWidth * scaledImageWidth;
+                      double top = icon.top / imageHeight * screenHeight;
+                      bool isStairs = icon.asset.contains('stairs');
+
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: SvgPicture.asset(
+                          icon.asset,
+                          width: isStairs ? 24 : 36,
+                          height: isStairs ? 24 : 36,
+                          colorFilter: const ColorFilter.mode(
+                            Colors.white,
+                            BlendMode.srcIn,
+                          ),
+                        ),
                       );
                     }).toList(),
                   ],
@@ -65,7 +96,7 @@ class ItBuilding3fScreen extends StatelessWidget {
     );
   }
 
-  // 클릭 가능한 컴포넌트 (텍스트 있는 투명 박스)
+  // 강의실 클릭 영역
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {
@@ -80,24 +111,16 @@ class ItBuilding3fScreen extends StatelessWidget {
         width: 80,
         height: 50,
         alignment: Alignment.center,
-        color: Colors.transparent, // 개발 시 확인용: Colors.red.withOpacity(0.3)
+        color: Colors.transparent,
         child: Text(
           roomName,
-          style: const TextStyle(
-            color: Colors.deepPurple,
+          style: GoogleFonts.doHyeon(
+            fontSize: 16,
             fontWeight: FontWeight.bold,
+            color: Colors.indigo,
           ),
         ),
       ),
     );
   }
-}
-
-// 강의실 위치 정보 클래스
-class RoomInfo {
-  final String name;
-  final double left;
-  final double top;
-
-  RoomInfo({required this.name, required this.left, required this.top});
 }

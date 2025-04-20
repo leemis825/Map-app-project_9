@@ -3,8 +3,6 @@ import 'home_screen.dart'; // ✅ HomeScreen 가져오기
 import 'menu.dart'; // ✅ 층 선택 화면 가져오기
 
 class CampusMapScreen extends StatelessWidget {
-  const CampusMapScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,6 +11,7 @@ class CampusMapScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal, // 가로 스크롤 활성화
+        physics: BouncingScrollPhysics(),  // 물리적 스크롤 효과를 추가
         child: Row(
           children: [
             Stack(
