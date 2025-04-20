@@ -1,32 +1,37 @@
 name: campus_map_app
-description: "A new Flutter project."
+description: A new Flutter project.
 publish_to: 'none' # (주의) pub.dev에 실수로 올리는 걸 막아주는 옵션
 
-version: 1.0.0+1 # 앱 버전
+version: 1.0.0+1
 
 environment:
-  sdk: ^3.7.2 # Dart SDK 버전
+  sdk: ">=3.7.0 <4.0.0"  # ✅ 명시적 범위 지정 (flutter pub get 에러 방지)
 
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.8 # iOS 스타일 아이콘 사용
-  flutter_svg: ^2.0.7    # svg 패키지
-  google_fonts: ^6.1.0  # google_fonts를 dependencies 아래에 추가
-  intl: ^0.18.1         # 시간 패키지
+
+  cupertino_icons: ^1.0.8         # ✅ 최신 버전 유지
+  flutter_svg: ^2.0.9             # ✅ 더 구체적인 버전 선택
+  google_fonts: ^6.1.0            # ✅ 동일
+  dchs_flutter_beacon: ^0.6.4         # ✅ 비콘 스캔용
+  cloud_firestore: ^4.9.0         # ✅ Firestore 데이터베이스
+  firebase_core: ^2.27.0          # ✅ Firebase 초기화용
+  permission_handler: ^11.3.1     # ✅ 위치 권한 요청
+  uuid: ^4.2.2                    # ✅ UUID 생성기
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^5.0.0 # 코딩 스타일 체크 도구 (좋은 코드 쓰게 도와줌)
+  flutter_lints: ^5.0.0 # ✅ 코드 스타일 검사
 
 flutter:
-  uses-material-design: true # 머티리얼 디자인 사용 (기본 Flutter 아이콘 사용 가능)
+  uses-material-design: true
 
-  assets: # 📷 앱에 이미지 추가할 때
+  assets:
     - assets/images/logo.png
     - assets/images/campus_map.png
-    - assets/images/it_building_1f_map.png # assets/images 폴더 안에 있는 모든 이미지 사용 가능
+    - assets/images/it_building_1f_map.png
     - assets/images/it_building_2f_map.png
     - assets/images/it_building_3f_map.png
     - assets/images/it_building_4f_map.png
@@ -36,5 +41,5 @@ flutter:
     - assets/images/it_building_8f_map.png
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
-    - assets/data/classroom_schedule_final.json # JSON 파일 추가 (강의실 시간표 데이터)
-    - assets/icons/
+    - assets/data/classroom_schedule_final.json
+    - assets/icons/    # ✅ 아이콘 폴더도 추가되어 있음
