@@ -9,14 +9,14 @@ class CommonSearchAppBar extends StatelessWidget implements PreferredSizeWidget 
   final ValueChanged<String> onSubmitted;
 
   const CommonSearchAppBar({
-    Key? key,
+    super.key,
     required this.hintText,
     required this.controller,
     required this.onChanged,
     required this.onSubmitted,
     required this.onHelpPressed,
     required this.onLocationPressed,
-  }) : super(key: key);
+  });
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);

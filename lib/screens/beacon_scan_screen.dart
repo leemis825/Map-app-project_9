@@ -3,6 +3,8 @@ import 'package:flutter_beacon/flutter_beacon.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class BeaconScanScreen extends StatefulWidget {
+  const BeaconScanScreen({super.key});
+
   @override
   _BeaconScanScreenState createState() => _BeaconScanScreenState();
 }

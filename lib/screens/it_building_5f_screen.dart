@@ -21,6 +21,8 @@ class ItBuilding5fScreen extends StatelessWidget {
     //IconInfo(asset: 'assets/icons/toilet.svg', left: 300, top: 100),
   ];
 
+  ItBuilding5fScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

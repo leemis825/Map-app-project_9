@@ -23,6 +23,8 @@ class ItBuilding6fScreen extends StatelessWidget {
     // 추가할 아이콘을 여기에 삽입
   ];
 
+  ItBuilding6fScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +63,7 @@ class ItBuilding6fScreen extends StatelessWidget {
                         top: top,
                         child: clickableRoomArea(context, room.name),
                       );
-                    }).toList(),
+                    }),
 
                     // 아이콘 배치
                     ...icons.map((icon) {
@@ -84,7 +86,7 @@ class ItBuilding6fScreen extends StatelessWidget {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                   ],
                 ),
               ),

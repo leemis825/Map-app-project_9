@@ -1,10 +1,251 @@
-// ✅ 완전 병합 셀 구조의 시간표 UI 구현 - Stack + Positioned 기반
-// ✅ 교시(A/B)와 시간 추가 (왼쪽 열 고정, 2열 구조)
-// ✅ 교시와 시간 수평 정렬 (overflow 해결)
-// ✅ 기존 기능(검색, 터치 이동, 병합 셀) 전혀 변동 없음
+// import 'package:flutter/material.dart';
+// import '../data/lecture_data.dart';
+// import 'search_bar_with_results.dart';
+// import 'lecture_detail_screen.dart';
+
+// class LectureScheduleScreen extends StatefulWidget {
+//   final String roomName;
+//   const LectureScheduleScreen({required this.roomName, super.key});
+
+//   @override
+//   State<LectureScheduleScreen> createState() => _LectureScheduleScreenState();
+// }
+
+// class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
+//   late String currentRoomName;
+
+//   final List<String> days = ['월', '화', '수', '목', '금'];
+//   final List<String> timePeriods = [
+//     '08:00', '08:30', '09:00', '09:30',
+//     '10:00', '10:30', '11:00', '11:30',
+//     '12:00', '12:30', '13:00', '13:30',
+//     '14:00', '14:30', '15:00', '15:30',
+//     '16:00', '16:30', '17:00', '17:30',
+//     '18:00', '18:30', '19:00', '19:30',
+//   ];
+
+//   final Map<String, Color> subjectColors = {};
+//   final List<Color> colorPool = [
+//     const Color(0xFF7DA7D9),
+//     const Color(0xFF004098),
+//     Colors.indigo.shade300,
+//     Colors.blue.shade300,
+//     Colors.cyan.shade200,
+//     Colors.lightBlue.shade200,
+//     Colors.teal.shade300,
+//   ];
+
+//   Color getSubjectColor(String subject) {
+//     if (!subjectColors.containsKey(subject)) {
+//       final color = colorPool[subjectColors.length % colorPool.length];
+//       subjectColors[subject] = color;
+//     }
+//     return subjectColors[subject]!;
+//   }
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     currentRoomName = widget.roomName;
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       backgroundColor: Colors.white,
+//       appBar: AppBar(
+//         backgroundColor: const Color(0xFF004098),
+//         title: Text('$currentRoomName 강의실 시간표'),
+//         actions: [
+//           IconButton(
+//             icon: const Icon(Icons.help_outline),
+//             onPressed: () {
+//               ScaffoldMessenger.of(context).showSnackBar(
+//                 const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
+//               );
+//             },
+//           ),
+//         ],
+//       ),
+//       body: Column(
+//         children: [
+//           SearchBarWithResults(
+//             initialText: currentRoomName,
+//             onRoomSelected: (selectedRoom) {
+//               setState(() {
+//                 currentRoomName = selectedRoom;
+//               });
+//             },
+//           ),
+//           Expanded(child: _buildCustomTimeTable()),
+//         ],
+//       ),
+//     );
+//   }
+
+//   Widget _buildCustomTimeTable() {
+//     final lectures = LectureDataManager.getLecturesForRoom(currentRoomName);
+//     final rendered = <String>{};
+
+//     const double colWidth = 60;
+//     const double dayWidth = 70;
+//     const double rowHeight = 40;
+//     const double headerHeight = 30;
+
+//     return SingleChildScrollView(
+//       scrollDirection: Axis.horizontal,
+//       child: SizedBox(
+//         width: colWidth * 3 + dayWidth * days.length,
+//         child: SingleChildScrollView(
+//           scrollDirection: Axis.vertical,
+//           child: Stack(
+//             children: [
+//               Column(
+//                 children: [
+//                   Row(
+//                     children: [
+//                       _buildHeaderCell('교시', colWidth),
+//                       _buildHeaderCell('A/B', colWidth),
+//                       _buildHeaderCell('시간', colWidth),
+//                       ...days.map((day) => Container(
+//                             width: dayWidth,
+//                             height: headerHeight,
+//                             alignment: Alignment.center,
+//                             color: const Color(0xFF7DA7D9),
+//                             child: Text(day, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+//                           )),
+//                     ],
+//                   ),
+//                   ...List.generate(timePeriods.length, (i) {
+//                     final isA = i % 2 == 0;
+//                     final period = i ~/ 2;
+//                     return SizedBox(
+//                       height: rowHeight,
+//                       child: Row(
+//                         children: [
+//                           // 교시 병합 표현
+//                           Container(
+//                             width: colWidth,
+//                             height: rowHeight,
+//                             alignment: Alignment.center,
+//                             decoration: BoxDecoration(
+//                               border: Border.all(color: Colors.grey.shade300),
+//                               color: isA ? Colors.grey.shade100 : Colors.grey.shade200,
+//                             ),
+//                             child: isA
+//                                 ? Text('$period교시', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11))
+//                                 : const SizedBox.shrink(),
+//                           ),
+//                           Container(
+//                             width: colWidth,
+//                             height: rowHeight,
+//                             alignment: Alignment.center,
+//                             decoration: BoxDecoration(
+//                               border: Border.all(color: Colors.grey.shade300),
+//                               color: Colors.white,
+//                             ),
+//                             child: Text(isA ? 'A' : 'B', style: const TextStyle(fontSize: 10)),
+//                           ),
+//                           Container(
+//                             width: colWidth,
+//                             height: rowHeight,
+//                             alignment: Alignment.center,
+//                             decoration: BoxDecoration(
+//                               border: Border.all(color: Colors.grey.shade300),
+//                               color: Colors.white,
+//                             ),
+//                             child: Text(timePeriods[i], style: const TextStyle(fontSize: 10)),
+//                           ),
+//                           ...List.generate(days.length, (j) {
+//                             return Container(
+//                               width: dayWidth,
+//                               height: rowHeight,
+//                               decoration: BoxDecoration(
+//                                 border: Border.all(color: Colors.grey.shade300),
+//                               ),
+//                             );
+//                           }),
+//                         ],
+//                       ),
+//                     );
+//                   }),
+//                 ],
+//               ),
+//               // 강의 블록
+//               ...lectures.map((lecture) {
+//                 final dayIdx = days.indexOf(lecture['day']);
+//                 final start = lecture['start'] ?? '';
+//                 final end = lecture['end'] ?? '';
+//                 final startIdx = timePeriods.indexWhere((p) => p.startsWith(start.padLeft(5, '0')));
+//                 final endIdx = timePeriods.indexWhere((p) => p.startsWith(end.padLeft(5, '0')));
+
+//                 if (dayIdx == -1 || startIdx == -1 || endIdx == -1) return const SizedBox.shrink();
+
+//                 final top = headerHeight + startIdx * rowHeight;
+//                 final left = colWidth * 3 + dayIdx * dayWidth;
+//                 final height = (endIdx - startIdx) * rowHeight;
+
+//                 final key = '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}';
+//                 if (rendered.contains(key)) return const SizedBox.shrink();
+//                 rendered.add(key);
+
+//                 final subject = lecture['subject'] ?? '기본';
+//                 final bgColor = getSubjectColor(subject);
+//                 final textColor = ThemeData.estimateBrightnessForColor(bgColor) == Brightness.dark ? Colors.white : Colors.black;
+
+//                 return Positioned(
+//                   top: top,
+//                   left: left,
+//                   child: InkWell(
+//                     onTap: () {
+//                       Navigator.push(
+//                         context,
+//                         MaterialPageRoute(
+//                           builder: (_) => LectureDetailScreen(lecture: lecture),
+//                         ),
+//                       );
+//                     },
+//                     child: Container(
+//                       width: dayWidth,
+//                       height: height,
+//                       margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+//                       padding: const EdgeInsets.all(4),
+//                       decoration: BoxDecoration(
+//                         color: bgColor,
+//                         borderRadius: BorderRadius.circular(4),
+//                       ),
+//                       child: Column(
+//                         mainAxisAlignment: MainAxisAlignment.center,
+//                         children: [
+//                           Text(subject, style: TextStyle(color: textColor, fontSize: 11, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+//                           Text(lecture['professor'] ?? '', style: TextStyle(color: textColor, fontSize: 9), textAlign: TextAlign.center),
+//                         ],
+//                       ),
+//                     ),
+//                   ),
+//                 );
+//               })
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+
+//   Widget _buildHeaderCell(String text, double width) {
+//     return Container(
+//       width: width,
+//       height: 30,
+//       alignment: Alignment.center,
+//       color: const Color(0xFF004098),
+//       child: Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 11)),
+//     );
+//   }
+// }
 
 import 'package:flutter/material.dart';
 import '../data/lecture_data.dart';
+import 'search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
 
 class LectureScheduleScreen extends StatefulWidget {
@@ -17,11 +258,9 @@ class LectureScheduleScreen extends StatefulWidget {
 
 class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   late String currentRoomName;
-  final TextEditingController _controller = TextEditingController();
-  List<Map<String, dynamic>> suggestions = [];
 
   final List<String> days = ['월', '화', '수', '목', '금'];
-  final List<String> timeSlots = [
+  final List<String> timePeriods = [
     '08:00', '08:30', '09:00', '09:30',
     '10:00', '10:30', '11:00', '11:30',
     '12:00', '12:30', '13:00', '13:30',
@@ -30,44 +269,29 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     '18:00', '18:30', '19:00', '19:30',
   ];
 
-  final Map<String, Color> subjectColors = {
-    '수학': Colors.lightBlue,
-    '영어': Colors.green,
-    '과학': Colors.deepPurple,
-    '국어': Colors.redAccent,
-    '역사': Colors.orange,
-    '예체능': Colors.pinkAccent,
-    '기본': Colors.blue.shade300,
-  };
+  final Map<String, Color> subjectColors = {};
+  final List<Color> colorPool = [
+    const Color(0xFF7DA7D9),
+    const Color(0xFF004098),
+    Colors.indigo.shade300,
+    Colors.blue.shade300,
+    Colors.cyan.shade200,
+    Colors.lightBlue.shade200,
+    Colors.teal.shade300,
+  ];
+
+  Color getSubjectColor(String subject) {
+    if (!subjectColors.containsKey(subject)) {
+      final color = colorPool[subjectColors.length % colorPool.length];
+      subjectColors[subject] = color;
+    }
+    return subjectColors[subject]!;
+  }
 
   @override
   void initState() {
     super.initState();
     currentRoomName = widget.roomName;
-    _controller.text = widget.roomName;
-  }
-
-  void _handleSearch(String keyword) {
-    keyword = keyword.trim();
-    if (_dataContainsRoom(keyword)) {
-      setState(() {
-        currentRoomName = keyword;
-        suggestions.clear();
-      });
-    } else {
-      setState(() {
-        suggestions = LectureDataManager.searchLecturesByKeyword(keyword);
-        if (suggestions.isEmpty) {
-          suggestions = [
-            {'subject': '검색 결과 없음', 'roomName': '', 'professor': ''},
-          ];
-        }
-      });
-    }
-  }
-
-  bool _dataContainsRoom(String roomName) {
-    return LectureDataManager.getLecturesForRoom(roomName).isNotEmpty;
   }
 
   @override
@@ -90,46 +314,17 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                hintText: '강의실, 강의명, 교수명 검색',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
-              ),
-              onChanged: _handleSearch,
-              onSubmitted: _handleSearch,
-            ),
+          // ✅ 검색 바에서 강의실 선택 시 시간표 갱신
+          SearchBarWithResults(
+            initialText: currentRoomName,
+            onRoomSelected: (selectedRoom) {
+              if (selectedRoom.isNotEmpty && selectedRoom != currentRoomName) {
+                setState(() {
+                  currentRoomName = selectedRoom;
+                });
+              }
+            },
           ),
-          if (suggestions.isNotEmpty)
-            Container(
-              height: 150,
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: ListView.builder(
-                itemCount: suggestions.length.clamp(0, 3),
-                itemBuilder: (context, index) {
-                  final item = suggestions[index];
-                  if (item['subject'] == '검색 결과 없음') {
-                    return ListTile(
-                      title: Text('🔍 ${_controller.text}에 대한 결과가 없습니다.'),
-                    );
-                  }
-                  return ListTile(
-                    title: Text('📘 ${item['subject']} (${item['roomName']})'),
-                    subtitle: Text('👨‍🏫 ${item['professor']}'),
-                    onTap: () {
-                      setState(() {
-                        currentRoomName = item['roomName'];
-                        _controller.text = item['roomName'];
-                        suggestions.clear();
-                      });
-                    },
-                  );
-                },
-              ),
-            ),
           Expanded(child: _buildCustomTimeTable()),
         ],
       ),
@@ -138,115 +333,115 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
 
   Widget _buildCustomTimeTable() {
     final lectures = LectureDataManager.getLecturesForRoom(currentRoomName);
+    final rendered = <String>{};
 
-    const double dayCellWidth = 70;
-    const double timeCellHeight = 40;
-    const double timeLabelWidth = 90;
-    const double dayLabelHeight = 30;
+    const double colWidth = 60;
+    const double dayWidth = 70;
+    const double rowHeight = 40;
+    const double headerHeight = 30;
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      physics: const BouncingScrollPhysics(),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        physics: const BouncingScrollPhysics(),
-        child: SizedBox(
-          width: timeLabelWidth + dayCellWidth * days.length,
-          height: dayLabelHeight + timeCellHeight * timeSlots.length,
+      child: SizedBox(
+        width: colWidth * 3 + dayWidth * days.length,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
           child: Stack(
             children: [
-              Positioned.fill(
-                child: Column(
-                  children: [
-                    SizedBox(height: dayLabelHeight),
-                    ...List.generate(timeSlots.length, (i) {
-                      final int period = i ~/ 2;
-                      final String half = (i % 2 == 0) ? 'A' : 'B';
-                      final bool isFirstHalf = half == 'A';
-                      final String time = timeSlots[i];
-
-                      return SizedBox(
-                        height: timeCellHeight,
-                        child: Row(
-                          children: [
-                            Container(
-                              width: timeLabelWidth,
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      _buildHeaderCell('교시', colWidth),
+                      _buildHeaderCell('A/B', colWidth),
+                      _buildHeaderCell('시간', colWidth),
+                      ...days.map((day) => Container(
+                            width: dayWidth,
+                            height: headerHeight,
+                            alignment: Alignment.center,
+                            color: const Color(0xFF7DA7D9),
+                            child: Text(day, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                          )),
+                    ],
+                  ),
+                  ...List.generate(timePeriods.length, (i) {
+                    final isA = i % 2 == 0;
+                    final period = i ~/ 2;
+                    return SizedBox(
+                      height: rowHeight,
+                      child: Row(
+                        children: [
+                          Container(
+                            width: colWidth,
+                            height: rowHeight,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              color: isA ? Colors.grey.shade100 : Colors.grey.shade200,
+                            ),
+                            child: isA
+                                ? Text('$period교시', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11))
+                                : const SizedBox.shrink(),
+                          ),
+                          Container(
+                            width: colWidth,
+                            height: rowHeight,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              color: Colors.white,
+                            ),
+                            child: Text(isA ? 'A' : 'B', style: const TextStyle(fontSize: 10)),
+                          ),
+                          Container(
+                            width: colWidth,
+                            height: rowHeight,
+                            alignment: Alignment.center,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey.shade300),
+                              color: Colors.white,
+                            ),
+                            child: Text(timePeriods[i], style: const TextStyle(fontSize: 10)),
+                          ),
+                          ...List.generate(days.length, (j) {
+                            return Container(
+                              width: dayWidth,
+                              height: rowHeight,
                               decoration: BoxDecoration(
                                 border: Border.all(color: Colors.grey.shade300),
-                                color: Colors.grey.shade100,
                               ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  if (isFirstHalf) ...[
-                                    Container(
-                                      width: 30,
-                                      alignment: Alignment.center,
-                                      child: Text('$period교시', style: const TextStyle(fontSize: 10)),
-                                    ),
-                                    Container(
-                                      width: 30,
-                                      alignment: Alignment.center,
-                                      child: Text('A\n$time', style: const TextStyle(fontSize: 10), textAlign: TextAlign.center),
-                                    ),
-                                  ] else ...[
-                                    SizedBox(width: 30),
-                                    Container(
-                                      width: 30,
-                                      alignment: Alignment.center,
-                                      child: Text('B\n$time', style: const TextStyle(fontSize: 10), textAlign: TextAlign.center),
-                                    ),
-                                  ],
-                                ],
-                              ),
-                            ),
-                            ...List.generate(days.length, (j) {
-                              return Container(
-                                width: dayCellWidth,
-                                height: timeCellHeight,
-                                decoration: BoxDecoration(
-                                  border: Border.all(color: Colors.grey.shade300),
-                                ),
-                              );
-                            }),
-                          ],
-                        ),
-                      );
-                    }),
-                  ],
-                ),
+                            );
+                          }),
+                        ],
+                      ),
+                    );
+                  }),
+                ],
               ),
-
-              Positioned(
-                top: 0,
-                left: timeLabelWidth,
-                child: Row(
-                  children: days.map((day) => Container(
-                    width: dayCellWidth,
-                    height: dayLabelHeight,
-                    color: const Color(0xFF7DA7D9),
-                    alignment: Alignment.center,
-                    child: Text(day, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                  )).toList(),
-                ),
-              ),
-
               ...lectures.map((lecture) {
                 final dayIdx = days.indexOf(lecture['day']);
-                final startIdx = timeSlots.indexOf(lecture['start']);
-                final endIdx = timeSlots.indexOf(lecture['end']);
-                if (dayIdx == -1 || startIdx == -1 || endIdx == -1)
-                  return const SizedBox.shrink();
+                final start = lecture['start'] ?? '';
+                final end = lecture['end'] ?? '';
+                final startIdx = timePeriods.indexWhere((p) => p.startsWith(start.padLeft(5, '0')));
+                final endIdx = timePeriods.indexWhere((p) => p.startsWith(end.padLeft(5, '0')));
 
-                final blockTop = dayLabelHeight + startIdx * timeCellHeight;
-                final blockLeft = timeLabelWidth + dayIdx * dayCellWidth;
-                final blockHeight = (endIdx - startIdx) * timeCellHeight;
+                if (dayIdx == -1 || startIdx == -1 || endIdx == -1) return const SizedBox.shrink();
 
-                Color bgColor = subjectColors[lecture['subject']] ?? subjectColors['기본']!;
+                final top = headerHeight + startIdx * rowHeight;
+                final left = colWidth * 3 + dayIdx * dayWidth;
+                final height = (endIdx - startIdx) * rowHeight;
+
+                final key = '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}';
+                if (rendered.contains(key)) return const SizedBox.shrink();
+                rendered.add(key);
+
+                final subject = lecture['subject'] ?? '기본';
+                final bgColor = getSubjectColor(subject);
+                final textColor = ThemeData.estimateBrightnessForColor(bgColor) == Brightness.dark ? Colors.white : Colors.black;
 
                 return Positioned(
-                  top: blockTop,
-                  left: blockLeft,
+                  top: top,
+                  left: left,
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -257,11 +452,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                       );
                     },
                     child: Container(
-                      width: dayCellWidth,
-                      height: blockHeight,
-                      margin: const EdgeInsets.all(1),
-                      padding: const EdgeInsets.all(2),
-                      alignment: Alignment.center,
+                      width: dayWidth,
+                      height: height,
+                      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+                      padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: bgColor,
                         borderRadius: BorderRadius.circular(4),
@@ -269,26 +463,28 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            lecture['subject'] ?? '',
-                            style: const TextStyle(color: Colors.white, fontSize: 11, fontWeight: FontWeight.bold),
-                            textAlign: TextAlign.center,
-                          ),
-                          Text(
-                            lecture['professor'] ?? '',
-                            style: const TextStyle(color: Colors.white, fontSize: 9),
-                            textAlign: TextAlign.center,
-                          ),
+                          Text(subject, style: TextStyle(color: textColor, fontSize: 11, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
+                          Text(lecture['professor'] ?? '', style: TextStyle(color: textColor, fontSize: 9), textAlign: TextAlign.center),
                         ],
                       ),
                     ),
                   ),
                 );
-              }).toList(),
+              })
             ],
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildHeaderCell(String text, double width) {
+    return Container(
+      width: width,
+      height: 30,
+      alignment: Alignment.center,
+      color: const Color(0xFF004098),
+      child: Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 11)),
     );
   }
 }
