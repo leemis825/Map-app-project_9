@@ -22,6 +22,8 @@ class ItBuilding4fScreen extends StatelessWidget {
     IconInfo(asset: 'assets/icons/elevator.svg', left: 996.5, top: 288),
   ];
 
+  ItBuilding4fScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,7 +62,7 @@ class ItBuilding4fScreen extends StatelessWidget {
                         top: top,
                         child: clickableRoomArea(context, room.name),
                       );
-                    }).toList(),
+                    }),
 
                     // 계단 및 엘리베이터 아이콘
                     ...icons.map((icon) {
@@ -81,7 +83,7 @@ class ItBuilding4fScreen extends StatelessWidget {
                           ),
                         ),
                       );
-                    }).toList(),
+                    }),
                   ],
                 ),
               ),
