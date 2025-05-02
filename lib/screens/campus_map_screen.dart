@@ -3,6 +3,7 @@ import 'lecture_schedule_screen.dart';
 import '../data/lecture_data.dart';
 import 'home_screen.dart';
 import 'menu.dart';
+import 'AppDrawer.dart';
 import 'search_bar_with_results.dart';
 
 class CampusMapScreen extends StatefulWidget {
@@ -13,6 +14,8 @@ class CampusMapScreen extends StatefulWidget {
 }
 
 class _CampusMapScreenState extends State<CampusMapScreen> {
+  bool isDarkMode = false;
+
   @override
   void initState() {
     super.initState();
@@ -21,16 +24,10 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     });
   }
 
-  void showHelp() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
-    );
-  }
-
   void moveToCurrentLocation() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("현재 위치로 이동 중입니다.")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -45,14 +42,15 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF004098),
-        title: const Text("조선대학교 캠퍼스 지도"),
-        actions: [
-          IconButton(icon: const Icon(Icons.help_outline), onPressed: showHelp),
-        ],
+      drawer: AppDrawer(
+        isDarkMode: isDarkMode,
+        onToggleDarkMode: (value) {
+          setState(() {
+            isDarkMode = value;
+          });
+        },
       ),
+      backgroundColor: Colors.white,
       body: Column(
         children: [
           SearchBarWithResults(
@@ -86,10 +84,16 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: moveToCurrentLocation,
-        backgroundColor: const Color(0xFF004098),
-        child: const Icon(Icons.my_location),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
+          child: FloatingActionButton(
+            onPressed: moveToCurrentLocation,
+            backgroundColor: Color(0xFF0054A7),
+            child: const Icon(Icons.my_location, color: Colors.white),
+          ),
+        ),
       ),
     );
   }
@@ -97,14 +101,15 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
   Widget campusButton(BuildContext context, String label, Widget destination) {
     return ElevatedButton(
       onPressed: () {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => destination));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => destination),
+        );
       },
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
-        foregroundColor: const Color(0xFF004098),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
+        foregroundColor: const Color(0xFF0054A7),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       ),
       child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
