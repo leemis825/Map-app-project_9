@@ -20,15 +20,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _showHelp() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("여기는 본관 / IT융합대학 설명 페이지입니다.")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("여기는 본관 / IT융합대학 설명 페이지입니다.")));
   }
 
   void _moveToCurrentLocation() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("현재 위치 기능은 준비 중입니다.")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("현재 위치 기능은 준비 중입니다.")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -43,24 +43,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF004098),
-        title: const Text('조선대학교 실내 지도 앱'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.help_outline, color: Colors.white),
-            onPressed: _showHelp,
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text('본관 지도')),
       body: Column(
         children: [
-          SearchBarWithResults(
+          /*SearchBarWithResults(
             initialText: '',
             onRoomSelected: (room) {
               _navigateToRoom(room);
             },
-          ),
+          ),*/
           const SizedBox(height: 16),
           const Expanded(
             child: Center(

@@ -27,10 +27,6 @@ class BuildingFloorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-        backgroundColor: const Color(0xFF004098),
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -111,7 +107,7 @@ class BuildingFloorScreen extends StatelessWidget {
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Colors.indigo,
+            color: const Color(0xFF0054A7),
           ),
         ),
       ),

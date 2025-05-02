@@ -35,15 +35,15 @@ class _MenuScreenState extends State<MenuScreen> {
   }
 
   void showHelp() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("도움말을 확인하세요!")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("도움말을 확인하세요!")));
   }
 
   void moveToCurrentLocation() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("내 위치로 이동합니다!")),
-    );
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("내 위치로 이동합니다!")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -58,37 +58,41 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF004098),
-        title: const Text("IT융합대학 층별 지도"),
-        actions: [
-          IconButton(icon: const Icon(Icons.help_outline), onPressed: showHelp),
-        ],
-      ),
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text('메뉴', style: TextStyle(color: Colors.white, fontSize: 24)),
+            Container(
+              height: 56,
+              alignment: Alignment.center,
+              child: const Text(
+                '메뉴',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
+            const Divider(height: 1, thickness: 0.5),
             ListTile(
-              leading: const Icon(Icons.person),
-              title: const Text('마이페이지'),
+              leading: const Icon(Icons.person, color: Colors.black),
+              title: const Text('마이페이지', style: TextStyle(color: Colors.black)),
               onTap: () {},
             ),
+            const Divider(height: 1, thickness: 0.5),
             ListTile(
-              leading: const Icon(Icons.schedule),
-              title: const Text('시간표'),
+              leading: const Icon(Icons.schedule, color: Colors.black),
+              title: const Text('시간표', style: TextStyle(color: Colors.black)),
               onTap: () {},
             ),
+            const Divider(height: 1, thickness: 0.5),
             ListTile(
-              leading: const Icon(Icons.dark_mode),
+              leading: const Icon(Icons.dark_mode, color: Colors.black),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('다크모드'),
+                  const Text('다크모드', style: TextStyle(color: Colors.black)),
                   Switch(
                     value: isDarkMode,
                     onChanged: (value) {
@@ -96,13 +100,18 @@ class _MenuScreenState extends State<MenuScreen> {
                         isDarkMode = value;
                       });
                     },
+                    activeColor: Colors.white,
+                    activeTrackColor: Colors.black,
+                    inactiveThumbColor: Colors.black,
+                    inactiveTrackColor: Colors.white,
                   ),
                 ],
               ),
             ),
+            const Divider(height: 1, thickness: 0.5),
             ListTile(
-              leading: const Icon(Icons.settings),
-              title: const Text('설정'),
+              leading: const Icon(Icons.settings, color: Colors.black),
+              title: const Text('설정', style: TextStyle(color: Colors.black)),
               onTap: () {},
             ),
           ],
@@ -190,11 +199,11 @@ class _MenuScreenState extends State<MenuScreen> {
       floatingActionButton: Align(
         alignment: Alignment.bottomLeft,
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
           child: FloatingActionButton(
             onPressed: moveToCurrentLocation,
-            backgroundColor: Colors.blue,
-            child: const Icon(Icons.my_location),
+            backgroundColor: Color(0xFF0054A7),
+            child: const Icon(Icons.my_location, color: Colors.white),
           ),
         ),
       ),
