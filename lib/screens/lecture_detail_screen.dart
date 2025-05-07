@@ -9,8 +9,8 @@ class LectureDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('강의 상세 정보'),
-        backgroundColor: const Color(0xFF004098), // 조선대 색상
+        title: Text('강의 상세 정보', style: const TextStyle(color: Colors.white)),
+        backgroundColor: const Color(0xFF0054A7), // 조선대 색상
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -53,13 +53,8 @@ class LectureDetailScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 6.0),
       child: Row(
         children: [
-          Text(
-            '$title: ',
-            style: const TextStyle(fontWeight: FontWeight.bold),
-          ),
-          Expanded(
-            child: Text(value ?? '정보 없음'),
-          ),
+          Text('$title: ', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Expanded(child: Text(value ?? '정보 없음')),
         ],
       ),
     );

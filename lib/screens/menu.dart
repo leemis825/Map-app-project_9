@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import '../data/lecture_data.dart';
-import 'search_bar_with_results.dart';
+import '../widgets/search_bar_with_results.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';

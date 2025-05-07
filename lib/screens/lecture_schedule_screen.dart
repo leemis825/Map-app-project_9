@@ -245,7 +245,7 @@
 
 import 'package:flutter/material.dart';
 import '../data/lecture_data.dart';
-import 'search_bar_with_results.dart';
+import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
 
 class LectureScheduleScreen extends StatefulWidget {
@@ -261,23 +261,41 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
 
   final List<String> days = ['월', '화', '수', '목', '금'];
   final List<String> timePeriods = [
-    '08:00', '08:30', '09:00', '09:30',
-    '10:00', '10:30', '11:00', '11:30',
-    '12:00', '12:30', '13:00', '13:30',
-    '14:00', '14:30', '15:00', '15:30',
-    '16:00', '16:30', '17:00', '17:30',
-    '18:00', '18:30', '19:00', '19:30',
+    '08:00',
+    '08:30',
+    '09:00',
+    '09:30',
+    '10:00',
+    '10:30',
+    '11:00',
+    '11:30',
+    '12:00',
+    '12:30',
+    '13:00',
+    '13:30',
+    '14:00',
+    '14:30',
+    '15:00',
+    '15:30',
+    '16:00',
+    '16:30',
+    '17:00',
+    '17:30',
+    '18:00',
+    '18:30',
+    '19:00',
+    '19:30',
   ];
 
   final Map<String, Color> subjectColors = {};
   final List<Color> colorPool = [
     const Color(0xFF7DA7D9),
-    const Color(0xFF004098),
-    Colors.indigo.shade300,
+    const Color(0xFF0054A7),
+    const Color.fromARGB(255, 48, 62, 133),
     Colors.blue.shade300,
-    Colors.cyan.shade200,
-    Colors.lightBlue.shade200,
-    Colors.teal.shade300,
+    const Color.fromARGB(255, 46, 87, 162),
+    const Color.fromARGB(255, 57, 178, 233),
+    const Color.fromARGB(255, 107, 151, 227),
   ];
 
   Color getSubjectColor(String subject) {
@@ -299,18 +317,21 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF004098),
-        title: Text('$currentRoomName 강의실 시간표'),
-        actions: [
+        backgroundColor: const Color(0xFF0054A7),
+        title: Text(
+          '$currentRoomName 강의실 시간표',
+          style: const TextStyle(color: Colors.white), // ✅ 글씨 흰색
+        ),
+        /*actions: [
           IconButton(
             icon: const Icon(Icons.help_outline),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")));
             },
           ),
-        ],
+        ],*/
       ),
       body: Column(
         children: [
@@ -355,13 +376,22 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                       _buildHeaderCell('교시', colWidth),
                       _buildHeaderCell('A/B', colWidth),
                       _buildHeaderCell('시간', colWidth),
-                      ...days.map((day) => Container(
-                            width: dayWidth,
-                            height: headerHeight,
-                            alignment: Alignment.center,
-                            color: const Color(0xFF7DA7D9),
-                            child: Text(day, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-                          )),
+                      ...days.map(
+                        (day) => Container(
+                          width: dayWidth,
+                          height: headerHeight,
+                          alignment: Alignment.center,
+                          //color: const Color(0xFF7DA7D9),
+                          color: const Color.fromARGB(255, 131, 153, 180),
+                          child: Text(
+                            day,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                   ...List.generate(timePeriods.length, (i) {
@@ -377,11 +407,21 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade300),
-                              color: isA ? Colors.grey.shade100 : Colors.grey.shade200,
+                              color:
+                                  isA
+                                      ? Colors.grey.shade100
+                                      : Colors.grey.shade200,
                             ),
-                            child: isA
-                                ? Text('$period교시', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 11))
-                                : const SizedBox.shrink(),
+                            child:
+                                isA
+                                    ? Text(
+                                      '$period교시',
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 11,
+                                      ),
+                                    )
+                                    : const SizedBox.shrink(),
                           ),
                           Container(
                             width: colWidth,
@@ -391,7 +431,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                               border: Border.all(color: Colors.grey.shade300),
                               color: Colors.white,
                             ),
-                            child: Text(isA ? 'A' : 'B', style: const TextStyle(fontSize: 10)),
+                            child: Text(
+                              isA ? 'A' : 'B',
+                              style: const TextStyle(fontSize: 10),
+                            ),
                           ),
                           Container(
                             width: colWidth,
@@ -401,7 +444,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                               border: Border.all(color: Colors.grey.shade300),
                               color: Colors.white,
                             ),
-                            child: Text(timePeriods[i], style: const TextStyle(fontSize: 10)),
+                            child: Text(
+                              timePeriods[i],
+                              style: const TextStyle(fontSize: 10),
+                            ),
                           ),
                           ...List.generate(days.length, (j) {
                             return Container(
@@ -422,22 +468,30 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                 final dayIdx = days.indexOf(lecture['day']);
                 final start = lecture['start'] ?? '';
                 final end = lecture['end'] ?? '';
-                final startIdx = timePeriods.indexWhere((p) => p.startsWith(start.padLeft(5, '0')));
-                final endIdx = timePeriods.indexWhere((p) => p.startsWith(end.padLeft(5, '0')));
+                final startIdx = timePeriods.indexWhere(
+                  (p) => p.startsWith(start.padLeft(5, '0')),
+                );
+                final endIdx = timePeriods.indexWhere(
+                  (p) => p.startsWith(end.padLeft(5, '0')),
+                );
 
-                if (dayIdx == -1 || startIdx == -1 || endIdx == -1) return const SizedBox.shrink();
+                if (dayIdx == -1 || startIdx == -1 || endIdx == -1)
+                  return const SizedBox.shrink();
 
                 final top = headerHeight + startIdx * rowHeight;
                 final left = colWidth * 3 + dayIdx * dayWidth;
                 final height = (endIdx - startIdx) * rowHeight;
 
-                final key = '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}';
+                final key =
+                    '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}';
                 if (rendered.contains(key)) return const SizedBox.shrink();
                 rendered.add(key);
 
                 final subject = lecture['subject'] ?? '기본';
                 final bgColor = getSubjectColor(subject);
-                final textColor = ThemeData.estimateBrightnessForColor(bgColor) == Brightness.dark ? Colors.white : Colors.black;
+                final textColor = Colors.white;
+                //ThemeData.estimateBrightnessForColor(bgColor) ==
+                //Brightness.dark ? Colors.white : Colors.black;
 
                 return Positioned(
                   top: top,
@@ -454,7 +508,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                     child: Container(
                       width: dayWidth,
                       height: height,
-                      margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: 2,
+                        vertical: 1,
+                      ),
                       padding: const EdgeInsets.all(4),
                       decoration: BoxDecoration(
                         color: bgColor,
@@ -463,14 +520,26 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(subject, style: TextStyle(color: textColor, fontSize: 11, fontWeight: FontWeight.bold), textAlign: TextAlign.center),
-                          Text(lecture['professor'] ?? '', style: TextStyle(color: textColor, fontSize: 9), textAlign: TextAlign.center),
+                          Text(
+                            subject,
+                            style: TextStyle(
+                              color: textColor,
+                              fontSize: 11,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            lecture['professor'] ?? '',
+                            style: TextStyle(color: textColor, fontSize: 9),
+                            textAlign: TextAlign.center,
+                          ),
                         ],
                       ),
                     ),
                   ),
                 );
-              })
+              }),
             ],
           ),
         ),
@@ -483,8 +552,16 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       width: width,
       height: 30,
       alignment: Alignment.center,
-      color: const Color(0xFF004098),
-      child: Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 11)),
+      //color: const Color(0xFF0054A7),
+      color: const Color.fromARGB(255, 131, 153, 180),
+      child: Text(
+        text,
+        style: const TextStyle(
+          color: Colors.white,
+          fontWeight: FontWeight.bold,
+          fontSize: 11,
+        ),
+      ),
     );
   }
 }

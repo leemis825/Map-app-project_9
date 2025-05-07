@@ -4,7 +4,7 @@ import '../data/lecture_data.dart';
 import 'home_screen.dart';
 import 'menu.dart';
 import 'AppDrawer.dart';
-import 'search_bar_with_results.dart';
+import '../widgets/search_bar_with_results.dart';
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});

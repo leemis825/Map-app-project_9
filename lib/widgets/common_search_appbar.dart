@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+/*import 'package:flutter/material.dart';
 
-class CommonSearchAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CommonSearchAppBar extends StatelessWidget
+    implements PreferredSizeWidget {
   final String hintText;
   final TextEditingController controller;
   final VoidCallback onHelpPressed;
@@ -50,4 +51,4 @@ class CommonSearchAppBar extends StatelessWidget implements PreferredSizeWidget 
       ],
     );
   }
-}
+}*/

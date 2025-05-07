@@ -30,10 +30,7 @@ class ItBuilding1fScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        title: const Text(
-          'IT융합대학 1층 지도',
-          style: TextStyle(color: Colors.black),
-        ),
+        title: const Text('IT융합대학 1층', style: TextStyle(color: Colors.black)),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
       body: LayoutBuilder(
