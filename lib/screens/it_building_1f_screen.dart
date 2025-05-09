@@ -26,13 +26,7 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // ✅ 전체 배경 흰색 지정
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 1,
-        title: const Text('IT융합대학 1층', style: TextStyle(color: Colors.black)),
-        iconTheme: const IconThemeData(color: Colors.black),
-      ),
+      appBar: AppBar(title: const Text('IT융합대학 1층 지도')),
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -109,7 +103,7 @@ class ItBuilding1fScreen extends StatelessWidget {
       },
       child: Container(
         width: 80,
-        height: 60,
+        height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
         child: Text(
@@ -117,7 +111,7 @@ class ItBuilding1fScreen extends StatelessWidget {
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF0054A7),
+            color: Colors.indigo,
           ),
         ),
       ),
