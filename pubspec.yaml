@@ -42,4 +42,3 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/data/classroom_schedule_final.json
-    - assets/icons/    # ✅ 아이콘 폴더도 추가되어 있음
