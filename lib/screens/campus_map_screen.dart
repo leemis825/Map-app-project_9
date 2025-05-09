@@ -24,11 +24,11 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     });
   }
 
-  void moveToCurrentLocation() {
+  /*void moveToCurrentLocation() {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
-  }
+  }*/
 
   void _navigateToRoom(String roomName) {
     Navigator.push(
@@ -84,7 +84,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-      floatingActionButton: Align(
+      /*floatingActionButton: Align(
         alignment: Alignment.bottomLeft,
         child: Padding(
           padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
@@ -94,7 +94,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
             child: const Icon(Icons.my_location, color: Colors.white),
           ),
         ),
-      ),
+      ),*/
     );
   }
 
