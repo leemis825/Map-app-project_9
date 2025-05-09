@@ -11,30 +11,23 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # 👉 주요 의존성 패키지들
-  cupertino_icons: ^1.0.8          # iOS 스타일 아이콘
-  flutter_svg: ^2.0.9              # SVG 이미지 렌더링
-  google_fonts: ^6.1.0             # 구글 폰트 사용
-  flutter_beacon: ^0.5.0           # 비콘 신호 수신
-  cloud_firestore: ^4.9.0          # Firebase Firestore DB
-  firebase_core: ^2.27.0           # Firebase 기본 초기화
-  permission_handler: ^11.3.1      # 위치/권한 요청
-  uuid: ^4.2.2                     # UUID 생성기
-
-  # ✅ 추가: 날짜 포맷 출력을 위한 intl 패키지
-  intl: ^0.18.1                    # 날짜/시간 형식 출력을 위한 패키지
+  cupertino_icons: ^1.0.8         # ✅ 최신 버전 유지
+  flutter_svg: ^2.0.9             # ✅ 더 구체적인 버전 선택
+  google_fonts: ^6.1.0            # ✅ 동일
+  dchs_flutter_beacon: ^0.6.4         # ✅ 비콘 스캔용
+  cloud_firestore: ^4.9.0         # ✅ Firestore 데이터베이스
+  firebase_core: ^2.27.0          # ✅ Firebase 초기화용
+  permission_handler: ^11.3.1     # ✅ 위치 권한 요청
+  uuid: ^4.2.2                    # ✅ UUID 생성기
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # ✅ 코드 스타일 검사기
-  flutter_lints: ^5.0.0
+  flutter_lints: ^5.0.0 # ✅ 코드 스타일 검사
 
 flutter:
   uses-material-design: true
 
-  # ✅ 앱에 포함될 이미지 및 데이터 자산 목록
   assets:
     - assets/images/logo.png
     - assets/images/campus_map.png
@@ -49,4 +42,3 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/data/classroom_schedule_final.json
-    - assets/icons/    # ✅ 아이콘 폴더도 추가됨

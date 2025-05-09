@@ -5,20 +5,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 
 class ItBuilding1fScreen extends StatelessWidget {
-  final double imageWidth = 1749; // 1층 도면 원본 가로 크기
-  final double imageHeight = 799; // 1층 도면 원본 세로 크기
+  final double imageWidth = 2518; // 1층 도면 원본 가로 크기
+  final double imageHeight = 1147; // 1층 도면 원본 세로 크기
 
   final List<RoomInfo> rooms = [
-    RoomInfo(name: '1103', left: 255, top: 250),
-    RoomInfo(name: '1122', left: 1185, top: 290),
-    RoomInfo(name: '1125', left: 1345, top: 290),
-  ];
-
-  final List<IconInfo> icons = [
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 72, top: 148),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 842, top: 121),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1649, top: 212),
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 982, top: 111),
+    RoomInfo(name: '1103', left: 374, top: 359), // -20, -30
+    RoomInfo(name: '1122', left: 1709, top: 414),
+    RoomInfo(name: '1125', left: 1933, top: 414),
   ];
 
   ItBuilding1fScreen({super.key});
@@ -26,7 +19,20 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
       appBar: AppBar(title: const Text('IT융합대학 1층 지도')),
+=======
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: const Text(
+          'IT융합대학 1층 지도',
+          style: TextStyle(color: Colors.black),
+        ),
+        iconTheme: const IconThemeData(color: Colors.black),
+      ),
+>>>>>>> yejin
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -48,8 +54,6 @@ class ItBuilding1fScreen extends StatelessWidget {
                       width: scaledImageWidth,
                       height: screenHeight,
                     ),
-
-                    // ✅ 강의실 버튼
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -57,27 +61,6 @@ class ItBuilding1fScreen extends StatelessWidget {
                         left: left,
                         top: top,
                         child: clickableRoomArea(context, room.name),
-                      );
-                    }),
-
-                    // ✅ 계단 및 엘리베이터 아이콘
-                    ...icons.map((icon) {
-                      double left = icon.left / imageWidth * scaledImageWidth;
-                      double top = icon.top / imageHeight * screenHeight;
-                      bool isStairs = icon.asset.contains('stairs');
-
-                      return Positioned(
-                        left: left,
-                        top: top,
-                        child: SvgPicture.asset(
-                          icon.asset,
-                          width: isStairs ? 24 : 36,
-                          height: isStairs ? 24 : 36,
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
-                            BlendMode.srcIn,
-                          ),
-                        ),
                       );
                     }),
                   ],
@@ -106,6 +89,8 @@ class ItBuilding1fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
+        // ✅ 텍스트는 주석 처리하여 숨김, 위치 확인용으로 씀 삭제 X
+        /*
         child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
@@ -114,6 +99,7 @@ class ItBuilding1fScreen extends StatelessWidget {
             color: Colors.indigo,
           ),
         ),
+        */
       ),
     );
   }
