@@ -67,4 +67,29 @@ class LectureDataManager {
 
     return all;
   }
+
+  // ✅ 현재 시간이 주어진 강의실에서 강의 중인지 여부 확인
+  static bool isLectureOngoing(String roomName) {
+    final now = DateTime.now();
+    final koreanDays = ['월', '화', '수', '목', '금', '토', '일'];
+    final today = koreanDays[now.weekday - 1];
+
+    final nowMinutes = now.hour * 60 + now.minute;
+
+    final lectures = getLecturesForRoom(roomName);
+    for (var lecture in lectures) {
+      if (lecture['day'] != today) continue;
+
+      final startParts = lecture['start'].split(':');
+      final endParts = lecture['end'].split(':');
+      final startMinutes = int.parse(startParts[0]) * 60 +
+          int.parse(startParts[1]);
+      final endMinutes = int.parse(endParts[0]) * 60 + int.parse(endParts[1]);
+
+      if (nowMinutes >= startMinutes && nowMinutes < endMinutes) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
