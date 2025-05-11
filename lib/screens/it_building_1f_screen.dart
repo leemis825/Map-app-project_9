@@ -19,10 +19,6 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD
-      appBar: AppBar(title: const Text('IT융합대학 1층 지도')),
-=======
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -32,7 +28,6 @@ class ItBuilding1fScreen extends StatelessWidget {
         ),
         iconTheme: const IconThemeData(color: Colors.black),
       ),
->>>>>>> yejin
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;

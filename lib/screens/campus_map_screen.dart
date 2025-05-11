@@ -76,7 +76,11 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                   Positioned(
                     left: 800,
                     top: 100,
-                    child: campusButton(context, 'IT융합대학', MenuScreen()),
+                    child: campusButton(
+                      context,
+                      'IT융합대학',
+                      MenuScreen(),
+                    ), //MenuScreen()),
                   ),
                 ],
               ),
