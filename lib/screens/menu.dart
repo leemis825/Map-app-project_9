@@ -98,7 +98,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ItBuilding10fScreen(),
                 Positioned(
                   top: 5,
-                  left: 310,
+                  right: 32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
