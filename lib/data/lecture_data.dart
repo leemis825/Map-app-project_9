@@ -70,7 +70,8 @@ class LectureDataManager {
 
   // ✅ 현재 시간이 주어진 강의실에서 강의 중인지 여부 확인
   static bool isLectureOngoing(String roomName) {
-    final now = DateTime.now();
+    //final now = DateTime.now();
+    final now = DateTime(2025, 5, 14, 14, 30);
     final koreanDays = ['월', '화', '수', '목', '금', '토', '일'];
     final today = koreanDays[now.weekday - 1];
 

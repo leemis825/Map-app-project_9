@@ -1,26 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
 import '../models/models.dart'; // 공통 모델 불러오기
+import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
 
 class ItBuilding9fScreen extends StatelessWidget {
   final double imageWidth = 1753; // 9층 도면 원본 가로 크기
   final double imageHeight = 795;  // 9층 도면 원본 세로 크기
 
   final List<RoomInfo> rooms = [
-    RoomInfo(name: '9206', left: 300, top: 280),
-    RoomInfo(name: '9210', left: 525, top: 280),
-    RoomInfo(name: '9221', left: 1110, top: 280),
-    RoomInfo(name: '9225', left: 1317, top: 280),
+    RoomInfo(name: '9206', left: 303, top: 280),
+    RoomInfo(name: '9210', left: 527, top: 280),
+    RoomInfo(name: '9221', left: 1102, top: 280),
+    RoomInfo(name: '9225', left: 1312, top: 280),
   ];
 
-  final List<IconInfo> icons = [
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 68.5, top: 321),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 840, top: 290),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1650, top: 383),
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 982.7, top: 285),
-  ];
 
   ItBuilding9fScreen({super.key});
 
@@ -63,27 +57,17 @@ class ItBuilding9fScreen extends StatelessWidget {
                       );
                     }),
 
-                    // ✅ 계단 / 엘리베이터 아이콘
-                    ...icons.map((icon) {
-                      double left = icon.left / imageWidth * scaledImageWidth;
-                      double top = icon.top / imageHeight * screenHeight;
-
-                      bool isStairs = icon.asset.contains('stairs');
-
+                    // ✅ 강의실 상태 점
+                    ...rooms.map((room) {
+                      double left = room.left / imageWidth * scaledImageWidth;
+                      double top = room.top / imageHeight * screenHeight;
                       return Positioned(
-                        left: left,
-                        top: top,
-                        child: SvgPicture.asset(
-                          icon.asset,
-                          width: isStairs ? 24 : 36,
-                          height: isStairs ? 24 : 36,
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
-                            BlendMode.srcIn,
-                          ),
-                        ),
+                        left: left + 35,
+                        top: top + 40,
+                        child: LectureStatusDot(roomName: room.name),
                       );
                     }),
+
                   ],
                 ),
               ),
@@ -110,14 +94,14 @@ class ItBuilding9fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        child: Text(
+        /*child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.indigo,
           ),
-        ),
+        ),*/
       ),
     );
   }
