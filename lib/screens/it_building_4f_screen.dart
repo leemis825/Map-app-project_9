@@ -13,15 +13,6 @@ class ItBuilding4fScreen extends StatelessWidget {
     RoomInfo(name: '4225', left: 1350, top: 280),
   ];
 
-  final List<IconInfo> icons = [
-
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 82, top: 325),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 853, top: 295),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1663, top: 387), // 계단 아이콘 하나 추가
-
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 996.5, top: 288),
-  ];
-
   ItBuilding4fScreen({super.key});
 
   @override

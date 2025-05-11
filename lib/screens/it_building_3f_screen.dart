@@ -21,13 +21,6 @@ class ItBuilding3fScreen extends StatelessWidget {
     RoomInfo(name: '3128', left: 1270, top: 285),
   ];
 
-  final List<IconInfo> icons = [
-    // 계단 아이콘 4개
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 72, top: 150),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 843, top: 121),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1652, top: 212),
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 986, top: 115),
-  ];
 
   ItBuilding3fScreen({super.key});
 

@@ -16,15 +16,12 @@ class RoomInfo {
   }
 }
 
-// 아이콘 정보 클래스 (화장실, 계단 등)
-class IconInfo {
-  final String asset;
+class Space {
+  final String name;
   final double left;
   final double top;
+  final String description;
 
-  IconInfo({
-    required this.asset,
-    required this.left,
-    required this.top,
-  });
+  Space({required this.name, required this.left, required this.top, required this.description});
 }
+

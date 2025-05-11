@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart';
 
@@ -12,7 +11,6 @@ class BuildingFloorScreen extends StatelessWidget {
   final double imageWidth; // 원본 이미지 가로
   final double imageHeight; // 원본 이미지 세로
   final List<RoomInfo> rooms;
-  final List<IconInfo> icons;
 
   const BuildingFloorScreen({
     required this.title,
@@ -20,7 +18,6 @@ class BuildingFloorScreen extends StatelessWidget {
     required this.imageWidth,
     required this.imageHeight,
     required this.rooms,
-    required this.icons,
     super.key,
   });
 
@@ -56,25 +53,6 @@ class BuildingFloorScreen extends StatelessWidget {
                         left: left,
                         top: top,
                         child: clickableRoomArea(context, room.name),
-                      );
-                    }),
-                    // ✅ 계단 및 엘리베이터 아이콘
-                    ...icons.map((icon) {
-                      double left = icon.left / imageWidth * scaledImageWidth;
-                      double top = icon.top / imageHeight * screenHeight;
-                      bool isStairs = icon.asset.contains('stairs');
-                      return Positioned(
-                        left: left,
-                        top: top,
-                        child: SvgPicture.asset(
-                          icon.asset,
-                          width: isStairs ? 24 : 36,
-                          height: isStairs ? 24 : 36,
-                          colorFilter: const ColorFilter.mode(
-                            Colors.white,
-                            BlendMode.srcIn,
-                          ),
-                        ),
                       );
                     }),
                   ],

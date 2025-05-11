@@ -19,12 +19,6 @@ class ItBuilding2fScreen extends StatelessWidget {
     RoomInfo(name: '2228', left: 1495, top: 105),
   ];
 
-  final List<IconInfo> icons = [
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 70, top: 147),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 840, top: 121),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1649, top: 210),
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 982, top: 115),
-  ];
 
   ItBuilding2fScreen({super.key});
 
