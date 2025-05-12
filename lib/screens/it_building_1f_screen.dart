@@ -31,7 +31,6 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -118,7 +117,7 @@ class ItBuilding1fScreen extends StatelessWidget {
       },
       child: Container(
         width: 80,
-        height: 60,
+        height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
         /*child: Text(

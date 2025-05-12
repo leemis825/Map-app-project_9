@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
+import 'AppDrawer.dart';
 import '../data/lecture_data.dart';
-import 'search_bar_with_results.dart';
+import '../widgets/search_bar_with_results.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -58,64 +59,13 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            Container(
-              height: 56,
-              alignment: Alignment.center,
-              child: const Text(
-                '메뉴',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.person, color: Colors.black),
-              title: const Text('마이페이지', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.schedule, color: Colors.black),
-              title: const Text('시간표', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.dark_mode, color: Colors.black),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('다크모드', style: TextStyle(color: Colors.black)),
-                  Switch(
-                    value: isDarkMode,
-                    onChanged: (value) {
-                      setState(() {
-                        isDarkMode = value;
-                      });
-                    },
-                    activeColor: Colors.white,
-                    activeTrackColor: Colors.black,
-                    inactiveThumbColor: Colors.black,
-                    inactiveTrackColor: Colors.white,
-                  ),
-                ],
-              ),
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.settings, color: Colors.black),
-              title: const Text('설정', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-          ],
-        ),
+      drawer: AppDrawer(
+        isDarkMode: isDarkMode,
+        onToggleDarkMode: (value) {
+          setState(() {
+            isDarkMode = value;
+          });
+        },
       ),
       body: Column(
         children: [
@@ -148,7 +98,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   ItBuilding10fScreen(),
                 Positioned(
                   top: 5,
-                  left: 310,
+                  right: 32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

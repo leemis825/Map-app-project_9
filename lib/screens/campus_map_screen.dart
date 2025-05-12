@@ -4,7 +4,7 @@ import '../data/lecture_data.dart';
 import 'home_screen.dart';
 import 'menu.dart';
 import 'AppDrawer.dart';
-import 'search_bar_with_results.dart';
+import '../widgets/search_bar_with_results.dart';
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -24,11 +24,11 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     });
   }
 
-  void moveToCurrentLocation() {
+  /*void moveToCurrentLocation() {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
-  }
+  }*/
 
   void _navigateToRoom(String roomName) {
     Navigator.push(
@@ -76,7 +76,11 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                   Positioned(
                     left: 800,
                     top: 100,
-                    child: campusButton(context, 'IT융합대학', MenuScreen()),
+                    child: campusButton(
+                      context,
+                      'IT융합대학',
+                      MenuScreen(),
+                    ), //MenuScreen()),
                   ),
                 ],
               ),
@@ -84,7 +88,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-      floatingActionButton: Align(
+      /*floatingActionButton: Align(
         alignment: Alignment.bottomLeft,
         child: Padding(
           padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
@@ -94,7 +98,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
             child: const Icon(Icons.my_location, color: Colors.white),
           ),
         ),
-      ),
+      ),*/
     );
   }
 

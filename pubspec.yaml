@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider: ^6.0.1  # Provider 패키지 추가
 
   cupertino_icons: ^1.0.8         # ✅ 최신 버전 유지
   flutter_svg: ^2.0.9             # ✅ 더 구체적인 버전 선택

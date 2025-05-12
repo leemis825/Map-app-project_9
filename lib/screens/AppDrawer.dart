@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'MyPage.dart';
+import 'MyTimetable.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool isDarkMode;
@@ -29,13 +31,27 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.person, color: Colors.black),
             title: const Text('마이페이지', style: TextStyle(color: Colors.black)),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context); // Drawer 닫기
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MyPageScreen()),
+              );
+            },
           ),
           const Divider(height: 1),
           ListTile(
             leading: const Icon(Icons.schedule, color: Colors.black),
             title: const Text('시간표', style: TextStyle(color: Colors.black)),
-            onTap: () {},
+            onTap: () {
+              Navigator.pop(context); // Drawer 닫기
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LectureScheduleScreen(),
+                ),
+              );
+            },
           ),
           const Divider(height: 1),
           ListTile(

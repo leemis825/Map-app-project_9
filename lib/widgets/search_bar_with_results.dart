@@ -90,71 +90,40 @@ class _SearchBarWithResultsState extends State<SearchBarWithResults> {
                 ),
                 // 검색창 클릭 시 다이얼로그 열기
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder:
-                            (_) => AlertDialog(
-                              title: const Text('검색어 입력'),
-                              content: TextField(
-                                controller: _controller,
-                                autofocus: true,
-                                decoration: const InputDecoration(
-                                  hintText: '강의명 또는 강의실을 입력하세요',
-                                ),
-                                onChanged: _handleSearch,
-                                onSubmitted: _handleSearch,
-                              ),
-                            ),
-                      );
-                    },
-                    child: Container(
-                      height: 38,
-                      padding: const EdgeInsets.only(
-                        top: 8,
-                        left: 12,
-                        right: 16,
-                        bottom: 8,
+                  child: TextField(
+                    controller: _controller,
+                    focusNode: _focusNode,
+                    onChanged: _handleSearch,
+                    onSubmitted: _handleSearch,
+                    decoration: InputDecoration(
+                      hintText: '강의명 또는 강의실을 입력하세요',
+                      hintStyle: const TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 16,
+                        color: Color.fromARGB(255, 93, 92, 92),
                       ),
-                      decoration: ShapeDecoration(
-                        color: const Color.fromARGB(255, 238, 238, 238),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
+                      filled: true,
+                      fillColor: const Color.fromARGB(255, 238, 238, 238),
+                      prefixIcon: const Icon(Icons.search, color: Colors.black),
+                      contentPadding: const EdgeInsets.symmetric(
+                        vertical: 0,
+                        horizontal: 12,
                       ),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Icon(
-                            Icons.search,
-                            size: 24,
-                            color: Colors.black,
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Text(
-                              _controller.text.isEmpty
-                                  ? '강의명 또는 강의실을 검색하세요'
-                                  : _controller.text,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                color: Color.fromARGB(255, 93, 92, 92),
-                                fontSize: 16,
-                                fontFamily: 'Inter',
-                                fontWeight: FontWeight.w400,
-                                height: 1.5,
-                              ),
-                            ),
-                          ),
-                        ],
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8),
+                        borderSide: BorderSide.none,
                       ),
+                    ),
+                    style: const TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      color: Colors.black,
                     ),
                   ),
                 ),
                 // 도움말 버튼
                 IconButton(
-                  icon: const Icon(Icons.help_outline),
+                  icon: const Icon(Icons.error_outline), // 느낌표 비슷한 아이콘
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
