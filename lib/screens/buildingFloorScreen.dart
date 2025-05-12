@@ -1,4 +1,4 @@
-// lib/screens/building_floor_screen.dart
+/*// lib/screens/building_floor_screen.dart
 
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
@@ -92,3 +92,4 @@ class BuildingFloorScreen extends StatelessWidget {
     );
   }
 }
+*/

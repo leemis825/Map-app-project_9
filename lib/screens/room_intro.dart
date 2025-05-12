@@ -15,6 +15,7 @@ class RoomScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           title,
@@ -23,7 +24,7 @@ class RoomScreen extends StatelessWidget {
             color: Colors.black,  // 글씨색 변경 (기본은 흰색)
           ),
         ),
-        backgroundColor: const Color(0xFF0026FF),
+        backgroundColor: const Color(0xFF004098),
       ),
       body: SingleChildScrollView(
         child: Column(
