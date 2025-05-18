@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-//import 'screens/campus_map_screen.dart';
-import 'screens/login_screen.dart'; // ✅ 로그인 화면 추가
-import 'data/lecture_data.dart'; // ✅ 강의시간표 데이터 추가 (new)
-import 'widgets/responsive_layout.dart'; // ✅ 반응형 UI
+import 'screens/campus_map_screen.dart'; // 캠퍼스 맵 메인 화면
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); // ✅ Flutter 비동기 초기화 (반드시 필요)
-  await LectureDataManager.loadLectureData(); // ✅ classroom_schedule_final.json 파일 읽기
+void main() {
   runApp(const MyApp());
 }
 
@@ -16,10 +11,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: '조선대학교 캠퍼스 맵',
       debugShowCheckedModeBanner: false,
-      title: '조선대학교 캠퍼스 지도',
-      builder: (context, child) => ResponsiveLayout(child: child!), // ✅ 이 줄 추가, 반응형 UI
-      home: LoginScreen(),
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        useMaterial3: true,
+      ),
+      home: const CampusMapScreen(), // ✅ 앱 시작 시 캠퍼스 맵으로 이동
     );
   }
 }

@@ -1,212 +1,66 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart';
-import '../data/lecture_data.dart';
-import 'search_bar_with_results.dart';
-import 'it_building_1f_screen.dart';
-import 'it_building_2f_screen.dart';
-import 'it_building_3f_screen.dart';
-import 'it_building_4f_screen.dart';
-import 'it_building_5f_screen.dart';
-import 'it_building_6f_screen.dart';
-import 'it_building_7f_screen.dart';
-import 'it_building_8f_screen.dart';
-import 'it_building_9f_screen.dart';
-import 'it_building_10f_screen.dart';
+import 'package:campus_map_app/screens/it_building_floor_screen.dart';
+import 'package:campus_map_app/beacon/beacon_scanner.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+  const MenuScreen({Key? key}) : super(key: key);
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
 }
 
 class _MenuScreenState extends State<MenuScreen> {
-  bool isDarkMode = false;
-  int selectedFloor = 1;
-  bool showFloorButtons = false;
-  final List<int> floors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-  @override
-  void initState() {
-    super.initState();
-    LectureDataManager.loadLectureData().then((_) {
-      setState(() {}); // ✅ 데이터 로드 완료 후 갱신
-    });
-  }
-
-  void showHelp() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("도움말을 확인하세요!")));
-  }
-
-  void moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("내 위치로 이동합니다!")));
-  }
-
-  void _navigateToRoom(String roomName) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => LectureScheduleScreen(roomName: roomName),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            Container(
-              height: 56,
-              alignment: Alignment.center,
-              child: const Text(
-                '메뉴',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.person, color: Colors.black),
-              title: const Text('마이페이지', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.schedule, color: Colors.black),
-              title: const Text('시간표', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.dark_mode, color: Colors.black),
-              title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text('다크모드', style: TextStyle(color: Colors.black)),
-                  Switch(
-                    value: isDarkMode,
-                    onChanged: (value) {
-                      setState(() {
-                        isDarkMode = value;
-                      });
-                    },
-                    activeColor: Colors.white,
-                    activeTrackColor: Colors.black,
-                    inactiveThumbColor: Colors.black,
-                    inactiveTrackColor: Colors.white,
-                  ),
-                ],
-              ),
-            ),
-            const Divider(height: 1, thickness: 0.5),
-            ListTile(
-              leading: const Icon(Icons.settings, color: Colors.black),
-              title: const Text('설정', style: TextStyle(color: Colors.black)),
-              onTap: () {},
-            ),
-          ],
-        ),
-      ),
-      body: Column(
+      body: Stack(
         children: [
-          SearchBarWithResults(
-            initialText: '',
-            onRoomSelected: (room) => _navigateToRoom(room),
-          ),
-          Expanded(
-            child: Stack(
-              children: [
-                if (selectedFloor == 1)
-                  ItBuilding1fScreen()
-                else if (selectedFloor == 2)
-                  ItBuilding2fScreen()
-                else if (selectedFloor == 3)
-                  ItBuilding3fScreen()
-                else if (selectedFloor == 4)
-                  ItBuilding4fScreen()
-                else if (selectedFloor == 5)
-                  ItBuilding5fScreen()
-                else if (selectedFloor == 6)
-                  ItBuilding6fScreen()
-                else if (selectedFloor == 7)
-                  ItBuilding7fScreen()
-                else if (selectedFloor == 8)
-                  ItBuilding8fScreen()
-                else if (selectedFloor == 9)
-                  ItBuilding9fScreen()
-                else if (selectedFloor == 10)
-                  ItBuilding10fScreen(),
-                Positioned(
-                  top: 5,
-                  left: 310,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showFloorButtons = !showFloorButtons;
-                          });
-                        },
-                        child: Text('$selectedFloor층'),
+          const Center(child: Text('')),
+          Positioned(
+            bottom: 24,
+            left: 24,
+            child: GestureDetector(
+              onTap: () async {
+                final beacon = await BeaconScanner().scanStrongestBeacon();
+
+                // 하나라도 잡히면 → 2층으로 이동
+                if (beacon != null) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ItBuildingFloorScreen(
+                        floor: 2,
+                        userPosition: Offset(180, 120), // 임의의 중앙 위치
                       ),
-                      if (showFloorButtons)
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          height: 200,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: ListView.builder(
-                            itemCount: floors.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedFloor = floors[index];
-                                      showFloorButtons = false;
-                                    });
-                                  },
-                                  child: Text('${floors[index]}층'),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                    ],
-                  ),
+                    ),
+                  );
+                } else {
+                  _showSnackBar("비콘 인식 실패");
+                }
+              },
+              child: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.shade100,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.1),
+                      blurRadius: 6,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
-              ],
+                child: const Icon(Icons.my_location, color: Colors.deepPurple, size: 32),
+              ),
             ),
           ),
         ],
       ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
-          child: FloatingActionButton(
-            onPressed: moveToCurrentLocation,
-            backgroundColor: Color(0xFF0054A7),
-            child: const Icon(Icons.my_location, color: Colors.white),
-          ),
-        ),
-      ),
     );
+  }
+
+  void _showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
   }
 }
