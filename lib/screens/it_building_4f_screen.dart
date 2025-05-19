@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../models/models.dart'; // 공통 모델 불러오기
+import '../models/models.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
 
 class ItBuilding4fScreen extends StatelessWidget {
-  final double imageWidth = 1758; // 4층 도면 원본 가로 크기
-  final double imageHeight = 796; // 4층 도면 원본 세로 크기
+  final double imageWidth = 1758;
+  final double imageHeight = 796;
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '4218', left: 1080, top: 280),
@@ -14,11 +15,9 @@ class ItBuilding4fScreen extends StatelessWidget {
   ];
 
   final List<IconInfo> icons = [
-
     IconInfo(asset: 'assets/icons/stairs.svg', left: 82, top: 325),
     IconInfo(asset: 'assets/icons/stairs.svg', left: 853, top: 295),
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1663, top: 387), // 계단 아이콘 하나 추가
-
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 1663, top: 387),
     IconInfo(asset: 'assets/icons/elevator.svg', left: 996.5, top: 288),
   ];
 
@@ -45,15 +44,12 @@ class ItBuilding4fScreen extends StatelessWidget {
                 height: screenHeight,
                 child: Stack(
                   children: [
-                    // 배경 도면 이미지
                     Image.asset(
                       'assets/images/it_building_4f_map.png',
                       fit: BoxFit.fill,
                       width: scaledImageWidth,
                       height: screenHeight,
                     ),
-
-                    // 강의실 버튼
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -63,8 +59,6 @@ class ItBuilding4fScreen extends StatelessWidget {
                         child: clickableRoomArea(context, room.name),
                       );
                     }),
-
-                    // 계단 및 엘리베이터 아이콘
                     ...icons.map((icon) {
                       double left = icon.left / imageWidth * scaledImageWidth;
                       double top = icon.top / imageHeight * screenHeight;
@@ -91,10 +85,10 @@ class ItBuilding4fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 
-  // 강의실 클릭 영역
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {

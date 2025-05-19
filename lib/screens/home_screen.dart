@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import '../data/lecture_data.dart';
 import 'search_bar_with_results.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -15,20 +16,14 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     LectureDataManager.loadLectureData().then((_) {
-      setState(() {}); // ✅ 데이터 로드 후 위젯 갱신 보장
+      setState(() {}); // ✅ 데이터 로드 후 위젯 갱신
     });
   }
 
   void _showHelp() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("여기는 본관 / IT융합대학 설명 페이지입니다.")));
-  }
-
-  void _moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("현재 위치 기능은 준비 중입니다.")));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("여기는 본관 / IT융합대학 설명 페이지입니다.")),
+    );
   }
 
   void _navigateToRoom(String roomName) {
@@ -63,17 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: FloatingActionButton(
-            onPressed: _moveToCurrentLocation,
-            backgroundColor: const Color(0xFF004098),
-            child: const Icon(Icons.my_location),
-          ),
-        ),
-      ),
+      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 위젯 연결
     );
   }
 }

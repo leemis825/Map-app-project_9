@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../models/models.dart'; // 공통 모델 불러오기
-
-// const ItBuilding3fScreen({super.key}); 에러로 20250429 수정 -> const 삭제
-// 나머지 1-10까지도 동일하게 수정
+import '../models/models.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 추가
 
 class ItBuilding3fScreen extends StatelessWidget {
   final double imageWidth = 1749; // 3층 도면의 원본 가로 크기
@@ -22,7 +20,6 @@ class ItBuilding3fScreen extends StatelessWidget {
   ];
 
   final List<IconInfo> icons = [
-    // 계단 아이콘 4개
     IconInfo(asset: 'assets/icons/stairs.svg', left: 72, top: 150),
     IconInfo(asset: 'assets/icons/stairs.svg', left: 843, top: 121),
     IconInfo(asset: 'assets/icons/stairs.svg', left: 1652, top: 212),
@@ -52,7 +49,6 @@ class ItBuilding3fScreen extends StatelessWidget {
                 height: screenHeight,
                 child: Stack(
                   children: [
-                    // 배경 도면 이미지
                     Image.asset(
                       'assets/images/it_building_3f_map.png',
                       fit: BoxFit.fill,
@@ -98,10 +94,10 @@ class ItBuilding3fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 버튼 추가
     );
   }
 
-  // 강의실 클릭 영역
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {

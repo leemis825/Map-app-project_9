@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../models/models.dart'; // 공통 모델 불러오기
+import '../models/models.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
 
 class ItBuilding1fScreen extends StatelessWidget {
   final double imageWidth = 2518; // 1층 도면 원본 가로 크기
   final double imageHeight = 1147; // 1층 도면 원본 세로 크기
 
   final List<RoomInfo> rooms = [
-    RoomInfo(name: '1103', left: 374, top: 359), // -20, -30
+    RoomInfo(name: '1103', left: 374, top: 359),
     RoomInfo(name: '1122', left: 1709, top: 414),
     RoomInfo(name: '1125', left: 1933, top: 414),
   ];
@@ -66,10 +67,10 @@ class ItBuilding1fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ 위치 버튼 추가
     );
   }
 
-  // ✅ 강의실 클릭 영역
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {
@@ -85,7 +86,6 @@ class ItBuilding1fScreen extends StatelessWidget {
         height: 60,
         alignment: Alignment.center,
         color: Colors.transparent,
-        // ✅ 텍스트는 주석 처리하여 숨김, 위치 확인용으로 씀 삭제 X
         /*
         child: Text(
           roomName,

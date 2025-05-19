@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'lecture_schedule_screen.dart';
-import '../models/models.dart'; // 공통 모델 불러오기
+import '../models/models.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 import
 
 class ItBuilding6fScreen extends StatelessWidget {
-  final double imageWidth = 1443; // 6층 도면 원본 가로 크기
-  final double imageHeight = 658; // 6층 도면 원본 세로 크기
+  final double imageWidth = 1443;
+  final double imageHeight = 658;
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '6210', left: 430, top: 235),
@@ -14,13 +15,11 @@ class ItBuilding6fScreen extends StatelessWidget {
     RoomInfo(name: '6225', left: 1075, top: 235),
   ];
 
-  // 아이콘 정보 리스트
   final List<IconInfo> icons = [
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 57, top:265), //계단 (왼쪽에서부터)
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 691, top: 240), //계단 2
-    IconInfo(asset: 'assets/icons/stairs.svg', left: 1360, top: 317), //계단 3
-    IconInfo(asset: 'assets/icons/elevator.svg', left: 809, top: 233), //엘레베이터
-    // 추가할 아이콘을 여기에 삽입
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 57, top: 265),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 691, top: 240),
+    IconInfo(asset: 'assets/icons/stairs.svg', left: 1360, top: 317),
+    IconInfo(asset: 'assets/icons/elevator.svg', left: 809, top: 233),
   ];
 
   ItBuilding6fScreen({super.key});
@@ -46,7 +45,6 @@ class ItBuilding6fScreen extends StatelessWidget {
                 height: screenHeight,
                 child: Stack(
                   children: [
-                    // 도면 이미지
                     Image.asset(
                       'assets/images/it_building_6f_map.png',
                       fit: BoxFit.fill,
@@ -54,7 +52,6 @@ class ItBuilding6fScreen extends StatelessWidget {
                       height: screenHeight,
                     ),
 
-                    // 강의실 배치
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -65,12 +62,9 @@ class ItBuilding6fScreen extends StatelessWidget {
                       );
                     }),
 
-                    // 아이콘 배치
                     ...icons.map((icon) {
                       double left = icon.left / imageWidth * scaledImageWidth;
                       double top = icon.top / imageHeight * screenHeight;
-
-                      // stairs.svg일 경우만 크기 다르게 지정
                       bool isStairs = icon.asset.contains('stairs');
 
                       return Positioned(
@@ -78,7 +72,7 @@ class ItBuilding6fScreen extends StatelessWidget {
                         top: top,
                         child: SvgPicture.asset(
                           icon.asset,
-                          width: isStairs ? 24 : 36, // stairs는 24, 나머지는 36
+                          width: isStairs ? 24 : 36,
                           height: isStairs ? 24 : 36,
                           colorFilter: const ColorFilter.mode(
                             Colors.white,
@@ -94,10 +88,10 @@ class ItBuilding6fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 
-  // 강의실 클릭 위젯
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {

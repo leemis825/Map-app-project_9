@@ -5,6 +5,7 @@ import 'home_screen.dart';
 import 'menu.dart';
 import 'AppDrawer.dart';
 import 'search_bar_with_results.dart';
+import '../widgets/locate_button.dart'; // ✅ 추가된 공통 위치 아이콘 위젯
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -22,12 +23,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     LectureDataManager.loadLectureData().then((_) {
       setState(() {}); // ✅ 데이터 로딩 후 위젯 갱신
     });
-  }
-
-  void moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -84,17 +79,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
-          child: FloatingActionButton(
-            onPressed: moveToCurrentLocation,
-            backgroundColor: Color(0xFF0054A7),
-            child: const Icon(Icons.my_location, color: Colors.white),
-          ),
-        ),
-      ),
+      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
     );
   }
 
