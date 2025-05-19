@@ -3,6 +3,7 @@ import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
+import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
 
 class ItBuilding4fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 4층 도면 원본 가로 크기
@@ -12,6 +13,7 @@ class ItBuilding4fScreen extends StatelessWidget {
     RoomInfo(name: '4218', left: 1160, top: 290),
     RoomInfo(name: '4225', left: 1350, top: 280),
   ];
+
 
   ItBuilding4fScreen({super.key});
 
@@ -65,8 +67,6 @@ class ItBuilding4fScreen extends StatelessWidget {
                         child: LectureStatusDot(roomName: room.name),
                       );
                     }),
-
-
                   ],
                 ),
               ),
@@ -74,6 +74,7 @@ class ItBuilding4fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // SVG 아이콘 사용을 위한 import
 import 'lecture_schedule_screen.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
+import '../widgets/locate_button.dart'; // ✅ 공통 위치 버튼 위젯 import
 
 class ItBuilding7fScreen extends StatelessWidget {
   final double imageWidth = 1756; // 7층 도면 원본 가로 크기
@@ -74,6 +74,7 @@ class ItBuilding7fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

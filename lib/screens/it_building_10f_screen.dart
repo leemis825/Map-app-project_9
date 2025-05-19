@@ -3,6 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
+import 'lecture_schedule_screen.dart';
+import '../widgets/locate_button.dart'; // ✅ 위치 기능 위젯 import
 
 class ItBuilding10fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 10층 도면 원본 가로 크기
@@ -66,7 +68,6 @@ class ItBuilding10fScreen extends StatelessWidget {
                         child: LectureStatusDot(roomName: room.name),
                       );
                     }),
-
                   ],
                 ),
               ),
@@ -74,6 +75,7 @@ class ItBuilding10fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

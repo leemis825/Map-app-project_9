@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart';
+import '../widgets/locate_button.dart'; // ✅ 공통 위치 버튼 위젯 추가
 
 class BuildingFloorScreen extends StatelessWidget {
   final String title; // ex: 'IT융합대학 1층 지도'
@@ -62,6 +63,7 @@ class BuildingFloorScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델
 import '../widgets/lecturestatusdot.dart'; // 강의실 상태 점
 import 'space_detail_screen.dart'; // 공간 소개 화면
+import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
 
 class ItBuilding1fScreen extends StatelessWidget {
   final double imageWidth = 2518; // 1층 도면 원본 가로 크기
@@ -31,6 +32,7 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -64,7 +66,6 @@ class ItBuilding1fScreen extends StatelessWidget {
                       width: scaledImageWidth,
                       height: screenHeight,
                     ),
-                    // 강의실 버튼
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -101,6 +102,7 @@ class ItBuilding1fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ 위치 버튼 추가
     );
   }
 

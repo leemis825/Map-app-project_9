@@ -3,9 +3,7 @@ import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
-
-// const ItBuilding3fScreen({super.key}); 에러로 20250429 수정 -> const 삭제
-// 나머지 1-10까지도 동일하게 수정
+import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 추가
 
 class ItBuilding3fScreen extends StatelessWidget {
   final double imageWidth = 1749; // 3층 도면의 원본 가로 크기
@@ -74,8 +72,6 @@ class ItBuilding3fScreen extends StatelessWidget {
                         child: LectureStatusDot(roomName: room.name),
                       );
                     }),
-
-
                   ],
                 ),
               ),
@@ -83,6 +79,7 @@ class ItBuilding3fScreen extends StatelessWidget {
           );
         },
       ),
+      floatingActionButton: const LocateButton(), // ✅ BLE 위치 버튼 추가
     );
   }
 

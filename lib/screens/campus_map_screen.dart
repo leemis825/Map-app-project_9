@@ -5,6 +5,7 @@ import 'home_screen.dart';
 import 'menu.dart';
 import 'AppDrawer.dart';
 import '../widgets/search_bar_with_results.dart';
+import '../widgets/locate_button.dart'; // ✅ 추가된 공통 위치 아이콘 위젯
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -99,6 +100,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ),
       ),*/
+      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
     );
   }
 
