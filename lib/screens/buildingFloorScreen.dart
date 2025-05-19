@@ -97,7 +97,7 @@ class BuildingFloorScreen extends StatelessWidget {
           ),
         );
       },
-      child: Container(
+      /*child: Container(
         width: 80,
         height: 50,
         alignment: Alignment.center,
@@ -110,7 +110,7 @@ class BuildingFloorScreen extends StatelessWidget {
             color: const Color(0xFF0054A7),
           ),
         ),
-      ),
+      ),*/
     );
   }
 }

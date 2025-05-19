@@ -3,6 +3,7 @@ import 'lecture_schedule_screen.dart';
 import 'AppDrawer.dart';
 import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
+//import '../widgets/FloorSelect.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -96,12 +97,13 @@ class _MenuScreenState extends State<MenuScreen> {
                   ItBuilding9fScreen()
                 else if (selectedFloor == 10)
                   ItBuilding10fScreen(),
-                Positioned(
+
+                /*Positioned(
                   top: 5,
                   right: 32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    /*children: [
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -138,9 +140,26 @@ class _MenuScreenState extends State<MenuScreen> {
                             },
                           ),
                         ),
-                    ],
+                    ],*/
                   ),
                 ),
+                const SizedBox(width: 8),
+                FloorSelectorButton(
+                  selectedFloor: selectedFloor,
+                  showFloorButtons: showFloorButtons,
+                  floors: floors,
+                  onToggle: () {
+                    setState(() {
+                      showFloorButtons = !showFloorButtons;
+                    });
+                  },
+                  onSelectFloor: (int floor) {
+                    setState(() {
+                      selectedFloor = floor;
+                      showFloorButtons = false;
+                    });
+                  },
+                ),*/
               ],
             ),
           ),

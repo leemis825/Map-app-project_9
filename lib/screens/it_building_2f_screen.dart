@@ -32,9 +32,7 @@ class ItBuilding2fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('IT융합대학 2층 지도'),
-      ),
+      appBar: AppBar(title: const Text('IT융합대학 2층 지도')),
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -109,20 +107,6 @@ class ItBuilding2fScreen extends StatelessWidget {
           ),
         );
       },
-      child: Container(
-        width: 80,
-        height: 50,
-        alignment: Alignment.center,
-        color: Colors.transparent,
-        child: Text(
-          roomName,
-          style: GoogleFonts.doHyeon(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.indigo,
-          ),
-        ),
-      ),
     );
   }
 }
