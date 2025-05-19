@@ -1,75 +1,122 @@
 import 'package:flutter/material.dart';
-import 'home_screen.dart'; // ✅ HomeScreen 가져오기
-import 'menu.dart'; // ✅ 층 선택 화면 가져오기
+import 'lecture_schedule_screen.dart';
+import '../data/lecture_data.dart';
+import 'home_screen.dart';
+import 'menu.dart';
+import 'AppDrawer.dart';
+import '../widgets/search_bar_with_results.dart';
 
-class CampusMapScreen extends StatelessWidget {
+class CampusMapScreen extends StatefulWidget {
+  const CampusMapScreen({super.key});
+
+  @override
+  _CampusMapScreenState createState() => _CampusMapScreenState();
+}
+
+class _CampusMapScreenState extends State<CampusMapScreen> {
+  bool isDarkMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+    LectureDataManager.loadLectureData().then((_) {
+      setState(() {}); // ✅ 데이터 로딩 후 위젯 갱신
+    });
+  }
+
+  void moveToCurrentLocation() {
+    ScaffoldMessenger.of(
+      context,
+    ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
+  }
+
+  void _navigateToRoom(String roomName) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => LectureScheduleScreen(roomName: roomName),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('조선대학교 캠퍼스 지도'),
+      drawer: AppDrawer(
+        isDarkMode: isDarkMode,
+        onToggleDarkMode: (value) {
+          setState(() {
+            isDarkMode = value;
+          });
+        },
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.horizontal, // 가로 스크롤 활성화
-        physics: BouncingScrollPhysics(),  // 물리적 스크롤 효과를 추가
-        child: Row(
-          children: [
-            Stack(
-              children: [
-                // 캠퍼스 지도 이미지
-                Image.asset(
-                  'assets/images/campus_map.png',
-                  fit: BoxFit.cover,
-                  width: 1500, // 실제 지도의 가로 크기 (필요시 조정)
-                  height: MediaQuery.of(context).size.height,
-                ),
-
-                // 본관 중앙 버튼
-                Positioned(
-                  left: 440,
-                  top: 100,
-                  child: campusButton(
-                    context,
-                    label: '본관 중앙',
-                    destination: const HomeScreen(),
+      backgroundColor: Colors.white,
+      body: Column(
+        children: [
+          SearchBarWithResults(
+            initialText: '',
+            onRoomSelected: (room) => _navigateToRoom(room),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Stack(
+                children: [
+                  Image.asset(
+                    'assets/images/campus_map.png',
+                    width: 1500,
+                    fit: BoxFit.cover,
+                    height: MediaQuery.of(context).size.height,
                   ),
-                ),
-
-                // IT융합대학 버튼
-                Positioned(
-                  left: 800,
-                  top: 100,
-                  child: campusButton(
-                    context,
-                    label: 'IT융합대학',
-                    destination: MenuScreen(),
+                  Positioned(
+                    left: 440,
+                    top: 100,
+                    child: campusButton(context, '본관 중앙', const HomeScreen()),
                   ),
-                ),
-              ],
+                  Positioned(
+                    left: 800,
+                    top: 100,
+                    child: campusButton(
+                      context,
+                      'IT융합대학',
+                      MenuScreen(),
+                    ), //MenuScreen()),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
+        ],
+      ),
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
+          child: FloatingActionButton(
+            onPressed: moveToCurrentLocation,
+            backgroundColor: Color(0xFF0054A7),
+            child: const Icon(Icons.my_location, color: Colors.white),
+          ),
         ),
       ),
     );
   }
 
-  Widget campusButton(BuildContext context, {required String label, required Widget destination}) {
+  Widget campusButton(BuildContext context, String label, Widget destination) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.deepPurple,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      ),
       onPressed: () {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => destination),
         );
       },
-      child: Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold)),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.white,
+        foregroundColor: const Color(0xFF0054A7),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      ),
+      child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 }

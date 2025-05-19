@@ -18,7 +18,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: '조선대학교 캠퍼스 지도',
-      builder: (context, child) => ResponsiveLayout(child: child!), // ✅ 이 줄 추가, 반응형 UI
+      builder:
+          (context, child) =>
+              ResponsiveLayout(child: child!), // ✅ 이 줄 추가, 반응형 UI
       home: LoginScreen(),
     );
   }
