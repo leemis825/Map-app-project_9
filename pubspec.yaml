@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^2.27.0          # ✅ Firebase 초기화용
   permission_handler: ^11.3.1     # ✅ 위치 권한 요청
   uuid: ^4.2.2                    # ✅ UUID 생성기
+  flutter_blue_plus: ^1.35.4
 
 dev_dependencies:
   flutter_test:

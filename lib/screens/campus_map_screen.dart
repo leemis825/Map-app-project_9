@@ -5,6 +5,11 @@ import 'home_screen.dart';
 import 'menu.dart';
 import 'AppDrawer.dart';
 import '../widgets/search_bar_with_results.dart';
+import 'ble_floor_detector.dart';
+import 'it_building_1f_screen.dart';
+import 'it_building_2f_screen.dart';
+import 'it_building_3f_screen.dart';
+import 'it_building_4f_screen.dart';
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -15,6 +20,7 @@ class CampusMapScreen extends StatefulWidget {
 
 class _CampusMapScreenState extends State<CampusMapScreen> {
   bool isDarkMode = false;
+  final BleFloorDetector bleDetector = BleFloorDetector();
 
   @override
   void initState() {
@@ -24,10 +30,40 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     });
   }
 
-  void moveToCurrentLocation() {
+  void moveToCurrentLocation() async {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
+
+    int? detectedFloor = await bleDetector.detectStrongestBeaconFloor();
+
+    if (detectedFloor != null) {
+      Widget targetScreen;
+
+      if (detectedFloor == 1)
+        targetScreen = ItBuilding1fScreen();
+      else if (detectedFloor == 2)
+        targetScreen = ItBuilding2fScreen();
+      else if (detectedFloor == 3)
+        targetScreen = ItBuilding3fScreen();
+      else if (detectedFloor == 4)
+        targetScreen = ItBuilding4fScreen();
+      else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("해당 층 정보를 찾을 수 없습니다.")),
+        );
+        return;
+      }
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => targetScreen),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("비콘을 감지하지 못했습니다.")),
+      );
+    }
   }
 
   void _navigateToRoom(String roomName) {
