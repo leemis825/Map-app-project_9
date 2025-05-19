@@ -48,7 +48,8 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const LectureScheduleScreen(),
+                  builder:
+                      (context) => const LectureScheduleScreen(roomName: 0),
                 ),
               );
             },

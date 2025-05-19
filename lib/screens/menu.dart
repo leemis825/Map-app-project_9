@@ -3,7 +3,6 @@ import 'lecture_schedule_screen.dart';
 import 'AppDrawer.dart';
 import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
-//import '../widgets/FloorSelect.dart';
 import 'it_building_1f_screen.dart';
 import 'it_building_2f_screen.dart';
 import 'it_building_3f_screen.dart';
@@ -14,6 +13,7 @@ import 'it_building_7f_screen.dart';
 import 'it_building_8f_screen.dart';
 import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
+//import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -32,7 +32,7 @@ class _MenuScreenState extends State<MenuScreen> {
   void initState() {
     super.initState();
     LectureDataManager.loadLectureData().then((_) {
-      setState(() {}); // ✅ 데이터 로드 완료 후 갱신
+      setState(() {});
     });
   }
 
@@ -40,12 +40,6 @@ class _MenuScreenState extends State<MenuScreen> {
     ScaffoldMessenger.of(
       context,
     ).showSnackBar(const SnackBar(content: Text("도움말을 확인하세요!")));
-  }
-
-  void moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("내 위치로 이동합니다!")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -97,13 +91,12 @@ class _MenuScreenState extends State<MenuScreen> {
                   ItBuilding9fScreen()
                 else if (selectedFloor == 10)
                   ItBuilding10fScreen(),
-
-                /*Positioned(
+                Positioned(
                   top: 5,
                   right: 32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    /*children: [
+                    children: [
                       ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -140,42 +133,15 @@ class _MenuScreenState extends State<MenuScreen> {
                             },
                           ),
                         ),
-                    ],*/
+                    ],
                   ),
                 ),
-                const SizedBox(width: 8),
-                FloorSelectorButton(
-                  selectedFloor: selectedFloor,
-                  showFloorButtons: showFloorButtons,
-                  floors: floors,
-                  onToggle: () {
-                    setState(() {
-                      showFloorButtons = !showFloorButtons;
-                    });
-                  },
-                  onSelectFloor: (int floor) {
-                    setState(() {
-                      selectedFloor = floor;
-                      showFloorButtons = false;
-                    });
-                  },
-                ),*/
               ],
             ),
           ),
         ],
       ),
-      floatingActionButton: Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
-          child: FloatingActionButton(
-            onPressed: moveToCurrentLocation,
-            backgroundColor: Color(0xFF0054A7),
-            child: const Icon(Icons.my_location, color: Colors.white),
-          ),
-        ),
-      ),
+      //floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
     );
   }
 }
