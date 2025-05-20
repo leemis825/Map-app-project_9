@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
 import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
+import 'space_detail_screen.dart'; // 공간 소개 화면
 
 class ItBuilding2fScreen extends StatelessWidget {
   final double imageWidth = 1755; // 2층 도면의 원본 가로 크기
@@ -20,6 +21,14 @@ class ItBuilding2fScreen extends StatelessWidget {
     RoomInfo(name: '2228', left: 1495, top: 105),
   ];
 
+  final List<Space> spaces = [
+    Space(
+      name: 'tdm.space',
+      left: 165,
+      top: 280,
+      description: 'Thinking Design Making\n학생들이 자유롭게 토론하며 프로젝트를 수행하는 개방된 공간입니다.',
+    ),
+  ];
 
   ItBuilding2fScreen({super.key});
 
@@ -71,8 +80,16 @@ class ItBuilding2fScreen extends StatelessWidget {
                         child: LectureStatusDot(roomName: room.name),
                       );
                     }),
-
-
+                    // 공공시설 버튼 (예: s.space)
+                    ...spaces.map((space) {
+                      double left = space.left / imageWidth * scaledImageWidth;
+                      double top = space.top / imageHeight * screenHeight;
+                      return Positioned(
+                        left: left,
+                        top: top,
+                        child: clickableSpaceArea(context, space),
+                      );
+                    }),
                   ],
                 ),
               ),
@@ -111,4 +128,25 @@ class ItBuilding2fScreen extends StatelessWidget {
       ),
     );
   }
+  // ✅ 공공시설 클릭 시 소개 화면 이동
+  Widget clickableSpaceArea(BuildContext context, Space space) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SpaceDetailScreen(space: space),
+          ),
+        );
+      },
+      child: Container(
+        width: 80,
+        height: 60,
+        alignment: Alignment.center,
+        color: Colors.transparent,
+      ),
+    );
+  }
 }
+
+

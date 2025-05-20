@@ -25,6 +25,13 @@ class ItBuilding1fScreen extends StatelessWidget {
       top: 150,
       description: 's.space는 학생들을 위한 카페형 협업 공간입니다.',
     ),
+    Space(
+      name: 'i.space',
+      left: 1480,
+      top: 414,
+      description: '가상현실(VR), 증강현실(AR) 및 관련 기술을 체험할 수 있는 공간입니다.',
+    ),
+
   ];
 
   ItBuilding1fScreen({super.key});
@@ -74,7 +81,7 @@ class ItBuilding1fScreen extends StatelessWidget {
                         top: top,
                         child: clickableRoomArea(context, room.name),
                       );
-                    }).toList(),
+                    }),
                     // 상태 점
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
@@ -84,7 +91,7 @@ class ItBuilding1fScreen extends StatelessWidget {
                         top: top + 40,
                         child: LectureStatusDot(roomName: room.name),
                       );
-                    }).toList(),
+                    }),
                     // 공공시설 버튼 (예: s.space)
                     ...spaces.map((space) {
                       double left = space.left / imageWidth * scaledImageWidth;
@@ -94,7 +101,7 @@ class ItBuilding1fScreen extends StatelessWidget {
                         top: top,
                         child: clickableSpaceArea(context, space),
                       );
-                    }).toList(),
+                    }),
                   ],
                 ),
               ),

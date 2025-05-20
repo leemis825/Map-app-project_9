@@ -44,6 +44,8 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/images/s.space.png
+    - assets/images/i.space.png
+    - assets/images/tdm.space.png
     - assets/images/Bookmark.png
     - assets/data/classroom_schedule_final.json
     - assets/data/beacon_mac_table.json
