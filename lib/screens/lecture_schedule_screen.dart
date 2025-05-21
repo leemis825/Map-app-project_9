@@ -247,6 +247,7 @@ import 'package:flutter/material.dart';
 import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
+import 'AppDrawer.dart';
 
 class LectureScheduleScreen extends StatefulWidget {
   final String roomName;
@@ -258,7 +259,7 @@ class LectureScheduleScreen extends StatefulWidget {
 
 class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   late String currentRoomName;
-
+  bool isDarkMode = false;
   final List<String> days = ['월', '화', '수', '목', '금'];
   final List<String> timePeriods = [
     '08:00',
@@ -318,20 +319,25 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: const Color(0xFF0054A7),
+        automaticallyImplyLeading: false, // 기본 햄버거 버튼 숨기기
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.of(context).maybePop(); // 뒤로 가기 시도
+          },
+        ),
         title: Text(
           '$currentRoomName 강의실 시간표',
-          style: const TextStyle(color: Colors.white), // ✅ 글씨 흰색
+          style: const TextStyle(color: Colors.white), // 글씨 흰색
         ),
-        /*actions: [
-          IconButton(
-            icon: const Icon(Icons.help_outline),
-            onPressed: () {
-              ScaffoldMessenger.of(
-                context,
-              ).showSnackBar(const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")));
-            },
-          ),
-        ],*/
+      ),
+      drawer: AppDrawer(
+        isDarkMode: isDarkMode,
+        onToggleDarkMode: (value) {
+          setState(() {
+            isDarkMode = value;
+          });
+        },
       ),
       body: Column(
         children: [

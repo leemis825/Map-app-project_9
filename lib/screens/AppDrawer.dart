@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'MyPage.dart';
 import 'MyTimetable.dart';
+import 'chatscreen.dart'; // ← 경로와 파일명에 맞게 조정
 
 class AppDrawer extends StatelessWidget {
   final bool isDarkMode;
@@ -50,6 +51,18 @@ class AppDrawer extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => const LectureScheduleScreen(),
                 ),
+              );
+            },
+          ),
+          const Divider(height: 1),
+          ListTile(
+            leading: const Icon(Icons.chat, color: Colors.black),
+            title: const Text('챗봇', style: TextStyle(color: Colors.black)),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ChatScreen()),
               );
             },
           ),

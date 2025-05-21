@@ -13,7 +13,7 @@ import 'it_building_7f_screen.dart';
 import 'it_building_8f_screen.dart';
 import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
-import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯
+import '../widgets/locate_button.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -36,12 +36,6 @@ class _MenuScreenState extends State<MenuScreen> {
     });
   }
 
-  void showHelp() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("도움말을 확인하세요!")),
-    );
-  }
-
   void _navigateToRoom(String roomName) {
     Navigator.push(
       context,
@@ -54,6 +48,18 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: Text('IT융합대학 ${selectedFloor}층'),
+        backgroundColor: const Color(0xFF0054A7),
+        automaticallyImplyLeading: false, // 기본 햄버거 버튼 안 보이게
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).maybePop(); // 뒤로 가기 시도
+          },
+        ),
+      ),
       drawer: AppDrawer(
         isDarkMode: isDarkMode,
         onToggleDarkMode: (value) {
@@ -76,23 +82,23 @@ class _MenuScreenState extends State<MenuScreen> {
                 else if (selectedFloor == 2)
                   ItBuilding2fScreen()
                 else if (selectedFloor == 3)
-                  ItBuilding3fScreen()
-                else if (selectedFloor == 4)
-                  ItBuilding4fScreen()
-                else if (selectedFloor == 5)
-                  ItBuilding5fScreen()
-                else if (selectedFloor == 6)
-                  ItBuilding6fScreen()
-                else if (selectedFloor == 7)
-                  ItBuilding7fScreen()
-                else if (selectedFloor == 8)
-                  ItBuilding8fScreen()
-                else if (selectedFloor == 9)
-                  ItBuilding9fScreen()
-                else if (selectedFloor == 10)
-                  ItBuilding10fScreen(),
+                    ItBuilding3fScreen()
+                  else if (selectedFloor == 4)
+                      ItBuilding4fScreen()
+                    else if (selectedFloor == 5)
+                        ItBuilding5fScreen()
+                      else if (selectedFloor == 6)
+                          ItBuilding6fScreen()
+                        else if (selectedFloor == 7)
+                            ItBuilding7fScreen()
+                          else if (selectedFloor == 8)
+                              ItBuilding8fScreen()
+                            else if (selectedFloor == 9)
+                                ItBuilding9fScreen()
+                              else if (selectedFloor == 10)
+                                  ItBuilding10fScreen(),
                 Positioned(
-                  top: 5,
+                  top: 0,
                   right: 32,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,7 +147,7 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
         ],
       ),
-      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
+      floatingActionButton: const LocateButton(),
     );
   }
 }

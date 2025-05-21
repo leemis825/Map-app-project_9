@@ -20,9 +20,6 @@ class ItBuilding8fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('IT융합대학 8층 지도'),
-      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
