@@ -49,7 +49,7 @@ class AppDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder:
-                      (context) => const LectureScheduleScreen(roomName: 0),
+                      (context) => const LectureScheduleScreen(roomName: "0"),
                 ),
               );
             },

@@ -4,8 +4,8 @@ import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
 
 class LectureScheduleScreen extends StatefulWidget {
-  final String roomName = '0';
-  const LectureScheduleScreen({required roomName, super.key});
+  final String roomName;
+  const LectureScheduleScreen({required this.roomName, super.key});
 
   @override
   State<LectureScheduleScreen> createState() => _LectureScheduleScreenState();
@@ -72,11 +72,27 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0054A7),
+        backgroundColor: Colors.white,
         title: Text(
           '내 시간표',
-          style: const TextStyle(color: Colors.white), // ✅ 글씨 흰색
+          style: const TextStyle(color: Colors.black), // ✅ 글씨 흰색
         ),
+      ),
+      body: Column(
+        children: [
+          // ✅ 검색 바에서 강의실 선택 시 시간표 갱신
+          SearchBarWithResults(
+            initialText: "",
+            onRoomSelected: (selectedRoom) {
+              if (selectedRoom.isNotEmpty && selectedRoom != currentRoomName) {
+                setState(() {
+                  currentRoomName = selectedRoom;
+                });
+              }
+            },
+          ),
+          Expanded(child: _buildCustomTimeTable()),
+        ],
       ),
     );
   }

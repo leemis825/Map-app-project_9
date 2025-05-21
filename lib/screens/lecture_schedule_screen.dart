@@ -72,10 +72,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0054A7),
+        backgroundColor: Colors.white,
         title: Text(
           '$currentRoomName 강의실 시간표',
-          style: const TextStyle(color: Colors.white), // ✅ 글씨 흰색
+          style: const TextStyle(color: Colors.black), // ✅ 글씨 흰색
         ),
       ),
       body: Column(

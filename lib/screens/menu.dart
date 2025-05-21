@@ -91,50 +91,108 @@ class _MenuScreenState extends State<MenuScreen> {
                   ItBuilding9fScreen()
                 else if (selectedFloor == 10)
                   ItBuilding10fScreen(),
-                Positioned(
-                  top: 5,
-                  right: 32,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            showFloorButtons = !showFloorButtons;
-                          });
-                        },
-                        child: Text('$selectedFloor층'),
-                      ),
-                      if (showFloorButtons)
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          height: 200,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black),
-                            borderRadius: BorderRadius.circular(8),
+                Stack(
+                  children: [
+                    // 층 선택 버튼 (항상 고정 위치)
+                    Positioned(
+                      top: 5,
+                      right: 32,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 12,
+                          vertical: 8,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            color: Color(0xFFE6E6E6),
+                            width: 1,
                           ),
-                          child: ListView.builder(
-                            itemCount: floors.length,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      selectedFloor = floors[index];
-                                      showFloorButtons = false;
-                                    });
-                                  },
-                                  child: Text('${floors[index]}층'),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              showFloorButtons = !showFloorButtons;
+                            });
+                          },
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                '$selectedFloor층',
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'Inter',
+                                  color: Colors.black,
                                 ),
-                              );
-                            },
+                              ),
+                              const SizedBox(width: 4),
+                              Icon(
+                                showFloorButtons
+                                    ? Icons.arrow_drop_up
+                                    : Icons.arrow_drop_down,
+                                color: Colors.black,
+                                size: 20,
+                              ),
+                            ],
                           ),
                         ),
-                    ],
-                  ),
+                      ),
+                    ),
+
+                    // 펼쳐지는 층 목록 (버튼 아래에 고정 위치)
+                    if (showFloorButtons)
+                      Positioned(
+                        top: 48,
+                        right: 32,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 6,
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Color(0xFFE6E6E6),
+                              width: 1,
+                            ),
+                            borderRadius: BorderRadius.circular(6),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children:
+                                floors.map((floor) {
+                                  return Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 4,
+                                    ),
+                                    child: TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          selectedFloor = floor;
+                                          showFloorButtons = false;
+                                        });
+                                      },
+                                      style: TextButton.styleFrom(
+                                        foregroundColor: Colors.black,
+                                        backgroundColor: Colors.transparent,
+                                        padding: EdgeInsets.zero,
+                                        textStyle: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w500,
+                                          fontFamily: 'Inter',
+                                        ),
+                                      ),
+                                      child: Text('${floor}층'),
+                                    ),
+                                  );
+                                }).toList(),
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
               ],
             ),
