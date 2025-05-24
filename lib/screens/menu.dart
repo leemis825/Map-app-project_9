@@ -13,7 +13,7 @@ import 'it_building_7f_screen.dart';
 import 'it_building_8f_screen.dart';
 import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
-import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯
+import 'ble_floor_detector.dart'; // ✅ BLE 비콘 기능 import
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({super.key});
@@ -48,6 +48,32 @@ class _MenuScreenState extends State<MenuScreen> {
       MaterialPageRoute(
         builder: (context) => LectureScheduleScreen(roomName: roomName),
       ),
+    );
+  }
+
+  // ✅ BLE 비콘을 통한 현재 층 자동 감지 및 이동
+  void moveToCurrentLocation() async {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("BLE로 현재 위치를 탐지 중입니다...")),
+    );
+
+    final bleDetector = BleFloorDetector();
+    int? floor = await bleDetector.detectStrongestBeaconFloor();
+
+    if (floor == null || floor <= 0 || floor > 10) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("❌ 유효한 층 정보를 감지하지 못했습니다.")),
+      );
+      return;
+    }
+
+    setState(() {
+      selectedFloor = floor;
+      showFloorButtons = false;
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("✅ ${floor}층으로 이동합니다.")),
     );
   }
 
@@ -141,7 +167,18 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
         ],
       ),
-      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
+      // ✅ 위치 버튼에서 BLE 감지 기능 실행
+      floatingActionButton: Align(
+        alignment: Alignment.bottomLeft,
+        child: Padding(
+          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
+          child: FloatingActionButton(
+            onPressed: moveToCurrentLocation,
+            backgroundColor: const Color(0xFF0054A7),
+            child: const Icon(Icons.my_location, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }

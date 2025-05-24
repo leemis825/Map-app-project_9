@@ -3,12 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'lecture_schedule_screen.dart'; // ✅ 강의실 시간표 화면 import
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
-import 'lecture_schedule_screen.dart';
 import '../widgets/locate_button.dart'; // ✅ 위치 버튼 위젯 추가
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 추가
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 추가
 
 class ItBuilding9fScreen extends StatelessWidget {
   final double imageWidth = 1753; // 9층 도면 원본 가로 크기
-  final double imageHeight = 795;  // 9층 도면 원본 세로 크기
+  final double imageHeight = 795; // 9층 도면 원본 세로 크기
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '9206', left: 303, top: 280),
@@ -17,7 +18,6 @@ class ItBuilding9fScreen extends StatelessWidget {
     RoomInfo(name: '9225', left: 1312, top: 280),
   ];
 
-
   ItBuilding9fScreen({super.key});
 
   @override
@@ -25,7 +25,11 @@ class ItBuilding9fScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('IT융합대학 9층 지도'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 1,
       ),
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -76,7 +80,21 @@ class ItBuilding9fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
+
+      // ✅ 하단 FAB 3개 가로 정렬
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            QrButton(),
+            SizedBox(width: 16),
+            NavigateButton(),
+            SizedBox(width: 16),
+            LocateButton(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -96,14 +114,16 @@ class ItBuilding9fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
+        /*
+        child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.indigo,
           ),
-        ),*/
+        ),
+        */
       ),
     );
   }

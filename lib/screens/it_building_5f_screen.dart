@@ -3,6 +3,8 @@ import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart';
 import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 import
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 import
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 import
 
 class ItBuilding5fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 도면 원본 가로 크기
@@ -17,7 +19,13 @@ class ItBuilding5fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('IT융합대학 5층 지도')),
+      appBar: AppBar(
+        title: const Text('IT융합대학 5층 지도'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 1,
+      ),
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -51,8 +59,6 @@ class ItBuilding5fScreen extends StatelessWidget {
                         child: clickableRoomArea(context, room.name),
                       );
                     }),
-
-
                   ],
                 ),
               ),
@@ -60,10 +66,23 @@ class ItBuilding5fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
+
+      // ✅ FAB 버튼 가로 정렬 하단 중앙
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            QrButton(),
+            SizedBox(width: 16),
+            NavigateButton(),
+            SizedBox(width: 16),
+            LocateButton(),
+          ],
+        ),
+      ),
     );
   }
-
 
   // 강의실 클릭 위젯
   Widget clickableRoomArea(BuildContext context, String roomName) {
@@ -81,16 +100,17 @@ class ItBuilding5fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
+        /*
+        child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.indigo,
           ),
-        ),*/
+        ),
+        */
       ),
     );
   }
 }
-

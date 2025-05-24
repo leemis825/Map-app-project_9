@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
-import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
-import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 추가
+import '../widgets/lecturestatusdot.dart'; // 상태 점
+import '../widgets/locate_button.dart'; // 위치 버튼
+import '../widgets/qr_button.dart'; // QR 버튼
+import '../widgets/navigate_button.dart'; // 경로안내 버튼
 
 class ItBuilding3fScreen extends StatelessWidget {
-  final double imageWidth = 1749; // 3층 도면의 원본 가로 크기
-  final double imageHeight = 799; // 3층 도면의 원본 세로 크기
+  final double imageWidth = 1749;
+  final double imageHeight = 799;
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '3108', left: 381, top: 500),
@@ -19,7 +21,6 @@ class ItBuilding3fScreen extends StatelessWidget {
     RoomInfo(name: '3128', left: 1270, top: 285),
   ];
 
-
   ItBuilding3fScreen({super.key});
 
   @override
@@ -27,7 +28,11 @@ class ItBuilding3fScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('IT융합대학 3층 지도'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 1,
       ),
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -62,7 +67,7 @@ class ItBuilding3fScreen extends StatelessWidget {
                       );
                     }),
 
-                    // ✅ 강의실 상태 점
+                    // 강의실 상태 점
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -79,7 +84,27 @@ class ItBuilding3fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 버튼 추가
+
+      // ✅ 오른쪽 하단 FAB 3개 세로 정렬 (Z플립 대응)
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            right: 16,
+            bottom: 16,
+            child: const LocateButton(),
+          ),
+          Positioned(
+            right: 16,
+            bottom: 96,
+            child: const QrButton(),
+          ),
+          Positioned(
+            right: 16,
+            bottom: 176,
+            child: const NavigateButton(),
+          ),
+        ],
+      ),
     );
   }
 
@@ -99,14 +124,16 @@ class ItBuilding3fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
+        /*
+        child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.indigo,
           ),
-        ),*/
+        ),
+        */
       ),
     );
   }

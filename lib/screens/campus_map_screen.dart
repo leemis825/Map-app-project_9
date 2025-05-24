@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
-import 'lecture_schedule_screen.dart';
-import '../data/lecture_data.dart';
-import 'home_screen.dart';
-import 'menu.dart';
-import 'AppDrawer.dart';
+import 'package:flutter_blue_plus/flutter_blue_plus.dart';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:convert';
+import 'dart:async'; // ⬅️ 반드시 추가
+
+import '../widgets/locate_button.dart';
+import '../widgets/navigate_button.dart';
+import '../widgets/qr_button.dart';
+
 import '../widgets/search_bar_with_results.dart';
-import '../widgets/locate_button.dart'; // ✅ 추가된 공통 위치 아이콘 위젯
+import '../screens/lecture_schedule_screen.dart';
+import '../data/lecture_data.dart';
+import '../screens/home_screen.dart';
+import '../screens/menu.dart';
+import 'AppDrawer.dart';
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -16,20 +25,91 @@ class CampusMapScreen extends StatefulWidget {
 
 class _CampusMapScreenState extends State<CampusMapScreen> {
   bool isDarkMode = false;
+  bool _beaconFound = false;
 
   @override
   void initState() {
     super.initState();
     LectureDataManager.loadLectureData().then((_) {
-      setState(() {}); // ✅ 데이터 로딩 후 위젯 갱신
+      setState(() {});
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      startBeaconScan(context);
     });
   }
 
-  /*void moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("현재 위치로 이동 중입니다.")));
-  }*/
+  Future<List<String>> loadAllowedBeaconMacs() async {
+    final jsonString = await rootBundle.loadString('assets/data/beacon_test_sample.json');
+    final List<dynamic> beaconList = json.decode(jsonString);
+    return beaconList.map((b) => (b['mac'] as String).toLowerCase()).toList();
+  }
+
+  Future<void> startBeaconScan(BuildContext context) async {
+    final allowedMacs = await loadAllowedBeaconMacs();
+
+    final bluetoothScan = await Permission.bluetoothScan.request();
+    final bluetoothConnect = await Permission.bluetoothConnect.request();
+    final location = await Permission.locationWhenInUse.request();
+
+    if (!bluetoothScan.isGranted ||
+        !bluetoothConnect.isGranted ||
+        !location.isGranted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("⚠️ BLE 스캔에 필요한 권한이 부족합니다.")),
+      );
+      return;
+    }
+
+    await FlutterBluePlus.startScan(timeout: const Duration(seconds: 5));
+    bool beaconDetected = false;
+    StreamSubscription? subscription;
+
+    subscription = FlutterBluePlus.scanResults.listen((results) {
+      if (_beaconFound) return;
+
+      for (ScanResult result in results) {
+        final mac = result.device.remoteId.toString().toLowerCase();
+        final advData = result.advertisementData.manufacturerData;
+
+        if (allowedMacs.contains(mac) && advData.isNotEmpty) {
+          final data = advData.values.first;
+          if (data.length >= 4) {
+            final minor = (data[2] << 8) | data[3];
+
+            setState(() {
+              _beaconFound = true;
+            });
+
+            beaconDetected = true;
+
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text("✅ 비콘 인식됨\nMAC: $mac\nminor: $minor"),
+                duration: const Duration(seconds: 4),
+              ),
+            );
+
+            FlutterBluePlus.stopScan();
+            subscription?.cancel();
+            break;
+          }
+        }
+      }
+    });
+
+    await Future.delayed(const Duration(seconds: 5));
+
+    if (!beaconDetected && !_beaconFound) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text("❌ 근처에서 감지된 비콘이 없습니다."),
+          duration: Duration(seconds: 3),
+        ),
+      );
+      FlutterBluePlus.stopScan();
+      await subscription?.cancel();
+    }
+  }
 
   void _navigateToRoom(String roomName) {
     Navigator.push(
@@ -81,7 +161,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                       context,
                       'IT융합대학',
                       MenuScreen(),
-                    ), //MenuScreen()),
+                    ),
                   ),
                 ],
               ),
@@ -89,18 +169,27 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-      /*floatingActionButton: Align(
-        alignment: Alignment.bottomLeft,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 32.0, bottom: 16.0),
-          child: FloatingActionButton(
-            onPressed: moveToCurrentLocation,
-            backgroundColor: Color(0xFF0054A7),
-            child: const Icon(Icons.my_location, color: Colors.white),
+
+      // ✅ Stack으로 FAB 3개를 화면에 띄우기 (Z 플립 최적화)
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            right: 16,
+            bottom: 16,
+            child: const LocateButton(),
           ),
-        ),
-      ),*/
-      floatingActionButton: const LocateButton(), // ✅ 위치 아이콘 공통 적용
+          Positioned(
+            right: 16,
+            bottom: 96,
+            child: const QrButton(),
+          ),
+          Positioned(
+            right: 16,
+            bottom: 176,
+            child: const NavigateButton(),
+          ),
+        ],
+      ),
     );
   }
 

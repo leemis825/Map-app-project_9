@@ -1,0 +1,33 @@
+{
+  "IT307_IT509": {
+    "start": "IT307",
+    "end": "IT509",
+    "path": [
+      {"type": "straight", "length": 25},
+      {"type": "stairs", "toFloor": 5},
+      {"type": "turn", "direction": "right"},
+      {"type": "room", "name": "IT509"}
+    ]
+  },
+  "IT210_IT222": {
+    "start": "IT210",
+    "end": "IT222",
+    "path": [
+      {"type": "straight", "length": 10},
+      {"type": "turn", "direction": "left"},
+      {"type": "straight", "length": 15},
+      {"type": "room", "name": "IT222"}
+    ]
+  },
+  "IT322_IT409": {
+    "start": "IT322",
+    "end": "IT409",
+    "path": [
+      {"type": "straight", "length": 18},
+      {"type": "stairs", "toFloor": 4},
+      {"type": "turn", "direction": "right"},
+      {"type": "straight", "length": 7},
+      {"type": "room", "name": "IT409"}
+    ]
+  }
+}

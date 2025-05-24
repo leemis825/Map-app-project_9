@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
 import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 추가
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 추가
 
 class ItBuilding4fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 4층 도면 원본 가로 크기
@@ -14,7 +16,6 @@ class ItBuilding4fScreen extends StatelessWidget {
     RoomInfo(name: '4225', left: 1350, top: 280),
   ];
 
-
   ItBuilding4fScreen({super.key});
 
   @override
@@ -22,7 +23,11 @@ class ItBuilding4fScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('IT융합대학 4층 지도'),
+        backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
+        elevation: 1,
       ),
+      backgroundColor: Colors.white,
       body: LayoutBuilder(
         builder: (context, constraints) {
           double screenHeight = constraints.maxHeight;
@@ -74,7 +79,21 @@ class ItBuilding4fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
+
+      // ✅ FAB 버튼 하단 중앙 가로 정렬
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 12.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            QrButton(),
+            SizedBox(width: 16),
+            NavigateButton(),
+            SizedBox(width: 16),
+            LocateButton(),
+          ],
+        ),
+      ),
     );
   }
 
@@ -94,14 +113,16 @@ class ItBuilding4fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
+        /*
+        child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,
             fontWeight: FontWeight.bold,
             color: Colors.indigo,
           ),
-        ),*/
+        ),
+        */
       ),
     );
   }

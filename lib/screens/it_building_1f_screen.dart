@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/models.dart'; // 공통 모델
-import '../widgets/lecturestatusdot.dart'; // 강의실 상태 점
-import 'space_detail_screen.dart'; // 공간 소개 화면
-import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
+import '../models/models.dart';
+import '../widgets/lecturestatusdot.dart';
+import 'space_detail_screen.dart';
+import '../widgets/locate_button.dart';
+import '../widgets/qr_button.dart';
+import '../widgets/navigate_button.dart';
 
 class ItBuilding1fScreen extends StatelessWidget {
-  final double imageWidth = 2518; // 1층 도면 원본 가로 크기
-  final double imageHeight = 1147; // 1층 도면 원본 세로 크기
+  final double imageWidth = 2518;
+  final double imageHeight = 1147;
 
-  // 강의실 목록
   final List<RoomInfo> rooms = [
     RoomInfo(name: '1103', left: 510, top: 359),
     RoomInfo(name: '1122', left: 1709, top: 414),
     RoomInfo(name: '1125', left: 1933, top: 414),
   ];
 
-  // 공공시설 목록 (예: s.space)
   final List<Space> spaces = [
     Space(
       name: 's.space',
@@ -59,13 +59,15 @@ class ItBuilding1fScreen extends StatelessWidget {
                 height: screenHeight,
                 child: Stack(
                   children: [
-                    // 배경 이미지
+                    // 도면 이미지
                     Image.asset(
                       'assets/images/it_building_1f_map.png',
                       fit: BoxFit.fill,
                       width: scaledImageWidth,
                       height: screenHeight,
                     ),
+
+                    // 강의실 클릭 영역
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -75,7 +77,8 @@ class ItBuilding1fScreen extends StatelessWidget {
                         child: clickableRoomArea(context, room.name),
                       );
                     }).toList(),
-                    // 상태 점
+
+                    // 강의실 상태 점
                     ...rooms.map((room) {
                       double left = room.left / imageWidth * scaledImageWidth;
                       double top = room.top / imageHeight * screenHeight;
@@ -85,7 +88,8 @@ class ItBuilding1fScreen extends StatelessWidget {
                         child: LectureStatusDot(roomName: room.name),
                       );
                     }).toList(),
-                    // 공공시설 버튼 (예: s.space)
+
+                    // 공공시설 클릭 영역
                     ...spaces.map((space) {
                       double left = space.left / imageWidth * scaledImageWidth;
                       double top = space.top / imageHeight * screenHeight;
@@ -102,11 +106,30 @@ class ItBuilding1fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ 위치 버튼 추가
+
+      // ✅ 버튼 3개 오른쪽 아래 세로 정렬 (Z 플립 대응)
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            right: 16,
+            bottom: 16,
+            child: const LocateButton(),
+          ),
+          Positioned(
+            right: 16,
+            bottom: 96,
+            child: const QrButton(),
+          ),
+          Positioned(
+            right: 16,
+            bottom: 176,
+            child: const NavigateButton(),
+          ),
+        ],
+      ),
     );
   }
 
-  // ✅ 강의실 클릭 시 시간표 화면 이동
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {
@@ -122,19 +145,10 @@ class ItBuilding1fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
-          roomName,
-          style: GoogleFonts.doHyeon(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.indigo,
-          ),
-        ),*/
       ),
     );
   }
 
-  // ✅ 공공시설 클릭 시 소개 화면 이동
   Widget clickableSpaceArea(BuildContext context, Space space) {
     return GestureDetector(
       onTap: () {
