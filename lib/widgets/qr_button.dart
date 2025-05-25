@@ -1,16 +1,27 @@
+// ✅ qr_button.dart - QR 버튼 눌렀을 때 팝업으로 카메라 띄우고 도면 이동
 import 'package:flutter/material.dart';
+import 'qr_floor_scanner_widget.dart'; // ✅ QR 스캐너 팝업 위젯 import
 
 class QrButton extends StatelessWidget {
-  const QrButton({super.key});
+  final void Function(int)? onFloorDetected; // ✅ 상위에 결과 전달
+
+  const QrButton({super.key, this.onFloorDetected});
+
+  void _showQrScanDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => QrFloorScannerWidget(
+        onFloorDetected: onFloorDetected, // ✅ 콜백 전달
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: 'qr-fab',
       backgroundColor: Colors.deepOrange,
-      onPressed: () {
-        Navigator.pushNamed(context, '/qr_floor_scan'); // QR로 층 재인식 화면으로 이동
-      },
+      onPressed: () => _showQrScanDialog(context),
       child: const Icon(Icons.qr_code_scanner, size: 28),
     );
   }

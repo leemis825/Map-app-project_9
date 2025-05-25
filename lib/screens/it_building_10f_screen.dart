@@ -79,21 +79,6 @@ class ItBuilding10fScreen extends StatelessWidget {
           );
         },
       ),
-
-      // ✅ 하단 FAB 3개 가로 정렬
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            QrButton(),
-            SizedBox(width: 16),
-            NavigateButton(),
-            SizedBox(width: 16),
-            LocateButton(),
-          ],
-        ),
-      ),
     );
   }
 

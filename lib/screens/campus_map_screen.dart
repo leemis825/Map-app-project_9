@@ -3,18 +3,20 @@ import 'package:flutter_blue_plus/flutter_blue_plus.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:convert';
-import 'dart:async'; // ⬅️ 반드시 추가
+import 'dart:async';
 
+import 'ble_floor_detector.dart';
 import '../widgets/locate_button.dart';
 import '../widgets/navigate_button.dart';
-import '../widgets/qr_button.dart';
-
 import '../widgets/search_bar_with_results.dart';
+import '../widgets/qr_button.dart';
 import '../screens/lecture_schedule_screen.dart';
 import '../data/lecture_data.dart';
 import '../screens/home_screen.dart';
 import '../screens/menu.dart';
 import 'AppDrawer.dart';
+import '../widgets/qr_floor_scanner_widget.dart';
+import '../screens/navigate_result_screen.dart';
 
 class CampusMapScreen extends StatefulWidget {
   const CampusMapScreen({super.key});
@@ -26,6 +28,7 @@ class CampusMapScreen extends StatefulWidget {
 class _CampusMapScreenState extends State<CampusMapScreen> {
   bool isDarkMode = false;
   bool _beaconFound = false;
+  bool _debugPopupShown = false;
 
   @override
   void initState() {
@@ -35,7 +38,53 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     });
     WidgetsBinding.instance.addPostFrameCallback((_) {
       startBeaconScan(context);
+      showBeaconDebugPopupOnce(context);
     });
+  }
+
+  void _showQrScanDialog() {
+    showDialog(
+      context: context,
+      builder: (_) => QrFloorScannerWidget(
+        onFloorDetected: (floor) {
+          Navigator.of(context).pop();
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => MenuScreen(initialFloor: floor)),
+          );
+        },
+      ),
+    );
+  }
+
+  void showBeaconDebugPopupOnce(BuildContext context) async {
+    if (_debugPopupShown) return;
+    _debugPopupShown = true;
+
+    final ble = BleFloorDetector();
+    final results = <String>[];
+
+    await ble.detectStrongestBeaconFloorWithLog((mac, rssi, floor) {
+      results.add("• $mac / RSSI: $rssi / 층수: ${floor ?? '미확인'}");
+    });
+
+    if (!mounted) return;
+
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("📡 BLE 비콘 감지 결과"),
+        content: Text(results.isEmpty
+            ? "❌ 등록된 비콘이 감지되지 않았습니다."
+            : results.join("\n")),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("확인"),
+          ),
+        ],
+      ),
+    );
   }
 
   Future<List<String>> loadAllowedBeaconMacs() async {
@@ -54,9 +103,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     if (!bluetoothScan.isGranted ||
         !bluetoothConnect.isGranted ||
         !location.isGranted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("⚠️ BLE 스캔에 필요한 권한이 부족합니다.")),
-      );
+      showSingleSnackBar(context, "⚠️ BLE 스캔에 필요한 권한이 부족합니다.");
       return;
     }
 
@@ -82,12 +129,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
 
             beaconDetected = true;
 
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("✅ 비콘 인식됨\nMAC: $mac\nminor: $minor"),
-                duration: const Duration(seconds: 4),
-              ),
-            );
+            showSingleSnackBar(context, "✅ 비콘 인식됨\nMAC: $mac\nminor: $minor");
 
             FlutterBluePlus.stopScan();
             subscription?.cancel();
@@ -100,12 +142,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
     await Future.delayed(const Duration(seconds: 5));
 
     if (!beaconDetected && !_beaconFound) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("❌ 근처에서 감지된 비콘이 없습니다."),
-          duration: Duration(seconds: 3),
-        ),
-      );
+      showSingleSnackBar(context, "❌ 근처에서 감지된 비콘이 없습니다.");
       FlutterBluePlus.stopScan();
       await subscription?.cancel();
     }
@@ -160,7 +197,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                     child: campusButton(
                       context,
                       'IT융합대학',
-                      MenuScreen(),
+                      const MenuScreen(initialFloor: 1),
                     ),
                   ),
                 ],
@@ -169,24 +206,79 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
         ],
       ),
-
-      // ✅ Stack으로 FAB 3개를 화면에 띄우기 (Z 플립 최적화)
       floatingActionButton: Stack(
         children: [
           Positioned(
-            right: 16,
-            bottom: 16,
-            child: const LocateButton(),
+            left: 10,
+            bottom: 3,
+            child: FloatingActionButton(
+              heroTag: 'campus-locate',
+              backgroundColor: const Color(0xFF0054A7),
+              child: const Icon(Icons.my_location, color: Colors.white),
+              onPressed: () async {
+                final detector = BleFloorDetector();
+                final result = await detector.detectStrongestBeacon(context: context);
+
+                if (result != null && result.building == "IT융합대학") {
+                  showDialog(
+                    context: context,
+                    builder: (_) => AlertDialog(
+                      title: const Text('비콘 감지 결과'),
+                      content: Text("현재 ${result.building} ${result.floor}층으로 감지되었습니다.\n맞습니까?"),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => MenuScreen(initialFloor: result.floor),
+                              ),
+                            );
+                          },
+                          child: const Text('예'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            _showQrScanDialog(); // ✅ QR 팝업 호출
+                          },
+                          child: const Text('QR로 인식'),
+                        ),
+                      ],
+                    ),
+                  );
+                } else {
+                  showSingleSnackBar(context, "⚠ IT융합대학 비콘이 감지되지 않았습니다.");
+                }
+              },
+            ),
           ),
           Positioned(
-            right: 16,
-            bottom: 96,
+            right: 70,
+            bottom: 3,
             child: const QrButton(),
           ),
           Positioned(
-            right: 16,
-            bottom: 176,
-            child: const NavigateButton(),
+            right: 5,
+            bottom: 3,
+            child: FloatingActionButton(
+              heroTag: 'campus-navigate',
+              backgroundColor: const Color(0xFF1E88E5),
+              child: const Icon(Icons.navigation),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const NavigateResultScreen(
+                      startRoom: '',
+                      endRoom: '',
+                      pathSteps: [],
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
         ],
       ),
@@ -210,4 +302,16 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
       child: Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
     );
   }
+}
+
+void showSingleSnackBar(BuildContext context, String message, {int seconds = 2}) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: seconds),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
 }

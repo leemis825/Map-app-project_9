@@ -85,27 +85,6 @@ class ItBuilding2fScreen extends StatelessWidget {
           );
         },
       ),
-
-      // ✅ FAB 버튼 3개를 오른쪽 하단 세로 정렬 (Z 플립 대응)
-      floatingActionButton: Stack(
-        children: [
-          Positioned(
-            right: 16,
-            bottom: 16,
-            child: const LocateButton(),
-          ),
-          Positioned(
-            right: 16,
-            bottom: 96,
-            child: const QrButton(),
-          ),
-          Positioned(
-            right: 16,
-            bottom: 176,
-            child: const NavigateButton(),
-          ),
-        ],
-      ),
     );
   }
 

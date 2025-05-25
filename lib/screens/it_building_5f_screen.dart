@@ -66,21 +66,6 @@ class ItBuilding5fScreen extends StatelessWidget {
           );
         },
       ),
-
-      // ✅ FAB 버튼 가로 정렬 하단 중앙
-      floatingActionButton: Padding(
-        padding: const EdgeInsets.only(bottom: 12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            QrButton(),
-            SizedBox(width: 16),
-            NavigateButton(),
-            SizedBox(width: 16),
-            LocateButton(),
-          ],
-        ),
-      ),
     );
   }
 

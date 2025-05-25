@@ -6,7 +6,6 @@ import 'screens/login_screen.dart'; // ✅ 로그인 화면
 import 'data/lecture_data.dart'; // ✅ 강의 시간표 데이터 로딩
 import 'widgets/responsive_layout.dart'; // ✅ 다양한 화면 대응
 import 'screens/qr_navigate_screen.dart'; // ✅ QR로 경로 탐색
-import 'screens/qr_floor_scan.dart'; // ✅ QR로 층 인식
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // ✅ 비동기 코드 실행 보장
@@ -28,7 +27,7 @@ Future<void> initializeBLEPermissions() async {
   // ✅ BLE 및 위치 권한 요청
   var scanStatus = await Permission.bluetoothScan.request();
   var connectStatus = await Permission.bluetoothConnect.request();
-  var locationStatus = await Permission.locationWhenInUse.request(); // <-- 여기 변경됨
+  var locationStatus = await Permission.locationWhenInUse.request(); // ✅ 위치 권한
 
   // ✅ 디버깅용 권한 상태 로그 출력
   print('🔍 BLE 권한 상태');
@@ -51,8 +50,8 @@ class MyApp extends StatelessWidget {
 
       // ✅ 화면 이동을 위한 라우트 등록
       routes: {
-        '/qr_floor_scan': (context) => const QrFloorScanScreen(),
-        '/qr_navigate': (context) => const QrNavigateScreen(),
+        '/qr_navigate': (context) => const QrNavigateScreen(), // ✅ QR 경로 탐색
+        // ❌ '/qr_floor_scan': 제거됨
       },
     );
   }

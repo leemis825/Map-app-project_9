@@ -84,27 +84,6 @@ class ItBuilding3fScreen extends StatelessWidget {
           );
         },
       ),
-
-      // ✅ 오른쪽 하단 FAB 3개 세로 정렬 (Z플립 대응)
-      floatingActionButton: Stack(
-        children: [
-          Positioned(
-            right: 16,
-            bottom: 16,
-            child: const LocateButton(),
-          ),
-          Positioned(
-            right: 16,
-            bottom: 96,
-            child: const QrButton(),
-          ),
-          Positioned(
-            right: 16,
-            bottom: 176,
-            child: const NavigateButton(),
-          ),
-        ],
-      ),
     );
   }
 

@@ -1,23 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_blue_plus/flutter_blue_plus.dart';
-import '../screens/ble_floor_detector.dart'; // BLE 감지 클래스
-
-// 각 층별 도면 화면 임포트
-import '../screens/it_building_1f_screen.dart';
-import '../screens/it_building_2f_screen.dart';
-import '../screens/it_building_3f_screen.dart';
-import '../screens/it_building_4f_screen.dart';
-import '../screens/it_building_5f_screen.dart';
-import '../screens/it_building_6f_screen.dart';
-import '../screens/it_building_7f_screen.dart';
-import '../screens/it_building_8f_screen.dart';
-import '../screens/it_building_9f_screen.dart';
-import '../screens/it_building_10f_screen.dart';
+import '../screens/ble_floor_detector.dart';
+import 'qr_floor_scanner_widget.dart';
 
 class LocateButton extends StatelessWidget {
-  const LocateButton({super.key});
+  final void Function(int floor)? onFloorDetected; // ✅ 외부에서 처리하도록 콜백 전달
 
-  // ✅ BLE 감지 및 층 이동 제어
+  const LocateButton({super.key, this.onFloorDetected});
+
   void _handleScanAndNavigate(BuildContext context) async {
     final isBluetoothOn = await FlutterBluePlus.isOn;
     if (!isBluetoothOn) {
@@ -37,70 +27,42 @@ class LocateButton extends StatelessWidget {
       return;
     }
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("현재 위치를 확인 중입니다...")),
-    );
+    showSingleSnackBar(context, "📡 현재 위치를 확인 중입니다...");
 
-    final floor = await BleFloorDetector().detectStrongestBeaconFloor();
+    final result = await BleFloorDetector().detectStrongestBeacon(context: context);
 
-    // ✅ 비콘 감지 실패 시 QR로 이동
-    if (floor == null || floor == -1) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("❌ 비콘을 감지하지 못했습니다.\nQR로 재인식 화면으로 이동합니다."),
-        ),
-      );
-
-      // 잠깐 대기 후 QR 층 재인식 화면으로 자동 이동
+    if (result == null || result.floor == -1) {
+      showSingleSnackBar(context, "❌ 비콘 감지 실패\nQR로 재인식 화면으로 이동합니다.");
       Future.delayed(const Duration(seconds: 2), () {
-        Navigator.pushNamed(context, '/qr_floor_scan');
+        _showQrScanDialog(context);
       });
-
       return;
     }
 
-    // ✅ 사용자에게 확인 요청 팝업
+    if (result.building != "IT융합대학") {
+      showSingleSnackBar(context, "⚠ ${result.building} 비콘은 현재 지원되지 않습니다");
+      return;
+    }
+
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('비콘 감지 정보'),
-        content: Text("감지된 층수는 ${floor}층입니다.\n현재 위치가 맞습니까?"),
+        title: const Text('비콘 감지 결과'),
+        content: Text("현재 ${result.building} ${result.floor}층으로 감지되었습니다.\n맞습니까?"),
         actions: [
-          // 예 → 해당 층 도면으로 이동
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              _navigateToFloor(context, floor);
+              if (onFloorDetected != null) {
+                onFloorDetected!(result.floor); // ✅ 외부로 층수 전달
+              }
             },
             child: const Text('예'),
           ),
-          // 아니요 → QR 또는 직접 선택
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              showDialog(
-                context: context,
-                builder: (_) => AlertDialog(
-                  title: const Text("위치를 다시 설정할까요?"),
-                  content: const Text("아래 중 하나를 선택하세요."),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        Navigator.pushNamed(context, '/qr_floor_scan');
-                      },
-                      child: const Text('QR로 인식'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                        Navigator.pushNamed(context, '/floor_selector');
-                      },
-                      child: const Text('직접 선택'),
-                    ),
-                  ],
-                ),
-              );
+              _showReconfirmDialog(context);
             },
             child: const Text('아니요'),
           ),
@@ -109,28 +71,39 @@ class LocateButton extends StatelessWidget {
     );
   }
 
-  // ✅ 감지된 층수에 맞는 도면 화면으로 이동
-  void _navigateToFloor(BuildContext context, int floor) {
-    Widget screen;
-    switch (floor) {
-      case 1: screen = ItBuilding1fScreen(); break;
-      case 2: screen = ItBuilding2fScreen(); break;
-      case 3: screen = ItBuilding3fScreen(); break;
-      case 4: screen = ItBuilding4fScreen(); break;
-      case 5: screen = ItBuilding5fScreen(); break;
-      case 6: screen = ItBuilding6fScreen(); break;
-      case 7: screen = ItBuilding7fScreen(); break;
-      case 8: screen = ItBuilding8fScreen(); break;
-      case 9: screen = ItBuilding9fScreen(); break;
-      case 10: screen = ItBuilding10fScreen(); break;
-      default:
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("알 수 없는 층입니다: $floor")),
-        );
-        return;
-    }
+  void _showReconfirmDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => AlertDialog(
+        title: const Text("위치를 다시 설정할까요?"),
+        content: const Text("원하는 방식으로 위치를 재설정하세요."),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              _showQrScanDialog(context);
+            },
+            child: const Text('QR로 인식'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              Navigator.pushNamed(context, '/floor_selector');
+            },
+            child: const Text('직접 선택'),
+          ),
+        ],
+      ),
+    );
+  }
 
-    Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
+  void _showQrScanDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (_) => QrFloorScannerWidget(
+        onFloorDetected: onFloorDetected, // ✅ QR도 동일한 방식으로 콜백 연결
+      ),
+    );
   }
 
   @override
@@ -141,11 +114,27 @@ class LocateButton extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: FloatingActionButton(
           heroTag: 'home-locate-fab',
-          backgroundColor: const Color(0xFF004098),
+          backgroundColor: const Color(0xFF0054A7),
           onPressed: () => _handleScanAndNavigate(context),
-          child: const Icon(Icons.my_location),
+          child: const Icon(
+            Icons.my_location,
+            color: Colors.white,
+          ),
         ),
       ),
     );
   }
+}
+
+/// ✅ 중복 방지용 스낵바 유틸 함수
+void showSingleSnackBar(BuildContext context, String message, {int seconds = 2}) {
+  ScaffoldMessenger.of(context)
+    ..hideCurrentSnackBar()
+    ..showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: Duration(seconds: seconds),
+        behavior: SnackBarBehavior.floating,
+      ),
+    );
 }
