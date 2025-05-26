@@ -63,7 +63,7 @@ class _MenuScreenState extends State<MenuScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text('IT융합대학 ${selectedFloor}층'),
-        backgroundColor: const Color(0xFF0054A7),
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false, // 기본 햄버거 버튼 안 보이게
         leading: IconButton(
           icon: Icon(Icons.arrow_back),

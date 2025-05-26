@@ -318,17 +318,17 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0054A7),
+        backgroundColor: Colors.white,
         automaticallyImplyLeading: false, // 기본 햄버거 버튼 숨기기
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             Navigator.of(context).maybePop(); // 뒤로 가기 시도
           },
         ),
         title: Text(
           '$currentRoomName 강의실 시간표',
-          style: const TextStyle(color: Colors.white), // 글씨 흰색
+          style: const TextStyle(color: Colors.black), // 글씨 흰색
         ),
       ),
       drawer: AppDrawer(
