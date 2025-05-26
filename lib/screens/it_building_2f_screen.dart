@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
+import 'space_detail_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // 강의실 상태 점
@@ -95,7 +96,6 @@ class ItBuilding2fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

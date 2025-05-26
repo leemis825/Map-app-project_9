@@ -78,7 +78,6 @@ class ItBuilding3fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 버튼 추가
     );
   }
 
