@@ -1,0 +1,36 @@
+{
+    "students": [
+        {
+            "id": "20184408",
+            "password": "dlalstj",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "이민서",
+            "birthdate": "2000-01-01"
+        },
+        {
+            "id": "20194480",
+            "password": "tjdnjsgh",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "서원호",
+            "birthdate": "2000-02-01"
+        },
+        {
+            "id": "20223152",
+            "password": "qkddPwls",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "방예진",
+            "birthdate": "2000-03-01"
+        },
+        {
+            "id": "20223176",
+            "password": "dladbqls",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "임유빈",
+            "birthdate": "2000-04-01"
+        }
+    ]
+}

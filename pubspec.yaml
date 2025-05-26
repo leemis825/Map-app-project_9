@@ -16,7 +16,7 @@ dependencies:
   flutter_svg: ^2.0.9             # ✅ 더 구체적인 버전 선택
   google_fonts: ^6.1.0            # ✅ 동일
   dchs_flutter_beacon: ^0.6.4         # ✅ 비콘 스캔용
-  cloud_firestore: ^4.9.0         # ✅ Firestore 데이터베이스
+  cloud_firestore: ^4.15.9        # ✅ Firestore 데이터베이스
   firebase_core: ^2.27.0          # ✅ Firebase 초기화용
   permission_handler: ^11.3.1     # ✅ 위치 권한 요청
   uuid: ^4.2.2                    # ✅ UUID 생성기
@@ -43,3 +43,4 @@ flutter:
     - assets/images/it_building_9f_map.png
     - assets/images/it_building_10f_map.png
     - assets/data/classroom_schedule_final.json
+    - assets/data/students_info.json

@@ -19,6 +19,7 @@ class ItBuilding1fScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
@@ -31,31 +32,36 @@ class ItBuilding1fScreen extends StatelessWidget {
           double scale = screenHeight / imageHeight;
           double scaledImageWidth = imageWidth * scale;
 
-          return Scrollbar(
-            thumbVisibility: true,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: SizedBox(
-                width: scaledImageWidth,
-                height: screenHeight,
-                child: Stack(
-                  children: [
-                    Image.asset(
-                      'assets/images/it_building_1f_map.png',
-                      fit: BoxFit.fill,
-                      width: scaledImageWidth,
-                      height: screenHeight,
-                    ),
-                    ...rooms.map((room) {
-                      double left = room.left / imageWidth * scaledImageWidth;
-                      double top = room.top / imageHeight * screenHeight;
-                      return Positioned(
-                        left: left,
-                        top: top,
-                        child: clickableRoomArea(context, room.name),
-                      );
-                    }),
-                  ],
+          return Container(
+            color: Colors.white, // 확실하게 흰색 배경 설정
+            width: double.infinity,
+            height: double.infinity,
+            child: Scrollbar(
+              thumbVisibility: true,
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: SizedBox(
+                  width: scaledImageWidth,
+                  height: screenHeight,
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        'assets/images/it_building_1f_map.png',
+                        fit: BoxFit.fill,
+                        width: scaledImageWidth,
+                        height: screenHeight,
+                      ),
+                      ...rooms.map((room) {
+                        double left = room.left / imageWidth * scaledImageWidth;
+                        double top = room.top / imageHeight * screenHeight;
+                        return Positioned(
+                          left: left,
+                          top: top,
+                          child: clickableRoomArea(context, room.name),
+                        );
+                      }),
+                    ],
+                  ),
                 ),
               ),
             ),

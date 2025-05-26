@@ -1,28 +1,66 @@
 import 'package:flutter/material.dart';
-import 'campus_map_screen.dart'; // 기존 지도 화면 import
+import 'package:cloud_firestore/cloud_firestore.dart';
+//import '../data/students_info.dart'; // JSON 업로드 함수 포함된 파일
+import 'campus_map_screen.dart'; // 기존 지도 화면
+import 'firebase.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  LoginScreen({super.key});
+  /*@override
+  void initState() {
+    super.initState();
+    uploadStudentsFromJson(); // ✅ 이 위치면 OK
+  }*/
 
-  void _handleLogin(BuildContext context) {
+  void _handleLogin(BuildContext context) async {
     final id = _idController.text.trim();
     final password = _passwordController.text.trim();
 
-    if (id == 'qwer' && password == '1234') {
-      // 로그인 성공
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => CampusMapScreen()),
-      );
-    } else {
-      // 로그인 실패
+    try {
+      DocumentSnapshot userDoc =
+          await FirebaseFirestore.instance.collection('students').doc(id).get();
+
+      if (userDoc.exists) {
+        final data = userDoc.data() as Map<String, dynamic>;
+
+        if (data['password'] == password) {
+          // 로그인 성공
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const CampusMapScreen()),
+          );
+        } else {
+          // 비밀번호 틀림
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('비밀번호가 올바르지 않습니다.'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      } else {
+        // 학번 없음
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('존재하지 않는 학번입니다.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('아이디 또는 비밀번호가 잘못되었습니ㅁ다!'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text('로그인 중 오류 발생: $e'),
+          duration: const Duration(seconds: 2),
         ),
       );
     }
@@ -37,7 +75,6 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 상단 로고와 텍스트
             Column(
               children: [
                 Image.asset('assets/images/logo.png', height: 100),
@@ -61,7 +98,7 @@ class LoginScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
 
-            // 아이디 입력창
+            // 아이디 입력
             TextField(
               controller: _idController,
               style: const TextStyle(color: Colors.white),
@@ -80,10 +117,9 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 16),
 
-            // 비밀번호 입력창
+            // 비밀번호 입력
             TextField(
               controller: _passwordController,
               obscureText: true,
@@ -107,7 +143,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
 
-      // ✅ 하단에 로그인 버튼 고정
+      // 로그인 버튼
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.all(32),
         child: SizedBox(

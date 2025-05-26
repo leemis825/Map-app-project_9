@@ -54,6 +54,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       drawer: AppDrawer(
         isDarkMode: isDarkMode,
         onToggleDarkMode: (value) {
@@ -95,7 +96,7 @@ class _MenuScreenState extends State<MenuScreen> {
                   children: [
                     // 층 선택 버튼 (항상 고정 위치)
                     Positioned(
-                      top: 5,
+                      top: 6,
                       right: 32,
                       child: Container(
                         padding: const EdgeInsets.symmetric(
