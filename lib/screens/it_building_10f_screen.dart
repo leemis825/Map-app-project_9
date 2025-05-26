@@ -5,6 +5,8 @@ import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
 import 'lecture_schedule_screen.dart';
 import '../widgets/locate_button.dart'; // ✅ 위치 기능 위젯 import
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 추가
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 추가
 
 class ItBuilding10fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 10층 도면 원본 가로 크기
@@ -72,7 +74,6 @@ class ItBuilding10fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

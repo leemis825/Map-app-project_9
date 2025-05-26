@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'campus_map_screen.dart'; // 기존 지도 화면 import
+import 'package:campus_map_app/screens/campus_map_screen.dart';
+
 
 class LoginScreen extends StatelessWidget {
   final TextEditingController _idController = TextEditingController();

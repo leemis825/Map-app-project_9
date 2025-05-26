@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
-import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
-import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 추가
+import '../widgets/lecturestatusdot.dart'; // 상태 점
+import '../widgets/locate_button.dart'; // 위치 버튼
+import '../widgets/qr_button.dart'; // QR 버튼
+import '../widgets/navigate_button.dart'; // 경로안내 버튼
 
 class ItBuilding3fScreen extends StatelessWidget {
-  final double imageWidth = 1749; // 3층 도면의 원본 가로 크기
-  final double imageHeight = 799; // 3층 도면의 원본 세로 크기
+  final double imageWidth = 1749;
+  final double imageHeight = 799;
 
   final List<RoomInfo> rooms = [
     RoomInfo(name: '3108', left: 381, top: 500),

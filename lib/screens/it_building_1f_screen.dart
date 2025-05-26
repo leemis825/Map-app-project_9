@@ -5,17 +5,21 @@ import '../models/models.dart';
 import '../widgets/lecturestatusdot.dart';
 import 'space_detail_screen.dart';
 import '../widgets/locate_button.dart';
+import '../widgets/qr_button.dart';
+import '../widgets/navigate_button.dart';
 
 class ItBuilding1fScreen extends StatelessWidget {
   final double imageWidth = 2518; // 1층 도면 원본 가로 크기
   final double imageHeight = 1147; // 1층 도면 원본 세로 크기
 
+  // 강의실 목록
   final List<RoomInfo> rooms = [
     RoomInfo(name: '1103', left: 510, top: 359),
     RoomInfo(name: '1122', left: 1709, top: 414),
     RoomInfo(name: '1125', left: 1933, top: 414),
   ];
 
+  // 공공시설 목록 (예: s.space)
   final List<Space> spaces = [
     Space(
       name: 's.space',
@@ -93,6 +97,7 @@ class ItBuilding1fScreen extends StatelessWidget {
     );
   }
 
+  // ✅ 강의실 클릭 시 시간표 화면 이동
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {
@@ -108,10 +113,19 @@ class ItBuilding1fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
+        /*child: Text(
+          roomName,
+          style: GoogleFonts.doHyeon(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.indigo,
+          ),
+        ),*/
       ),
     );
   }
 
+  // ✅ 공공시설 클릭 시 소개 화면 이동
   Widget clickableSpaceArea(BuildContext context, Space space) {
     return GestureDetector(
       onTap: () {

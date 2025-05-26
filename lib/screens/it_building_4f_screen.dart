@@ -4,6 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // LectureStatusDot import 추가
 import '../widgets/locate_button.dart'; // ✅ 위치 버튼 공통 위젯 import
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 추가
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 추가
 
 class ItBuilding4fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 4층 도면 원본 가로 크기
@@ -71,7 +73,6 @@ class ItBuilding4fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
 

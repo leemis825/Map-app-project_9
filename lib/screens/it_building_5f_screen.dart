@@ -3,6 +3,8 @@ import 'lecture_schedule_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../models/models.dart';
 import '../widgets/locate_button.dart'; // ✅ 위치 아이콘 공통 위젯 import
+import '../widgets/qr_button.dart'; // ✅ QR 버튼 import
+import '../widgets/navigate_button.dart'; // ✅ 경로 안내 버튼 import
 
 class ItBuilding5fScreen extends StatelessWidget {
   final double imageWidth = 1758; // 도면 원본 가로 크기
@@ -50,8 +52,6 @@ class ItBuilding5fScreen extends StatelessWidget {
                         child: clickableRoomArea(context, room.name),
                       );
                     }),
-
-
                   ],
                 ),
               ),
@@ -59,10 +59,8 @@ class ItBuilding5fScreen extends StatelessWidget {
           );
         },
       ),
-      floatingActionButton: const LocateButton(), // ✅ BLE 위치 기능 버튼 추가
     );
   }
-
 
   // 강의실 클릭 위젯
   Widget clickableRoomArea(BuildContext context, String roomName) {

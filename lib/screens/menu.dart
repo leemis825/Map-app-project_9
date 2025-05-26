@@ -14,9 +14,13 @@ import 'it_building_8f_screen.dart';
 import 'it_building_9f_screen.dart';
 import 'it_building_10f_screen.dart';
 import '../widgets/locate_button.dart';
+import '../widgets/qr_button.dart';
+import '../screens/navigate_result_screen.dart';
 
 class MenuScreen extends StatefulWidget {
-  const MenuScreen({super.key});
+  final int initialFloor;
+
+  const MenuScreen({super.key, this.initialFloor = 1});
 
   @override
   _MenuScreenState createState() => _MenuScreenState();
@@ -31,6 +35,8 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   void initState() {
     super.initState();
+    selectedFloor = widget.initialFloor;
+
     LectureDataManager.loadLectureData().then((_) {
       setState(() {});
     });
@@ -43,6 +49,12 @@ class _MenuScreenState extends State<MenuScreen> {
         builder: (context) => LectureScheduleScreen(roomName: roomName),
       ),
     );
+  }
+
+  void _handleFloorDetected(int floor) {
+    setState(() {
+      selectedFloor = floor;
+    });
   }
 
   @override
@@ -82,21 +94,25 @@ class _MenuScreenState extends State<MenuScreen> {
                 else if (selectedFloor == 2)
                   ItBuilding2fScreen()
                 else if (selectedFloor == 3)
-                    ItBuilding3fScreen()
-                  else if (selectedFloor == 4)
-                      ItBuilding4fScreen()
-                    else if (selectedFloor == 5)
-                        ItBuilding5fScreen()
-                      else if (selectedFloor == 6)
-                          ItBuilding6fScreen()
-                        else if (selectedFloor == 7)
-                            ItBuilding7fScreen()
-                          else if (selectedFloor == 8)
-                              ItBuilding8fScreen()
-                            else if (selectedFloor == 9)
-                                ItBuilding9fScreen()
-                              else if (selectedFloor == 10)
-                                  ItBuilding10fScreen(),
+                  ItBuilding3fScreen()
+                else if (selectedFloor == 4)
+                  ItBuilding4fScreen()
+                else if (selectedFloor == 5)
+                  ItBuilding5fScreen()
+                else if (selectedFloor == 6)
+                  ItBuilding6fScreen()
+                else if (selectedFloor == 7)
+                  ItBuilding7fScreen()
+                else if (selectedFloor == 8)
+                  ItBuilding8fScreen()
+                else if (selectedFloor == 9)
+                  ItBuilding9fScreen()
+                else if (selectedFloor == 10)
+                  ItBuilding10fScreen()
+                else
+                  const Center(child: Text('선택된 층이 없습니다')),
+
+                // ✅ 층 전환 버튼
                 Positioned(
                   top: 0,
                   right: 32,
@@ -147,7 +163,41 @@ class _MenuScreenState extends State<MenuScreen> {
           ),
         ],
       ),
-      floatingActionButton: const LocateButton(),
+      floatingActionButton: Stack(
+        children: [
+          Positioned(
+            left: 10,
+            bottom: 3,
+            child: LocateButton(onFloorDetected: _handleFloorDetected), // ✅ 콜백 전달
+          ),
+          Positioned(
+            right: 70,
+            bottom: 3,
+            child: QrButton(onFloorDetected: _handleFloorDetected), // ✅ 콜백 전달
+          ),
+          Positioned(
+            right: 5,
+            bottom: 3,
+            child: FloatingActionButton(
+              heroTag: 'menu-navigate',
+              backgroundColor: const Color(0xFF1E88E5),
+              child: const Icon(Icons.navigation),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const NavigateResultScreen(
+                      startRoom: '',
+                      endRoom: '',
+                      pathSteps: [],
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
