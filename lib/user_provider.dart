@@ -9,4 +9,9 @@ class UserProvider with ChangeNotifier {
     _userId = id;
     notifyListeners();
   }
+
+  void logout() {
+    _userId = '';
+    notifyListeners();
+  }
 }

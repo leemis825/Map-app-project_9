@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
