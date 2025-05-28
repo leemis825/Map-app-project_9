@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import '../data/students_info.dart'; // JSON 업로드 함수 포함된 파일
 import 'campus_map_screen.dart'; // 기존 지도 화면
-import 'firebase.dart';
+import 'package:provider/provider.dart';
+import '../user_provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -14,12 +14,6 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  /*@override
-  void initState() {
-    super.initState();
-    uploadStudentsFromJson(); // ✅ 이 위치면 OK
-  }*/
 
   void _handleLogin(BuildContext context) async {
     final id = _idController.text.trim();
@@ -33,10 +27,12 @@ class _LoginScreenState extends State<LoginScreen> {
         final data = userDoc.data() as Map<String, dynamic>;
 
         if (data['password'] == password) {
-          // 로그인 성공
+          // 로그인 성공 시 userId 저장
+          Provider.of<UserProvider>(context, listen: false).setUserId(id);
+
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const CampusMapScreen()),
+            MaterialPageRoute(builder: (_) => const CampusMapScreen()),
           );
         } else {
           // 비밀번호 틀림

@@ -5,7 +5,7 @@ import '../widgets/search_bar_with_results.dart';
 import 'AppDrawer.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key}); // 생성자에 추가
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

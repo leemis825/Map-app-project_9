@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 //import 'screens/campus_map_screen.dart';
 import 'screens/login_screen.dart'; // ✅ 로그인 화면 추가
 import 'data/lecture_data.dart'; // ✅ 강의시간표 데이터 추가 (new)
-import 'screens/firebase.dart';
+import 'firebase.dart';
 import 'widgets/responsive_layout.dart'; // ✅ 반응형 UI
 import 'firebase_options.dart';
+import 'user_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // ✅ Flutter 비동기 초기화 (반드시 필요)
@@ -14,7 +15,9 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   await uploadStudentsFromJson();
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(create: (_) => UserProvider(), child: const MyApp()),
+  );
 }
 
 class MyApp extends StatelessWidget {

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LectureScheduleScreen extends StatefulWidget {
-  final String roomName;
-  const LectureScheduleScreen({required this.roomName, super.key});
+  final String studentId;
+  const LectureScheduleScreen({required this.studentId, super.key});
 
   @override
   State<LectureScheduleScreen> createState() => _LectureScheduleScreenState();
@@ -64,7 +65,25 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   @override
   void initState() {
     super.initState();
-    currentRoomName = widget.roomName;
+    _fetchSchedule();
+  }
+
+  List<Map<String, dynamic>> personalSchedule = [];
+
+  void _fetchSchedule() async {
+    final doc =
+        await FirebaseFirestore.instance
+            .collection('students')
+            .doc(widget.studentId)
+            .get();
+    if (doc.exists) {
+      final data = doc.data();
+      setState(() {
+        personalSchedule = List<Map<String, dynamic>>.from(
+          data?['schedule'] ?? [],
+        );
+      });
+    }
   }
 
   @override
@@ -98,7 +117,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
   }
 
   Widget _buildCustomTimeTable() {
-    final lectures = LectureDataManager.getLecturesForRoom(currentRoomName);
+    final lectures = personalSchedule;
     final rendered = <String>{};
 
     const double colWidth = 60;

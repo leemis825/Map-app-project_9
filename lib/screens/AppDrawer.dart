@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'MyPage.dart';
 import 'MyTimetable.dart';
+import '../user_provider.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool isDarkMode;
@@ -14,6 +16,8 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = Provider.of<UserProvider>(context).userId;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -48,8 +52,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder:
-                      (context) => const LectureScheduleScreen(roomName: "0"),
+                  builder: (_) => LectureScheduleScreen(studentId: userId),
                 ),
               );
             },
