@@ -29,11 +29,9 @@ dependencies:
   # ✅ BLE 비콘 감지용 (보조적으로 사용됨)
   dchs_flutter_beacon: ^0.6.4
 
-  # ✅ Firebase Firestore 연동
-  cloud_firestore: ^4.9.0
-
-  # ✅ Firebase 초기화 필수 라이브러리
-  firebase_core: ^2.27.0
+  cloud_firestore: ^5.6.8
+  firebase_auth: ^5.5.4           # ✅ Firestore 데이터베이스
+  firebase_core: ^3.13.1          # ✅ Firebase 초기화용
 
   # ✅ 권한 요청 (BLE, 위치, 카메라 등)
   permission_handler: ^11.3.1

@@ -26,7 +26,7 @@ android {
     defaultConfig {
         // ✅ applicationId도 namespace와 동일하게 맞춤
         applicationId = "com.campus.campus_map_app"
-        minSdk = flutter.minSdkVersion
+        minSdk = 23
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName

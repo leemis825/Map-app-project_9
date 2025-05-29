@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'MyPage.dart';
 import 'MyTimetable.dart';
 import 'chatscreen.dart'; // ← 경로와 파일명에 맞게 조정
