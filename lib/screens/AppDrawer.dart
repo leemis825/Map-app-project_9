@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'MyPage.dart';
 import 'MyTimetable.dart';
 import 'chatscreen.dart'; // ← 경로와 파일명에 맞게 조정
+import '../user_provider.dart';
+import 'login_screen.dart'; // 로그인 화면 경로 맞게 수정
 
 class AppDrawer extends StatelessWidget {
   final bool isDarkMode;
@@ -15,6 +17,8 @@ class AppDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userId = Provider.of<UserProvider>(context).userId;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -36,7 +40,9 @@ class AppDrawer extends StatelessWidget {
               Navigator.pop(context); // Drawer 닫기
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const MyPageScreen()),
+                MaterialPageRoute(
+                  builder: (context) => MyPageScreen(studentId: userId),
+                ),
               );
             },
           ),
@@ -49,7 +55,7 @@ class AppDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const LectureScheduleScreen(),
+                  builder: (_) => LectureScheduleScreen(studentId: userId),
                 ),
               );
             },
@@ -57,7 +63,7 @@ class AppDrawer extends StatelessWidget {
           const Divider(height: 1),
           ListTile(
             leading: const Icon(Icons.chat, color: Colors.black),
-            title: const Text('챗봇', style: TextStyle(color: Colors.black)),
+            title: const Text('Q&A', style: TextStyle(color: Colors.black)),
             onTap: () {
               Navigator.pop(context);
               Navigator.push(
@@ -89,6 +95,21 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings, color: Colors.black),
             title: const Text('설정', style: TextStyle(color: Colors.black)),
             onTap: () {},
+          ),
+          const Divider(height: 1),
+
+          // ✅ 로그아웃 버튼 추가
+          ListTile(
+            leading: const Icon(Icons.logout, color: Colors.black),
+            title: const Text('로그아웃', style: TextStyle(color: Colors.black)),
+            onTap: () {
+              Provider.of<UserProvider>(context, listen: false).logout();
+
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+                (Route<dynamic> route) => false,
+              );
+            },
           ),
         ],
       ),

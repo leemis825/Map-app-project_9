@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'lecture_schedule_screen.dart';
 import 'space_detail_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/models.dart'; // 공통 모델 불러오기
 import '../widgets/lecturestatusdot.dart'; // 강의실 상태 점
 import '../widgets/locate_button.dart'; // 위치 버튼

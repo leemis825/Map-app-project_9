@@ -8,7 +8,7 @@ import '../widgets/navigate_button.dart';     // ✅ 길찾기 버튼
 import '../beacon/beacon_scanner.dart';       // ✅ 비콘 스캐너 로직 추가
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({super.key}); // 생성자에 추가
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

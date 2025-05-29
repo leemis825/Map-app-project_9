@@ -97,7 +97,7 @@ class ItBuilding1fScreen extends StatelessWidget {
     );
   }
 
-  // ✅ 강의실 클릭 시 시간표 화면 이동
+  // ✅ 강의실 클릭 영역
   Widget clickableRoomArea(BuildContext context, String roomName) {
     return GestureDetector(
       onTap: () {
@@ -113,7 +113,9 @@ class ItBuilding1fScreen extends StatelessWidget {
         height: 50,
         alignment: Alignment.center,
         color: Colors.transparent,
-        /*child: Text(
+        // ✅ 텍스트는 주석 처리하여 숨김, 위치 확인용으로 씀 삭제 X
+        /*
+        child: Text(
           roomName,
           style: GoogleFonts.doHyeon(
             fontSize: 16,

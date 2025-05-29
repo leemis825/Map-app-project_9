@@ -63,7 +63,6 @@ flutter_launcher_icons:
 flutter:
   uses-material-design: true
 
-  # ✅ 이미지 및 JSON 등 앱 내 자산 파일들
   assets:
     - assets/images/logo.png
     - assets/images/campus_map.png
