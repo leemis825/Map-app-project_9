@@ -43,77 +43,80 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
 
     await showDialog(
       context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        title: const Text(
-          "출발지와 도착지를 입력하세요",
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: const InputDecoration(
-                labelText: "출발 강의실 (예: 1101)",
-                labelStyle: TextStyle(color: Color(0xFF0054A7)),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xFF0054A7)),
-                ),
+      builder:
+          (_) => AlertDialog(
+            backgroundColor: Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            title: const Text(
+              "출발지와 도착지를 입력하세요",
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
-              controller: TextEditingController(text: tempStart),
-              onChanged: (v) => tempStart = v.trim(),
             ),
-            TextField(
-              decoration: const InputDecoration(
-                labelText: "도착 강의실 (예: 3208)",
-                labelStyle: TextStyle(color: Color(0xFF0054A7)),
-                focusedBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xFF0054A7)),
-                ),
-              ),
-              controller: TextEditingController(text: tempEnd),
-              onChanged: (v) => tempEnd = v.trim(),
-            ),
-          ],
-        ),
-        actions: [
-          TextButton(
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
-              backgroundColor: const Color(0xFF0054A7),
-            ),
-            child: const Text("확인"),
-            onPressed: () async {
-              final startCandidate = roomToFloorMap[tempStart];
-              final endCandidate = roomToFloorMap[tempEnd];
-
-              if (startCandidate == null || endCandidate == null) {
-                Navigator.pop(context);
-                await Future.delayed(const Duration(milliseconds: 300));
-                _showManualInputDialog();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text("❌ 존재하지 않는 강의실입니다. 다시 입력해주세요."),
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: "출발 강의실 (예: 1101)",
+                    labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF0054A7)),
+                    ),
                   ),
-                );
-              } else {
-                Navigator.pop(context);
-                setState(() {
-                  startRoom = tempStart;
-                  endRoom = tempEnd;
-                  pathSteps = [];
-                  startFloor = startCandidate;
-                  endFloor = endCandidate;
-                });
-              }
-            },
+                  controller: TextEditingController(text: tempStart),
+                  onChanged: (v) => tempStart = v.trim(),
+                ),
+                TextField(
+                  decoration: const InputDecoration(
+                    labelText: "도착 강의실 (예: 3208)",
+                    labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF0054A7)),
+                    ),
+                  ),
+                  controller: TextEditingController(text: tempEnd),
+                  onChanged: (v) => tempEnd = v.trim(),
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  foregroundColor: Colors.white,
+                  backgroundColor: const Color(0xFF0054A7),
+                ),
+                child: const Text("확인"),
+                onPressed: () async {
+                  final startCandidate = roomToFloorMap[tempStart];
+                  final endCandidate = roomToFloorMap[tempEnd];
+
+                  if (startCandidate == null || endCandidate == null) {
+                    Navigator.pop(context);
+                    await Future.delayed(const Duration(milliseconds: 300));
+                    _showManualInputDialog();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("❌ 존재하지 않는 강의실입니다. 다시 입력해주세요."),
+                      ),
+                    );
+                  } else {
+                    Navigator.pop(context);
+                    setState(() {
+                      startRoom = tempStart;
+                      endRoom = tempEnd;
+                      pathSteps = [];
+                      startFloor = startCandidate;
+                      endFloor = endCandidate;
+                    });
+                  }
+                },
+              ),
+            ],
           ),
-        ],
-      ),
     );
   }
 
@@ -135,7 +138,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
               const SizedBox(height: 12),
               Text(
                 '출발: $startRoom → 도착: $endRoom',
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
               const SizedBox(height: 16),
               _buildFloorMapView(context),
@@ -157,7 +163,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                         Expanded(
                           child: Text(
                             "해당 층으로 이동하려면 계단 또는 엘리베이터를 이용하세요.",
-                            style: TextStyle(fontSize: 20),
+                            style: TextStyle(fontSize: 18),
                           ),
                         ),
                       ],
@@ -166,7 +172,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        /*Column(
+                        Column(
                           children: const [
                             Icon(Icons.location_on, color: Colors.blue),
                             SizedBox(height: 4),
@@ -179,7 +185,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                             SizedBox(height: 4),
                             Text("도착지"),
                           ],
-                        ),*/
+                        ),
                         Column(
                           children: const [
                             Icon(Icons.stairs, color: Colors.pinkAccent),
@@ -222,7 +228,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
             children: const [
               Icon(Icons.location_on, color: Colors.blue),
               SizedBox(width: 4),
-              Text('출발 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(
+                '출발 층 도면',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -233,7 +242,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
             children: const [
               Icon(Icons.flag, color: Colors.red),
               SizedBox(width: 4),
-              Text('도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+              Text(
+                '도착 층 도면',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -253,7 +265,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
             SizedBox(width: 4),
             Icon(Icons.flag, color: Colors.red),
             SizedBox(width: 4),
-            Text('출발 & 도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            Text(
+              '출발 & 도착 층 도면',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            ),
           ],
         ),
         const SizedBox(height: 8),
