@@ -21,6 +21,7 @@ class AppDrawer extends StatelessWidget {
     final userId = Provider.of<UserProvider>(context).userId;
 
     return Drawer(
+      backgroundColor: Colors.white,
       child: ListView(
         padding: EdgeInsets.zero,
         children: [

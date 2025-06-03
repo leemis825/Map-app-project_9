@@ -5,7 +5,8 @@ import '../widgets/search_bar_with_results.dart';
 import 'AppDrawer.dart';
 import '../widgets/locate_button.dart';        // ✅ 위치 추정용 버튼
 import '../widgets/navigate_button.dart';     // ✅ 길찾기 버튼
-import '../beacon/beacon_scanner.dart';       // ✅ 비콘 스캐너 로직 추가
+import '../beacon/beacon_scanner.dart';
+import 'campus_map_screen.dart';// ✅ 비콘 스캐너 로직 추가
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key}); // 생성자에 추가
@@ -112,6 +113,26 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       backgroundColor: Colors.white,
+
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0, // 그림자 없애기
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.pop(context),
+        ),
+        title: const Text(
+          '실내 지도',
+          style: TextStyle(
+            fontFamily: 'Inter',
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: false,
+      ),
+
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,36 +143,13 @@ class _HomeScreenState extends State<HomeScreen> {
               onRoomSelected: (room) => _navigateToRoom(room),
             ),
 
-            // 🔙 뒤로가기 버튼 + 건물 이름
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-              child: Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                  const SizedBox(width: 8),
-                  const Text(
-                    '본관',
-                    style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
             const SizedBox(height: 16),
 
             // 🏛️ 건물 설명 텍스트
             const Expanded(
               child: Center(
                 child: Text(
-                  '여기는 본관 / IT융합대학 설명 페이지!',
+                  '업데이트 예정입니다.',
                   style: TextStyle(fontSize: 18),
                 ),
               ),

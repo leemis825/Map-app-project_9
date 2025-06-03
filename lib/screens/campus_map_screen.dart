@@ -188,8 +188,8 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                   ),
                   Positioned(
                     left: 440,
-                    top: 100,
-                    child: campusButton(context, '본관 중앙', const HomeScreen()),
+                    top: 110,
+                    child: campusButton(context, '본관', const HomeScreen()),
                   ),
                   Positioned(
                     left: 800,
@@ -199,6 +199,51 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                       'IT융합대학',
                       const MenuScreen(initialFloor: 1),
                     ),
+                  ),
+                  Positioned(
+                    left: 650,
+                    top: 270,
+                    child: campusButton(context, '중앙 도서관', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 20,
+                    top: 250,
+                    child: campusButton(context, '사회/사범대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 420,
+                    top: 440,
+                    child: campusButton(context, '미술대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 950,
+                    top: 630,
+                    child: campusButton(context, '제1공과대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 1025,
+                    top: 150,
+                    child: campusButton(context, '제2공과대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 800,
+                    top: 45,
+                    child: campusButton(context, '법과/경상대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 1070,
+                    top: 500,
+                    child: campusButton(context, '체육대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 1170,
+                    top: 430,
+                    child: campusButton(context, '자연과학대학', const HomeScreen()),
+                  ),
+                  Positioned(
+                    left: 950,
+                    top: 380,
+                    child: campusButton(context, '의과대학', const HomeScreen()),
                   ),
                 ],
               ),
