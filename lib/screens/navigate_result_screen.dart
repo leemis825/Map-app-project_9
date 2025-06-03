@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../data/room_floor_table.dart'; // ✅ 실제 층수 매핑 파일로 수정
+import '../data/room_floor_table.dart';
 
 class NavigateResultScreen extends StatefulWidget {
   final String startRoom;
@@ -44,17 +44,37 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
     await showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("출발지와 도착지를 입력하세요"),
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: const Text(
+          "출발지와 도착지를 입력하세요",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             TextField(
-              decoration: const InputDecoration(labelText: "출발 강의실 (예: 1101)"),
+              decoration: const InputDecoration(
+                labelText: "출발 강의실 (예: 1101)",
+                labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFF0054A7)),
+                ),
+              ),
               controller: TextEditingController(text: tempStart),
               onChanged: (v) => tempStart = v.trim(),
             ),
             TextField(
-              decoration: const InputDecoration(labelText: "도착 강의실 (예: 3208)"),
+              decoration: const InputDecoration(
+                labelText: "도착 강의실 (예: 3208)",
+                labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFF0054A7)),
+                ),
+              ),
               controller: TextEditingController(text: tempEnd),
               onChanged: (v) => tempEnd = v.trim(),
             ),
@@ -62,6 +82,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
         ),
         actions: [
           TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
             child: const Text("확인"),
             onPressed: () async {
               final startCandidate = roomToFloorMap[tempStart];
@@ -96,8 +120,13 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF9F0FA),
-      appBar: AppBar(title: const Text('경로 안내')),
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        title: const Text('경로 안내', style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
+        iconTheme: const IconThemeData(color: Colors.black),
+        elevation: 1,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -134,7 +163,6 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                       ],
                     ),
                     const SizedBox(height: 16),
-                    // 🟡 하단 아이콘 전설
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -189,11 +217,25 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
     } else {
       return Column(
         children: [
-          const Text('출발 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.location_on, color: Colors.blue),
+              SizedBox(width: 4),
+              Text('출발 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            ],
+          ),
           const SizedBox(height: 8),
           _buildMapImage(context, floor: startFloor!),
           const SizedBox(height: 16),
-          const Text('도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Icon(Icons.flag, color: Colors.red),
+              SizedBox(width: 4),
+              Text('도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            ],
+          ),
           const SizedBox(height: 8),
           _buildMapImage(context, floor: endFloor!),
         ],
@@ -204,7 +246,16 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
   Widget _buildSingleFloorView(BuildContext context, int floor) {
     return Column(
       children: [
-        const Text('출발 & 도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.location_on, color: Colors.blue),
+            SizedBox(width: 4),
+            Icon(Icons.flag, color: Colors.red),
+            SizedBox(width: 4),
+            Text('출발 & 도착 층 도면', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          ],
+        ),
         const SizedBox(height: 8),
         _buildMapImage(context, floor: floor),
       ],
@@ -218,29 +269,41 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
 
     final path = 'assets/images/it_building_${floor}f_map.png';
 
-    return SizedBox(
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: Colors.black, width: 2),
+        borderRadius: BorderRadius.circular(8),
+      ),
       width: imageWidth,
       height: imageHeight,
-      child: Image.asset(
-        path,
-        width: imageWidth,
-        height: imageHeight,
-        fit: BoxFit.contain,
-        errorBuilder: (context, error, stackTrace) {
-          return Center(
-            child: Column(
-              children: [
-                const Icon(Icons.error, color: Colors.red, size: 40),
-                const SizedBox(height: 8),
-                Text(
-                  '도면을 불러올 수 없습니다:\n$path',
-                  style: const TextStyle(fontSize: 14),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          );
-        },
+      child: InteractiveViewer(
+        panEnabled: true,
+        scaleEnabled: true,
+        minScale: 1.0,
+        maxScale: 3.5,
+        child: Image.asset(
+          path,
+          width: imageWidth,
+          height: imageHeight,
+          fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) {
+            return Center(
+              child: Column(
+                children: [
+                  const Icon(Icons.error, color: Colors.red, size: 40),
+                  const SizedBox(height: 8),
+                  Text(
+                    '도면을 불러올 수 없습니다:\n$path',
+                    style: const TextStyle(fontSize: 14),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
     );
   }

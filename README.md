@@ -1,151 +1,76 @@
-🗺️ 조선대학교 캠퍼스 실내 지도 앱
 
-📌 프로젝트 개요
+# 🗺️ 교내 실내 지도 앱 – lib/ 폴더 구조 정리
 
-Flutter 기반으로 제작된 조선대학교 캠퍼스 실내 지도 앱입니다. 실시간 강의 시간표, 층별 강의실 위치, BLE 비콘 스캔, 검색 기능 등을 통해 학생들의 이동과 시간 관리를 효율화하는 것을 목표로 합니다.
+## 📌 1. 핵심 진입점 (`core`)
+- `main.dart`:  
+  앱 시작점.  
+  Firebase 초기화, Provider 설정, 로그인 또는 지도 화면으로 전환 처리.
 
-✅ 주요 기능
+---
 
-실내 도면 기반 강의실 탐색 (1층~10층)
+## 🔥 2. Firebase 연동 (`firebase`)
+- `firebase.dart`: Firebase 기능 헬퍼 함수
+- `firebase_options.dart`: FlutterFire 자동 생성된 구성 파일
 
-강의실 시간표 표시 (병합 셀 UI 적용)
+---
 
-강의명/교수명/강의실명 실시간 검색
+## 🙍‍♂️ 3. 사용자 상태 관리 (`user`)
+- `user_provider.dart`:  
+  사용자 상태 전역 관리 (`Provider` 사용)
 
-BLE 비콘 스캔 및 Firebase Firestore 연동
+---
 
-로그인 화면, 반응형 UI, 다크모드 지원
+## 📂 4. 데이터 및 모델 (`data`)
+- `lecture_data.dart`: 시간표 JSON 로딩 및 필터링
+- `room_coordinates.dart`: 강의실 → 위치 좌표 매핑
+- `room_floor_table.dart`: 강의실 → 층수 매핑
+- `beacon_scanner.dart`: BLE 비콘 신호 스캔 처리
+- `models.dart`: RoomInfo, IconInfo 등 모델 정의
 
-📁 폴더 구조
+---
 
-assets/
-├── data/
-│   └── classroom_schedule_final.json    # 강의실 시간표 JSON
-├── images/                              # 도면 및 UI 이미지
-│   ├── campus_map.png
-│   ├── it_building_1f_map.png ~ 10f_map.png
-│   └── logo.png
+## 🧭 5. 주요 화면 구성 (`screens`)
+- `menu.dart`: IT융합대학 층별 도면 중심 UI, QR·BLE·검색 연동
+- `campus_map_screen.dart`: 비콘으로 건물/층 감지 후 Menu로 이동
+- `navigate_result_screen.dart`: 경로 탐색 시각화
+- `lecture_schedule_screen.dart`, `lecture_detail_screen.dart`: 시간표 및 상세 강의 정보
+- `login_screen.dart`: 로그인 UI
+- `qr_navigate_screen.dart`: QR로 현재 위치 인식 → 경로 안내
+- `MyPage.dart`, `MyTimetable.dart`: 사용자 정보/시간표
+- `it_building_Xf_screen.dart`: 각 층별 도면 화면 구성
+- `room_intro.dart`, `space_detail_screen.dart`: 공간 소개 화면
 
-lib/
-├── data/
-│   └── lecture_data.dart                # JSON 로딩 및 검색 처리
-├── models/
-│   └── models.dart                      # RoomInfo, IconInfo 모델 정의
-├── screens/
-│   ├── login_screen.dart                # 로그인 UI
-│   ├── campus_map_screen.dart           # 캠퍼스 지도 메인 화면
-│   ├── menu.dart                        # IT융합대학 지도 + 층 선택
-│   ├── lecture_schedule_screen.dart     # 강의실 시간표
-│   ├── lecture_detail_screen.dart       # 강의 상세 정보
-│   ├── it_building_1f~10f_screen.dart   # 각 층 도면별 화면
-│   ├── buildingFloorScreen.dart         # 공통 도면 + 버튼 처리
-│   ├── beacon_scan_screen.dart          # BLE 비콘 스캔 및 저장
-│   ├── home_screen.dart                 # 본관 정보 화면
-│   └── floor_selector_screen.dart       # (미사용) 층 목록 선택 화면
-├── widgets/
-│   ├── common_search_appbar.dart        # 상단 검색 AppBar 위젯
-│   └── responsive_layout.dart           # 반응형 화면 적용 Wrapper
-├── dummy.dart                           # Firebase 예시 코드 모음 (주석)
-└── main.dart                            # 앱 진입점
+---
 
-🔄 앱 흐름도 (기능 이동 구조)
+## 🧰 6. 유틸리티 (`utils`)
+- `ble_helper.dart`: BLE 스캔 후 거리 계산 및 처리
+- `floor_screen_router.dart`: 층수 → 대응 도면 화면 매핑
 
-graph TD
-  main[main.dart] --> login[LoginScreen]
-  login --> map[CampusMapScreen]
-  map --> menu[MenuScreen]
-  menu --> it[ItBuildingXfScreen]
-  it --> schedule[LectureScheduleScreen]
-  schedule --> detail[LectureDetailScreen]
-  map --> search[SearchBarWithResults]
-  menu --> search
-  search --> schedule
+---
 
-🔍 핵심 클래스 설명
+## 🧱 7. 공용 위젯 (`widgets`)
+- `qr_button.dart`: QR 팝업 호출용 FAB
+- `qr_floor_scanner_widget.dart`: MobileScanner 사용한 QR 인식 팝업
+- `locate_button.dart`: BLE 감지를 통한 위치 확인 버튼
+- `navigate_button.dart`: 경로 탐색 시작 버튼
+- `ble_debug_popup.dart`: BLE 상태 표시 팝업
+- `FloorSelect.dart`: 층 선택 위젯
+- `search_bar_with_results.dart`: 강의실 실시간 검색바
+- `lecturestatusdot.dart`: 강의실 상태 표시 점 UI
+- `responsive_layout.dart`: 반응형 대응 위젯
+- `AppDrawer.dart`: 앱 전체 메뉴 드로어
 
-📦 lecture_data.dart
+---
 
-loadLectureData(): JSON 불러오기
-
-getLecturesForRoom(roomName): 특정 강의실 데이터
-
-searchLecturesByKeyword(keyword): 검색 기능 구현
-
-🧱 models.dart
-
-RoomInfo: 강의실 위치 좌표 보관
-
-IconInfo: 아이콘(엘리베이터/계단 등) 위치 보관
-
-🗓️ lecture_schedule_screen.dart
-
-병합 셀로 강의 시간 표시
-
-클릭 시 LectureDetailScreen으로 이동
-
-🔎 search_bar_with_results.dart
-
-강의실/강의명/교수명 기반 자동완성 검색
-
-🧩 유지보수 및 구조 개선 제안
-
-📁 구조 확장 제안
-
-lib/
-├── services/       # 비콘, Firebase 처리 분리
-├── utils/          # 공통 유틸 함수
-├── themes/         # 색상, 테마 관리
-├── constants/      # 문자열, 상수 분리
-├── routes/         # 라우팅 경로 관리
-
-💡 향후 확장 가능 기능
-
-즐겨찾는 강의실 저장
-
-검색 히스토리 추천 기능
-
-현재 위치 자동 표시 (비콘 기반)
-
-포털 로그인 연동
-
-📦 주요 패키지 목록
-
-패키지
-
-설명
-
-flutter_svg
-
-SVG 아이콘 렌더링
-
-google_fonts
-
-폰트 적용
-
-cloud_firestore, firebase_core
-
-Firebase 연동
-
-dchs_flutter_beacon
-
-비콘 스캔 기능
-
-permission_handler
-
-위치 권한 요청
-
-uuid
-
-고유 ID 생성
-
-📢 협업 및 배포 가이드
-
-시간표 데이터(JSON)는 주기적으로 갱신 필요
-
-도면 이미지 변경 시 assets/images 내 동일 파일명으로 교체
-
-Firebase 연동 정보는 로컬에서 설정 필요 (예: google-services.json)
-
-웹 배포 시 Firebase Hosting 또는 Flutter Web 활용 가능
-
-🙋 문의 및 협업: 조선대학교 IT융합캡스톤 프로젝트 팀
+## 🔗 전체 흐름 요약
+```
+main.dart
+  └─ 로그인 성공 → campus_map_screen.dart
+        └─ BLE 또는 QR 인식 → MenuScreen
+              ├─ 층 도면: it_building_Xf_screen.dart
+              ├─ FABs
+              │    ├─ LocateButton → ble_floor_detector.dart
+              │    ├─ QrButton → qr_floor_scanner_widget.dart
+              │    └─ NavigateButton → navigate_result_screen.dart
+              └─ 강의실 검색 → lecture_schedule_screen.dart
+```

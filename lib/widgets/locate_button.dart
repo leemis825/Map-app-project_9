@@ -4,7 +4,7 @@ import '../screens/ble_floor_detector.dart';
 import 'qr_floor_scanner_widget.dart';
 
 class LocateButton extends StatelessWidget {
-  final void Function(int floor)? onFloorDetected; // ✅ 외부에서 처리하도록 콜백 전달
+  final void Function(int floor)? onFloorDetected;
 
   const LocateButton({super.key, this.onFloorDetected});
 
@@ -14,11 +14,17 @@ class LocateButton extends StatelessWidget {
       showDialog(
         context: context,
         builder: (_) => AlertDialog(
-          title: const Text('⚠ Bluetooth 꺼짐'),
-          content: const Text('비콘을 감지하려면 블루투스를 켜주세요.'),
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          title: const Text('⚠ Bluetooth 꺼짐', style: TextStyle(color: Colors.black)),
+          content: const Text('비콘을 감지하려면 블루투스를 켜주세요.', style: TextStyle(color: Colors.black)),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: const Color(0xFF0054A7),
+              ),
               child: const Text('확인'),
             ),
           ],
@@ -47,16 +53,25 @@ class LocateButton extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text('비콘 감지 결과'),
-        content: Text("현재 ${result.building} ${result.floor}층으로 감지되었습니다.\n맞습니까?"),
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: const Text('비콘 감지 결과', style: TextStyle(color: Colors.black)),
+        content: Text(
+          "현재 ${result.building} ${result.floor}층으로 감지되었습니다.\n맞습니까?",
+          style: const TextStyle(color: Colors.black),
+        ),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               if (onFloorDetected != null) {
-                onFloorDetected!(result.floor); // ✅ 외부로 층수 전달
+                onFloorDetected!(result.floor);
               }
             },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
             child: const Text('예'),
           ),
           TextButton(
@@ -64,6 +79,10 @@ class LocateButton extends StatelessWidget {
               Navigator.of(context).pop();
               _showReconfirmDialog(context);
             },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
             child: const Text('아니요'),
           ),
         ],
@@ -75,14 +94,20 @@ class LocateButton extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: const Text("위치를 다시 설정할까요?"),
-        content: const Text("원하는 방식으로 위치를 재설정하세요."),
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        title: const Text("위치를 다시 설정할까요?", style: TextStyle(color: Colors.black)),
+        content: const Text("원하는 방식으로 위치를 재설정하세요.", style: TextStyle(color: Colors.black)),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               _showQrScanDialog(context);
             },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
             child: const Text('QR로 인식'),
           ),
           TextButton(
@@ -90,6 +115,10 @@ class LocateButton extends StatelessWidget {
               Navigator.of(context).pop();
               Navigator.pushNamed(context, '/floor_selector');
             },
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
             child: const Text('직접 선택'),
           ),
         ],
@@ -101,7 +130,7 @@ class LocateButton extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => QrFloorScannerWidget(
-        onFloorDetected: onFloorDetected, // ✅ QR도 동일한 방식으로 콜백 연결
+        onFloorDetected: onFloorDetected,
       ),
     );
   }

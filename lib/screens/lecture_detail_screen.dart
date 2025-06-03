@@ -9,8 +9,8 @@ class LectureDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('강의 상세 정보', style: const TextStyle(color: Colors.white)),
-        backgroundColor: const Color(0xFF0054A7), // 조선대 색상
+        title: Text('강의 상세 정보', style: const TextStyle(color: Colors.black)),
+        backgroundColor: const Color.fromARGB(255, 249, 250, 250), // 조선대 색상
         actions: [
           IconButton(
             icon: const Icon(
