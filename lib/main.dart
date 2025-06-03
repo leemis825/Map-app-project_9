@@ -10,8 +10,8 @@ import 'screens/campus_map_screen.dart';
 import 'widgets/responsive_layout.dart';
 
 // (Firebase 설정 파일이 있는 경우) 아래 두 줄을 필요에 맞게 추가하세요.
-// import 'firebase_options.dart';
-// import 'firebase.dart';
+import 'firebase_options.dart';
+//import 'firebase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,14 +20,14 @@ void main() async {
   // Firebase.initializeApp 호출 부분은 프로젝트 환경에 따라 옵션을 넣어주세요.
   // 예) await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   // Firebase 사용 안 한다면 이 부분을 제거해도 됩니다.
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  // ✅ JSON에서 학생 데이터 업로드
+  //await uploadStudentsFromJson();
 
   // == (2) 앱 실행: UserProvider를 최상단에 올려서 MyApp 감싸기 ==
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => UserProvider(),
-      child: const MyApp(),
-    ),
+    ChangeNotifierProvider(create: (_) => UserProvider(), child: const MyApp()),
   );
 }
 

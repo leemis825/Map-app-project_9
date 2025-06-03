@@ -157,7 +157,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                         Expanded(
                           child: Text(
                             "해당 층으로 이동하려면 계단 또는 엘리베이터를 이용하세요.",
-                            style: TextStyle(fontSize: 14),
+                            style: TextStyle(fontSize: 20),
                           ),
                         ),
                       ],
@@ -166,7 +166,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Column(
+                        /*Column(
                           children: const [
                             Icon(Icons.location_on, color: Colors.blue),
                             SizedBox(height: 4),
@@ -179,10 +179,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
                             SizedBox(height: 4),
                             Text("도착지"),
                           ],
-                        ),
+                        ),*/
                         Column(
                           children: const [
-                            Icon(Icons.stairs, color: Colors.pink),
+                            Icon(Icons.stairs, color: Colors.pinkAccent),
                             SizedBox(height: 4),
                             Text("계단"),
                           ],

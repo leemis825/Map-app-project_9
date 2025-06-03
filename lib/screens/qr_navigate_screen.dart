@@ -27,6 +27,7 @@ class _QrNavigateScreenState extends State<QrNavigateScreen> {
       context: context,
       builder: (_) {
         return AlertDialog(
+          backgroundColor: Colors.white, // 배경 흰색 설정
           title: const Text("경로 안내"),
           content: Column(
             mainAxisSize: MainAxisSize.min,
@@ -92,6 +93,7 @@ class _QrNavigateScreenState extends State<QrNavigateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, // 배경 흰색 설정
       appBar: AppBar(title: const Text("QR로 출발 강의실 인식")),
       body: MobileScanner(
         onDetect: (capture) {
