@@ -11,7 +11,7 @@ import 'widgets/responsive_layout.dart';
 
 // (Firebase 설정 파일이 있는 경우) 아래 두 줄을 필요에 맞게 추가하세요.
 import 'firebase_options.dart';
-//import 'firebase.dart';
+import 'firebase.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,7 +23,7 @@ void main() async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   // ✅ JSON에서 학생 데이터 업로드
-  //await uploadStudentsFromJson();
+  await uploadStudentsFromJson();
 
   // == (2) 앱 실행: UserProvider를 최상단에 올려서 MyApp 감싸기 ==
   runApp(

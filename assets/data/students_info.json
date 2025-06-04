@@ -7,7 +7,16 @@
             "department": "컴퓨터공학과",
             "name": "이민서",
             "birthdate": "2000-01-01",
-            "schedule": []
+            "schedule": [
+              {
+                "day": "월",
+                "start": "15:00",
+                "end": "18:00",
+                "subject": "산학프로젝트1",
+                "section": "4",
+                "professor": "모상만"
+              }
+            ]
         },
         {
             "id": "20194480",
@@ -17,6 +26,14 @@
             "name": "서원호",
             "birthdate": "2000-02-01",
             "schedule": [
+              {
+                "day": "월",
+                "start": "15:00",
+                "end": "18:00",
+                "subject": "산학프로젝트1",
+                "section": "4",
+                "professor": "모상만"
+              },
               {
                 "day": "화",
                 "start": "10:00",

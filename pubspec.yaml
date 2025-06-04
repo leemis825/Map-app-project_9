@@ -79,4 +79,5 @@ flutter:
     - assets/images/tdm.space.png
     - assets/images/Bookmark.png
     - assets/data/classroom_schedule_final.json  # ✅ 강의실 시간표 데이터
-    - assets/data/it_building.json                     # ✅ 경로 안내용 샘플 데이터
+    - assets/data/students_info.json
+    - assets/data/it_building.json               # ✅ 경로 안내용 샘플 데이터
