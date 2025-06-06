@@ -8,19 +8,22 @@ class LectureDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, // ✅ 흰색 배경 적용
       appBar: AppBar(
         title: Text('강의 상세 정보', style: const TextStyle(color: Colors.black)),
-        backgroundColor: const Color.fromARGB(255, 249, 250, 250), // 조선대 색상
+        backgroundColor: const Color.fromARGB(255, 249, 250, 250), // 상단 바 색상
         actions: [
           IconButton(
             icon: const Icon(
               Icons.error_outline,
               color: Colors.white,
-            ), // 느낌표 비슷한 아이콘
+            ), // 느낌표 아이콘
             onPressed: () {
               ScaffoldMessenger.of(
                 context,
-              ).showSnackBar(const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")));
+              ).showSnackBar(
+                const SnackBar(content: Text("자주 묻는 질문을 확인하세요!")),
+              );
             },
           ),
         ],

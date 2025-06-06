@@ -28,9 +28,13 @@ class MyPageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('마이페이지')),
+      backgroundColor: Colors.white, // ✅ 흰색 배경 설정
+      appBar: AppBar(
+        title: const Text('마이페이지'),
+        backgroundColor: const Color(0xFF004098), // 조선대 색 계열이면 유지
+      ),
       body: FutureBuilder<Map<String, dynamic>?>(
-        future: _loadStudentInfo(context, studentId), // ✅ context 전달
+        future: _loadStudentInfo(context, studentId),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());

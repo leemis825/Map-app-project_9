@@ -43,80 +43,79 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
 
     await showDialog(
       context: context,
-      builder:
-          (_) => AlertDialog(
-            backgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12),
-            ),
-            title: const Text(
-              "출발지와 도착지를 입력하세요",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            content: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                TextField(
-                  decoration: const InputDecoration(
-                    labelText: "출발 강의실 (예: 1101)",
-                    labelStyle: TextStyle(color: Color(0xFF0054A7)),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF0054A7)),
-                    ),
-                  ),
-                  controller: TextEditingController(text: tempStart),
-                  onChanged: (v) => tempStart = v.trim(),
-                ),
-                TextField(
-                  decoration: const InputDecoration(
-                    labelText: "도착 강의실 (예: 3208)",
-                    labelStyle: TextStyle(color: Color(0xFF0054A7)),
-                    focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xFF0054A7)),
-                    ),
-                  ),
-                  controller: TextEditingController(text: tempEnd),
-                  onChanged: (v) => tempEnd = v.trim(),
-                ),
-              ],
-            ),
-            actions: [
-              TextButton(
-                style: TextButton.styleFrom(
-                  foregroundColor: Colors.white,
-                  backgroundColor: const Color(0xFF0054A7),
-                ),
-                child: const Text("확인"),
-                onPressed: () async {
-                  final startCandidate = roomToFloorMap[tempStart];
-                  final endCandidate = roomToFloorMap[tempEnd];
-
-                  if (startCandidate == null || endCandidate == null) {
-                    Navigator.pop(context);
-                    await Future.delayed(const Duration(milliseconds: 300));
-                    _showManualInputDialog();
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text("❌ 존재하지 않는 강의실입니다. 다시 입력해주세요."),
-                      ),
-                    );
-                  } else {
-                    Navigator.pop(context);
-                    setState(() {
-                      startRoom = tempStart;
-                      endRoom = tempEnd;
-                      pathSteps = [];
-                      startFloor = startCandidate;
-                      endFloor = endCandidate;
-                    });
-                  }
-                },
-              ),
-            ],
+      builder: (_) => AlertDialog(
+        backgroundColor: Colors.white,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        title: const Text(
+          "출발지와 도착지를 입력하세요",
+          style: TextStyle(
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              decoration: const InputDecoration(
+                labelText: "출발 강의실 (예: 1101)",
+                labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFF0054A7)),
+                ),
+              ),
+              controller: TextEditingController(text: tempStart),
+              onChanged: (v) => tempStart = v.trim(),
+            ),
+            TextField(
+              decoration: const InputDecoration(
+                labelText: "도착 강의실 (예: 3208)",
+                labelStyle: TextStyle(color: Color(0xFF0054A7)),
+                focusedBorder: UnderlineInputBorder(
+                  borderSide: BorderSide(color: Color(0xFF0054A7)),
+                ),
+              ),
+              controller: TextEditingController(text: tempEnd),
+              onChanged: (v) => tempEnd = v.trim(),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            style: TextButton.styleFrom(
+              foregroundColor: Colors.white,
+              backgroundColor: const Color(0xFF0054A7),
+            ),
+            child: const Text("확인"),
+            onPressed: () async {
+              final startCandidate = roomToFloorMap[tempStart];
+              final endCandidate = roomToFloorMap[tempEnd];
+
+              if (startCandidate == null || endCandidate == null) {
+                Navigator.pop(context);
+                await Future.delayed(const Duration(milliseconds: 300));
+                _showManualInputDialog();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text("❌ 존재하지 않는 강의실입니다. 다시 입력해주세요."),
+                  ),
+                );
+              } else {
+                Navigator.pop(context);
+                setState(() {
+                  startRoom = tempStart;
+                  endRoom = tempEnd;
+                  pathSteps = [];
+                  startFloor = startCandidate;
+                  endFloor = endCandidate;
+                });
+              }
+            },
+          ),
+        ],
+      ),
     );
   }
 
@@ -129,6 +128,24 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
         elevation: 1,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            tooltip: '출발/도착 다시 입력',
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => NavigateResultScreen(
+                    startRoom: '',
+                    endRoom: '',
+                    pathSteps: [],
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
