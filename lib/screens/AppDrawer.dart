@@ -75,7 +75,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           const Divider(height: 1),
-          ListTile(
+          /*ListTile(
             leading: const Icon(Icons.dark_mode, color: Colors.black),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,7 +98,7 @@ class AppDrawer extends StatelessWidget {
             title: const Text('설정', style: TextStyle(color: Colors.black)),
             onTap: () {},
           ),
-          const Divider(height: 1),
+          const Divider(height: 1),*/
 
           // ✅ 로그아웃 버튼 추가
           ListTile(
