@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../widgets/search_bar_with_results.dart';
 import 'lecture_detail_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -12,34 +11,12 @@ class LectureScheduleScreen extends StatefulWidget {
 }
 
 class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
-  late String currentRoomName;
-
   final List<String> days = ['월', '화', '수', '목', '금'];
   final List<String> timePeriods = [
-    '08:00',
-    '08:30',
-    '09:00',
-    '09:30',
-    '10:00',
-    '10:30',
-    '11:00',
-    '11:30',
-    '12:00',
-    '12:30',
-    '13:00',
-    '13:30',
-    '14:00',
-    '14:30',
-    '15:00',
-    '15:30',
-    '16:00',
-    '16:30',
-    '17:00',
-    '17:30',
-    '18:00',
-    '18:30',
-    '19:00',
-    '19:30',
+    '08:00', '08:30', '09:00', '09:30', '10:00', '10:30',
+    '11:00', '11:30', '12:00', '12:30', '13:00', '13:30',
+    '14:00', '14:30', '15:00', '15:30', '16:00', '16:30',
+    '17:00', '17:30', '18:00', '18:30', '19:00', '19:30',
   ];
 
   final Map<String, Color> subjectColors = {};
@@ -52,6 +29,8 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     const Color.fromARGB(255, 57, 178, 233),
     const Color.fromARGB(255, 107, 151, 227),
   ];
+
+  List<Map<String, dynamic>> personalSchedule = [];
 
   Color getSubjectColor(String subject) {
     if (!subjectColors.containsKey(subject)) {
@@ -67,14 +46,11 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     _fetchSchedule();
   }
 
-  List<Map<String, dynamic>> personalSchedule = [];
-
   void _fetchSchedule() async {
-    final doc =
-        await FirebaseFirestore.instance
-            .collection('students')
-            .doc(widget.studentId)
-            .get();
+    final doc = await FirebaseFirestore.instance
+        .collection('students')
+        .doc(widget.studentId)
+        .get();
     if (doc.exists) {
       final data = doc.data();
       setState(() {
@@ -91,27 +67,12 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
       backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Text(
+        title: const Text(
           '내 시간표',
-          style: const TextStyle(color: Colors.black), // ✅ 글씨 흰색
+          style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Column(
-        children: [
-          // ✅ 검색 바에서 강의실 선택 시 시간표 갱신
-          SearchBarWithResults(
-            initialText: "",
-            onRoomSelected: (selectedRoom) {
-              if (selectedRoom.isNotEmpty && selectedRoom != currentRoomName) {
-                setState(() {
-                  currentRoomName = selectedRoom;
-                });
-              }
-            },
-          ),
-          Expanded(child: _buildCustomTimeTable()),
-        ],
-      ),
+      body: _buildCustomTimeTable(),
     );
   }
 
@@ -140,7 +101,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                       _buildHeaderCell('A/B', colWidth),
                       _buildHeaderCell('시간', colWidth),
                       ...days.map(
-                        (day) => Container(
+                            (day) => Container(
                           width: dayWidth,
                           height: headerHeight,
                           alignment: Alignment.center,
@@ -169,21 +130,19 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                             alignment: Alignment.center,
                             decoration: BoxDecoration(
                               border: Border.all(color: Colors.grey.shade300),
-                              color:
-                                  isA
-                                      ? Colors.grey.shade100
-                                      : Colors.grey.shade200,
+                              color: isA
+                                  ? Colors.grey.shade100
+                                  : Colors.grey.shade200,
                             ),
-                            child:
-                                isA
-                                    ? Text(
-                                      '$period교시',
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 11,
-                                      ),
-                                    )
-                                    : const SizedBox.shrink(),
+                            child: isA
+                                ? Text(
+                              '$period교시',
+                              style: const TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11,
+                              ),
+                            )
+                                : const SizedBox.shrink(),
                           ),
                           Container(
                             width: colWidth,
@@ -231,10 +190,10 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                 final start = lecture['start'] ?? '';
                 final end = lecture['end'] ?? '';
                 final startIdx = timePeriods.indexWhere(
-                  (p) => p.startsWith(start.padLeft(5, '0')),
+                      (p) => p.startsWith(start.padLeft(5, '0')),
                 );
                 final endIdx = timePeriods.indexWhere(
-                  (p) => p.startsWith(end.padLeft(5, '0')),
+                      (p) => p.startsWith(end.padLeft(5, '0')),
                 );
 
                 if (dayIdx == -1 || startIdx == -1 || endIdx == -1)
@@ -252,8 +211,6 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                 final subject = lecture['subject'] ?? '기본';
                 final bgColor = getSubjectColor(subject);
                 final textColor = Colors.white;
-                //ThemeData.estimateBrightnessForColor(bgColor) ==
-                //Brightness.dark ? Colors.white : Colors.black;
 
                 return Positioned(
                   top: top,
