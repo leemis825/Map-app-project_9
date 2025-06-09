@@ -40,7 +40,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
   }
 
   void _handleFloorDetected(int floor) {
-    Navigator.pushReplacement(
+    Navigator.push(
       context,
       MaterialPageRoute(builder: (_) => MenuScreen(initialFloor: floor)),
     );
@@ -146,7 +146,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           // ✅ BLE 감지 버튼 (menu.dart와 동일 구조)
           Positioned(
             left: 10,
-            bottom: 3,
+            bottom: 2,
             child: LocateButton(onFloorDetected: _handleFloorDetected),
           ),
           // ✅ QR 팝업 버튼
