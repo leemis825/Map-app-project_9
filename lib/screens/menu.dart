@@ -220,7 +220,7 @@ class _MenuScreenState extends State<MenuScreen> {
       floatingActionButton: Stack(
         children: [
           Positioned(
-            left: 10,
+            right: 135,
             bottom: 3,
             child: LocateButton(onFloorDetected: _handleFloorDetected), // ✅ 콜백 전달
           ),

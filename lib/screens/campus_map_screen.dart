@@ -143,38 +143,51 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
       ),
       floatingActionButton: Stack(
         children: [
-          // ✅ BLE 감지 버튼 (menu.dart와 동일 구조)
+          // ✅ BLE 감지 버튼 (SizedBox로 정렬 통일)
           Positioned(
-            left: 10,
-            bottom: 2,
-            child: LocateButton(onFloorDetected: _handleFloorDetected),
+            right: 135,
+            bottom: 3,
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: LocateButton(onFloorDetected: _handleFloorDetected),
+            ),
           ),
-          // ✅ QR 팝업 버튼
+          // ✅ QR 팝업 버튼 (SizedBox 적용)
           Positioned(
             right: 70,
             bottom: 3,
-            child: QrButton(onFloorDetected: _handleFloorDetected),
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: QrButton(onFloorDetected: _handleFloorDetected),
+            ),
           ),
-          // ✅ 경로안내 버튼
+          // ✅ 경로안내 버튼 (기본 FAB도 동일한 사이즈로 감싸기)
           Positioned(
             right: 5,
             bottom: 3,
-            child: FloatingActionButton(
-              heroTag: 'campus-navigate',
-              backgroundColor: const Color(0xFF1E88E5),
-              child: const Icon(Icons.navigation),
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => const NavigateResultScreen(
-                      startRoom: '',
-                      endRoom: '',
-                      pathSteps: [],
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: FloatingActionButton(
+                heroTag: 'campus-navigate',
+                backgroundColor: const Color(0xFF1E88E5),
+                child: const Icon(Icons.navigation),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder:
+                          (_) => const NavigateResultScreen(
+                            startRoom: '',
+                            endRoom: '',
+                            pathSteps: [],
+                          ),
                     ),
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
           ),
         ],

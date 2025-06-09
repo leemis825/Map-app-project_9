@@ -137,19 +137,13 @@ class LocateButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.bottomLeft,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: FloatingActionButton(
-          heroTag: 'home-locate-fab',
-          backgroundColor: const Color(0xFF0054A7),
-          onPressed: () => _handleScanAndNavigate(context),
-          child: const Icon(
-            Icons.my_location,
-            color: Colors.white,
-          ),
-        ),
+    return FloatingActionButton(
+      heroTag: 'home-locate-fab',
+      backgroundColor: const Color(0xFF0054A7),
+      onPressed: () => _handleScanAndNavigate(context),
+      child: const Icon(
+        Icons.my_location,
+        color: Colors.white,
       ),
     );
   }
