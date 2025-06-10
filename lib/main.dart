@@ -22,7 +22,7 @@ void main() async {
   // Firebase 사용 안 한다면 이 부분을 제거해도 됩니다.
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // ✅ JSON에서 학생 데이터 업로드
+  // ✅ JSON에서 학생 데이터 업로드(학생 정보 업데이트 사항 없을 시 주석 처리 해도 됨)
   await uploadStudentsFromJson();
 
   // == (2) 앱 실행: UserProvider를 최상단에 올려서 MyApp 감싸기 ==
