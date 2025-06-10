@@ -24,7 +24,7 @@ class RoomScreen extends StatelessWidget {
             color: Colors.black,  // 글씨색 변경 (기본은 흰색)
           ),
         ),
-        backgroundColor: const Color(0xFF004098),
+        backgroundColor: Colors.white,
       ),
       body: SingleChildScrollView(
         child: Column(

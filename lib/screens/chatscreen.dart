@@ -5,7 +5,7 @@ final Map<String, Map<String, String>> keywordBotData = {
   '캠퍼스': {
     '중앙도서관': '중앙도서관은 평일 7시부터 24시까지 운영되며, 시험 기간엔 연장 개방돼요. 열람실 예약은 도서관 어플에서 가능해요!',
     '캠퍼스 지도': '조선대학교 캠퍼스 전체 지도가 궁금하신가요? 주요 건물과 위치를 한눈에 확인할 수 있어요. [지도 보기] 버튼을 눌러주세요!',
-    '식당': '오늘 학식 뭐 나올까 궁금하시죠? 학생회관 1층 식당과 공대 식당이 인기가 많아요. 식단표는 조선대 홈페이지 또는 앱에서 확인할 수 있어요!',
+    '식당': '오늘 학식 뭐 나올까 궁금하시죠? 우리 캠퍼스 학식은 솔마루 푸트코트와 글로벌 기숙사, 입석홀 등이 있어요! 식단표는 조선대 종정시에서 확인할 수 있어요!',
   },
   'IT융합대학': {
     '휴게 공간': '2층과 4층, 5층에 휴게 공간이 있어요. 소파랑 콘센트도 있어서 쉬거나 과제하기 좋아요!',
@@ -18,6 +18,7 @@ final Map<String, Map<String, String>> keywordBotData = {
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
+
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
@@ -97,12 +98,12 @@ class _ChatScreenState extends State<ChatScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('키워드봇', style: TextStyle(color: Colors.white)),
-        backgroundColor: const Color(0xFF004098),
+        title: const Text('키워드봇', style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.white,
         centerTitle: true,
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh, color: Colors.white),
+            icon: const Icon(Icons.refresh, color: Colors.black),
             tooltip: '초기화',
             onPressed: _resetChat,
           ),
@@ -114,55 +115,67 @@ class _ChatScreenState extends State<ChatScreen> {
             padding: const EdgeInsets.all(8.0),
             child: selectedCategory == null
                 ? Column(
-                    crossAxisAlignment: CrossAxisAlignment.center, // ✅ 가운데 정렬
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Wrap(
+                  spacing: 10,
+                  runSpacing: 10,
+                  alignment: WrapAlignment.center,
+                  children: keywordBotData.keys
+                      .map(_buildCategoryButton)
+                      .toList(),
+                ),
+                const SizedBox(height: 30),
+                Center(
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Wrap(
-                        spacing: 10,
-                        runSpacing: 10,
-                        alignment: WrapAlignment.center, // ✅ 내부도 가운데 정렬
-                        children: keywordBotData.keys
-                            .map(_buildCategoryButton)
-                            .toList(),
+                      Image.asset(
+                        'assets/images/QuestionBoy.png',
+                        width: 100,
                       ),
-                      const SizedBox(height: 12),
-                      Align(
-                        alignment: Alignment.bottomLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0, bottom: 10),
-                          child: Image.asset(
-                            'assets/images/QuestionBoy.png',
-                            width: 120,
+                      const SizedBox(width: 16),
+                      const Expanded(
+                        child: Text(
+                          '💬 키워드를 눌러 보세요!',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ),
                     ],
-                  )
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '➤ ${selectedCategory!} 관련 키워드를 선택하세요:',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
-                      ),
-                      const SizedBox(height: 8),
-                      Wrap(
-                        spacing: 8,
-                        runSpacing: 4,
-                        children: keywordBotData[selectedCategory!]!
-                            .keys
-                            .map(_buildKeywordButton)
-                            .toList(),
-                      ),
-                      TextButton(
-                        onPressed: () => setState(() {
-                          selectedCategory = null;
-                          isMapKeywordSelected = false;
-                        }),
-                        child: const Text('← 처음으로 돌아가기'),
-                      )
-                    ],
                   ),
+                ),
+              ],
+            )
+                : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '➤ ${selectedCategory!} 관련 키워드를 선택하세요:',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16),
+                ),
+                const SizedBox(height: 8),
+                Wrap(
+                  spacing: 8,
+                  runSpacing: 4,
+                  children: keywordBotData[selectedCategory!]!
+                      .keys
+                      .map(_buildKeywordButton)
+                      .toList(),
+                ),
+                TextButton(
+                  onPressed: () => setState(() {
+                    selectedCategory = null;
+                    isMapKeywordSelected = false;
+                  }),
+                  child: const Text('← 처음으로 돌아가기'),
+                )
+              ],
+            ),
           ),
           Expanded(
             child: ListView.builder(
@@ -176,24 +189,21 @@ class _ChatScreenState extends State<ChatScreen> {
 
                 return Align(
                   alignment:
-                      isUser ? Alignment.centerRight : Alignment.centerLeft,
+                  isUser ? Alignment.centerRight : Alignment.centerLeft,
                   child: Container(
                     padding: const EdgeInsets.all(12),
                     margin: const EdgeInsets.symmetric(vertical: 5),
                     constraints: BoxConstraints(
                         maxWidth: MediaQuery.of(context).size.width * 0.75),
                     decoration: BoxDecoration(
-                      color:
-                          isUser ? Colors.blue[200] : Colors.grey.shade300,
+                      color: isUser ? Colors.blue[200] : Colors.grey.shade300,
                       borderRadius: BorderRadius.only(
                         topLeft: const Radius.circular(16),
                         topRight: const Radius.circular(16),
-                        bottomLeft: isUser
-                            ? const Radius.circular(16)
-                            : Radius.zero,
-                        bottomRight: isUser
-                            ? Radius.zero
-                            : const Radius.circular(16),
+                        bottomLeft:
+                        isUser ? const Radius.circular(16) : Radius.zero,
+                        bottomRight:
+                        isUser ? Radius.zero : const Radius.circular(16),
                       ),
                     ),
                     child: Text(
@@ -220,7 +230,7 @@ class _ChatScreenState extends State<ChatScreen> {
                   backgroundColor: Colors.green,
                   foregroundColor: Colors.white,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 ),
                 child: const Text('지도 가기'),
               ),
