@@ -133,6 +133,7 @@
             "department": "컴퓨터공학과",
             "name": "임유빈",
             "birthdate": "2000-04-01",
+            "photo": "assets/students/20223176.jpeg",
             "schedule": [
                 {
                   "day": "월",
