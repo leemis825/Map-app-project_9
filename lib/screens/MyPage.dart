@@ -96,7 +96,7 @@ class MyPageScreen extends StatelessWidget {
                                 fontSize: 15,
                                 fontFamily: 'Inter',
                                 fontWeight: FontWeight.w500,
-                                height: 1.40,
+                                height: 1.20,
                               ),
                             ),
                             const SizedBox(height: 4),
@@ -112,6 +112,8 @@ class MyPageScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 16),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
                                   student['name'] ?? '',
