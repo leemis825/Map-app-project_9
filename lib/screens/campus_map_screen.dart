@@ -145,7 +145,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
         children: [
           // ✅ BLE 감지 버튼 (SizedBox로 정렬 통일)
           Positioned(
-            right: 135,
+            right: 70,
             bottom: 3,
             child: SizedBox(
               width: 56,
@@ -155,7 +155,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
           ),
           // ✅ QR 팝업 버튼 (SizedBox 적용)
           Positioned(
-            right: 70,
+            right: 5,
             bottom: 3,
             child: SizedBox(
               width: 56,
@@ -164,7 +164,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
             ),
           ),
           // ✅ 경로안내 버튼 (기본 FAB도 동일한 사이즈로 감싸기)
-          Positioned(
+          /*Positioned(
             right: 5,
             bottom: 3,
             child: SizedBox(
@@ -189,7 +189,7 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
                 },
               ),
             ),
-          ),
+          ),*/
         ],
       ),
     );

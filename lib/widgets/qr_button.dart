@@ -10,9 +10,10 @@ class QrButton extends StatelessWidget {
   void _showQrScanDialog(BuildContext context) {
     showDialog(
       context: context,
-      builder: (_) => QrFloorScannerWidget(
-        onFloorDetected: onFloorDetected, // ✅ 콜백 전달
-      ),
+      builder:
+          (_) => QrFloorScannerWidget(
+            onFloorDetected: onFloorDetected, // ✅ 콜백 전달
+          ),
     );
   }
 
@@ -20,7 +21,7 @@ class QrButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       heroTag: 'qr-fab',
-      backgroundColor: Colors.deepOrange,
+      backgroundColor: Colors.white,
       onPressed: () => _showQrScanDialog(context),
       child: const Icon(Icons.qr_code_scanner, size: 28),
     );

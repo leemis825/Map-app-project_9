@@ -5,6 +5,7 @@ import 'MyTimetable.dart';
 import 'chatscreen.dart'; // ← 경로와 파일명에 맞게 조정
 import '../user_provider.dart';
 import 'login_screen.dart'; // 로그인 화면 경로 맞게 수정
+import 'navigate_result_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   final bool isDarkMode;
@@ -58,6 +59,25 @@ class AppDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (_) => LectureScheduleScreen(studentId: userId),
+                ),
+              );
+            },
+          ),
+          const Divider(height: 1),
+          ListTile(
+            leading: const Icon(Icons.navigation, color: Colors.black),
+            title: const Text('경로 안내', style: TextStyle(color: Colors.black)),
+            onTap: () {
+              Navigator.pop(context); // Drawer 닫기
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder:
+                      (context) => const NavigateResultScreen(
+                        startRoom: '',
+                        endRoom: '',
+                        pathSteps: [],
+                      ),
                 ),
               );
             },

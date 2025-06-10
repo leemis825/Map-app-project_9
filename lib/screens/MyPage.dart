@@ -6,19 +6,20 @@ class MyPageScreen extends StatelessWidget {
   const MyPageScreen({super.key, required this.studentId});
 
   Future<Map<String, dynamic>?> _loadStudentInfo(
-      BuildContext context,
-      String id,
-      ) async {
-    final jsonString = await DefaultAssetBundle.of(context)
-        .loadString('assets/data/students_info.json');
+    BuildContext context,
+    String id,
+  ) async {
+    final jsonString = await DefaultAssetBundle.of(
+      context,
+    ).loadString('assets/data/students_info.json');
     final data = jsonDecode(jsonString);
 
     final student = (data['students'] as List)
         .cast<Map<String, dynamic>>()
         .firstWhere(
           (student) => student['id'] == id,
-      orElse: () => <String, dynamic>{},
-    );
+          orElse: () => <String, dynamic>{},
+        );
 
     return student.isNotEmpty ? student : null;
   }
@@ -29,7 +30,7 @@ class MyPageScreen extends StatelessWidget {
       backgroundColor: Colors.white, // ✅ 흰색 배경 설정
       appBar: AppBar(
         title: const Text('마이페이지'),
-        backgroundColor: const Color(0xFF004098), // 조선대 색 계열이면 유지
+        backgroundColor: Colors.white, // 조선대 색 계열이면 유지
       ),
       body: FutureBuilder<Map<String, dynamic>?>(
         future: _loadStudentInfo(context, studentId),
@@ -74,7 +75,8 @@ class MyPageScreen extends StatelessWidget {
                           ),
                           clipBehavior: Clip.antiAlias,
                           child: Image.asset(
-                            student['photo'] ?? 'assets/images/default_profile.jpg',
+                            student['photo'] ??
+                                'assets/images/default_profile.jpg',
                             fit: BoxFit.cover,
                             width: 125,
                             height: 158,
