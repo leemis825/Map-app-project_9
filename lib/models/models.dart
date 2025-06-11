@@ -5,22 +5,23 @@ class RoomInfo {
   final double left;
   final double top;
 
-  RoomInfo({
-    required this.name,
-    required this.left,
-    required this.top,
-  });
+  RoomInfo({required this.name, required this.left, required this.top});
+
+  factory RoomInfo.fromJson(Map<String, dynamic> json) {
+    return RoomInfo(
+      name: json['name'],
+      left: json['left'].toDouble(),
+      top: json['top'].toDouble(),
+    );
+  }
 }
 
-// 아이콘 정보 클래스 (화장실, 계단 등)
-class IconInfo {
-  final String asset;
+class Space {
+  final String name;
   final double left;
   final double top;
+  final String description;
 
-  IconInfo({
-    required this.asset,
-    required this.left,
-    required this.top,
-  });
+  Space({required this.name, required this.left, required this.top, required this.description});
 }
+

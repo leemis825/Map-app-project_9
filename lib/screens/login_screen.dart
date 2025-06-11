@@ -1,28 +1,64 @@
 import 'package:flutter/material.dart';
-import 'campus_map_screen.dart'; // 기존 지도 화면 import
+import 'package:campus_map_app/screens/campus_map_screen.dart';
 
-class LoginScreen extends StatelessWidget {
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'campus_map_screen.dart'; // 기존 지도 화면
+import 'package:provider/provider.dart';
+import '../user_provider.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  LoginScreen({super.key});
-
-  void _handleLogin(BuildContext context) {
+  void _handleLogin(BuildContext context) async {
     final id = _idController.text.trim();
     final password = _passwordController.text.trim();
 
-    if (id == 'qwer' && password == '1234') {
-      // 로그인 성공
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => CampusMapScreen()),
-      );
-    } else {
-      // 로그인 실패
+    try {
+      DocumentSnapshot userDoc =
+          await FirebaseFirestore.instance.collection('students').doc(id).get();
+
+      if (userDoc.exists) {
+        final data = userDoc.data() as Map<String, dynamic>;
+
+        if (data['password'] == password) {
+          // 로그인 성공 시 userId 저장
+          Provider.of<UserProvider>(context, listen: false).setUserId(id);
+
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (_) => const CampusMapScreen()),
+          );
+        } else {
+          // 비밀번호 틀림
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('비밀번호가 올바르지 않습니다.'),
+              duration: Duration(seconds: 2),
+            ),
+          );
+        }
+      } else {
+        // 학번 없음
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('존재하지 않는 학번입니다.'),
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('아이디 또는 비밀번호가 잘못되었습니ㅁ다!'),
-          duration: Duration(seconds: 2),
+        SnackBar(
+          content: Text('로그인 중 오류 발생: $e'),
+          duration: const Duration(seconds: 2),
         ),
       );
     }
@@ -37,13 +73,10 @@ class LoginScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 상단 로고
+            // 상단 로고와 텍스트
             Column(
               children: [
-                Image.asset(
-                  'assets/images/logo.png', // 조선대학교 로고
-                  height: 100,
-                ),
+                Image.asset('assets/images/logo.png', height: 100),
                 const SizedBox(height: 16),
                 const Text(
                   '조선대학교\n캠퍼스 맵',
@@ -58,73 +91,74 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 8),
                 const Text(
                   '포털시스템 아이디 및 비밀번호와 동일합니다',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Colors.white70,
-                  ),
+                  style: TextStyle(fontSize: 14, color: Colors.white70),
                 ),
               ],
             ),
             const SizedBox(height: 40),
 
-            // 아이디 입력창
+            // 아이디 입력
             TextField(
               controller: _idController,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: '아이디',
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
-                fillColor: Color(0xFF228CDD),
+                fillColor: const Color(0xFF228CDD),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16), // 👈 세로 크기 조절
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 16,
+                ),
               ),
             ),
+            const SizedBox(height: 16),
 
-            SizedBox(height: 16), // 간격
-
-            // 비밀번호 입력창
+            // 비밀번호 입력
             TextField(
               controller: _passwordController,
               obscureText: true,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: '비밀번호',
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
-                fillColor: Color(0xFF228CDD),
+                fillColor: const Color(0xFF228CDD),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
                   borderSide: BorderSide.none,
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16), // 👈 여기도
-              ),
-            ),
-
-            SizedBox(height: 24),
-
-            // 하단 로그인 버튼
-            SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  foregroundColor: const Color(0xFF0054A7),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                ),
-                onPressed: () => _handleLogin(context),
-                child: const Padding(
-                  padding: EdgeInsets.all(12.0),
-                  child: Text('로그인'),
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 16,
                 ),
               ),
             ),
           ],
+        ),
+      ),
+
+      // 로그인 버튼
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(32),
+        child: SizedBox(
+          width: double.infinity,
+          height: 50,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+              foregroundColor: const Color(0xFF0054A7),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            onPressed: () => _handleLogin(context),
+            child: const Text('로그인'),
+          ),
         ),
       ),
     );

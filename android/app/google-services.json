@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "626417954562",
-    "project_id": "campus-map-app-firebase",
-    "storage_bucket": "campus-map-app-firebase.firebasestorage.app"
+    "project_number": "607522445475",
+    "project_id": "chosun-map",
+    "storage_bucket": "chosun-map.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:626417954562:android:69cc0b9e732d561c1a5c1b",
+        "mobilesdk_app_id": "1:607522445475:android:ad0b1137d540ff4cd88716",
         "android_client_info": {
-          "package_name": "com.sutdent.campus_map_app"
+          "package_name": "com.campus.campus_map_app"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAHLkZn7OcLDt-8XITIiwnAL9YE4GXQcVY"
+          "current_key": "AIzaSyCR9w5p2bAXn6qLg3LnNm0G3TC0dyOrPiw"
         }
       ],
       "services": {

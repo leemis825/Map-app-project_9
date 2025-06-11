@@ -1,0 +1,212 @@
+{
+    "students": [
+        {
+            "id": "20184408",
+            "password": "dlalstj",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "이민서",
+            "birthdate": "2000-01-01",
+            "schedule": [
+              {
+                "day": "월",
+                "start": "15:00",
+                "end": "18:00",
+                "subject": "산학프로젝트1",
+                "section": "4",
+                "professor": "모상만"
+              },
+              {
+                "day": "금",
+                "start": "13:00",
+                "end": "16:00",
+                "subject": "데이터통신",
+                "section": "4",
+                "professor": "염찬욱"
+              }
+            ]
+        },
+        {
+            "id": "20194480",
+            "password": "tjdnjsgh",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "서원호",
+            "birthdate": "2000-02-01",
+            "schedule": [
+              {
+                "day": "월",
+                "start": "15:00",
+                "end": "18:00",
+                "subject": "산학프로젝트1",
+                "section": "4",
+                "professor": "모상만"
+              },
+              {
+                "day": "화",
+                "start": "10:00",
+                "end": "12:00",
+                "subject": "컴퓨터구조",
+                "section": "3",
+                "professor": "모상만"
+              },
+              {
+                "day": "목",
+                "start": "10:00",
+                "end": "11:00",
+                "subject": "컴퓨터구조",
+                "section": "3",
+                "professor": "모상만"
+              },
+              {
+                "day": "월",
+                "start": "14:00",
+                "end": "15:00",
+                "subject": "이산수학",
+                "section": "1",
+                "professor": "심수정"
+              },
+              {
+                "day": "수",
+                "start": "14:00",
+                "end": "16:00",
+                "subject": "이산수학",
+                "section": "1",
+                "professor": "심수정"
+              }
+            ]
+        },
+        {
+            "id": "20223152",
+            "password": "qkddPwls",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "방예진",
+            "birthdate": "2000-03-01",
+            "schedule": [
+              {
+                "day": "월",
+                "start": "15:00",
+                "end": "18:00",
+                "subject": "산학프로젝트1",
+                "section": "4",
+                "professor": "모상만"
+              },
+              {
+                "day": "수",
+                "start": "14:00",
+                "end": "16:00",
+                "subject": "컴퓨터비전",
+                "section": "2",
+                "professor": "양희덕"
+              },
+              {
+                "day": "목",
+                "start": "12:00",
+                "end": "13:00",
+                "subject": "컴퓨터비전",
+                "section": "2",
+                "professor": "양희덕"
+              },
+              {
+                "day": "목",
+                "start": "13:00",
+                "end": "16:00",
+                "subject": "클라우드및가상화",
+                "section": "2",
+                "professor": "최철웅"
+              },
+              {
+                "day": "금",
+                "start": "10:00",
+                "end": "13:00",
+                "subject": "(기업주도)UNITY기반실감콘텐츠프로젝트실무",
+                "section": "1",
+                "professor": "김대우"
+              }
+            ]
+        },
+        {
+            "id": "20223176",
+            "password": "dladbqls",
+            "college": "AI소프트웨어학부",
+            "department": "컴퓨터공학과",
+            "name": "임유빈",
+            "birthdate": "2000-04-01",
+            "photo": "assets/students/20223176.jpeg",
+            "schedule": [
+                {
+                  "day": "월",
+                  "start": "10:00",
+                  "end": "12:00",
+                  "subject": "네트워크보안",
+                  "section": "1",
+                  "professor": "심수정"
+                },
+                {
+                  "day": "수",
+                  "start": "10:00",
+                  "end": "11:00",
+                  "subject": "네트워크보안",
+                  "section": "1",
+                  "professor": "심수정"
+                },
+                {"day": "월",
+                  "start": "12:00",
+                  "end": "13:00",
+                  "subject": "컴퓨터그래픽스",
+                  "section": "1",
+                  "professor": "김성기"
+                },
+                {
+                  "day": "화",
+                  "start": "15:00",
+                  "end": "17:00",
+                  "subject": "컴퓨터그래픽스",
+                  "section": "1",
+                  "professor": "김성기"
+                },
+                {
+                  "day": "월",
+                  "start": "15:00",
+                  "end": "18:00",
+                  "subject": "산학프로젝트1",
+                  "section": "4",
+                  "professor": "모상만"
+                },
+                {
+                  "day": "화",
+                  "start": "12:00",
+                  "end": "14:00",
+                  "subject": "컴퓨터네트워크",
+                  "section": "2",
+                  "professor": "신석주"
+                },
+                {
+                  "day": "목",
+                  "start": "13:00",
+                  "end": "14:00",
+                  "subject": "컴퓨터네트워크",
+                  "section": "2",
+                  "professor": "신석주"
+                },
+                {
+                  "day": "수",
+                  "start": "14:00",
+                  "end": "16:00",
+                  "subject": "컴퓨터비전",
+                  "section": "2",
+                  "professor": "양희덕"
+                },
+                {
+                  "day": "목",
+                  "start": "12:00",
+                  "end": "13:00",
+                  "subject": "컴퓨터비전",
+                  "section": "2",
+                  "professor": "양희덕"
+                }
+              ]
+        }
+    ]
+}
