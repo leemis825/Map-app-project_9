@@ -101,6 +101,7 @@ class _ChatScreenState extends State<ChatScreen> {
         title: const Text('키워드봇', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         centerTitle: true,
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh, color: Colors.black),

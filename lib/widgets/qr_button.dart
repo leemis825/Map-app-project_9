@@ -22,6 +22,7 @@ class QrButton extends StatelessWidget {
     return FloatingActionButton(
       heroTag: 'qr-fab',
       backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
       onPressed: () => _showQrScanDialog(context),
       child: const Icon(Icons.qr_code_scanner, size: 28),
     );

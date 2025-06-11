@@ -51,6 +51,21 @@ class MyApp extends StatelessWidget {
         '/campus_map': (context) => const CampusMapScreen(),
         // '/qr_navigate': (context) => const QrNavigateScreen(),
       },
+
+      theme: ThemeData(
+        useMaterial3: false, // ← Material 3 비활성화 시도 (보랏빛 방지)
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.white, // ✅ 보랏빛 방지
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.black),
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+            fontFamily: 'Inter',
+          ),
+        ),
+      ),
     );
   }
 }

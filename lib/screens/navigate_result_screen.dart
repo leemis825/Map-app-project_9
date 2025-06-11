@@ -128,7 +128,6 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
         title: const Text('경로 안내', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
-        elevation: 1,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

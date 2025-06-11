@@ -20,7 +20,7 @@ class RoomScreen extends StatelessWidget {
         title: Text(
           title,
           style: GoogleFonts.doHyeon(  // AppBar 텍스트 글씨체 변경
-            fontSize: 24,  // 원하는 크기로 설정
+            fontSize: 22,  // 원하는 크기로 설정
             color: Colors.black,  // 글씨색 변경 (기본은 흰색)
           ),
         ),
