@@ -122,33 +122,33 @@ class _ChatScreenState extends State<ChatScreen> {
                   spacing: 10,
                   runSpacing: 10,
                   alignment: WrapAlignment.center,
-                  children: keywordBotData.keys
-                      .map(_buildCategoryButton)
-                      .toList(),
+                  children:
+                  keywordBotData.keys.map(_buildCategoryButton).toList(),
                 ),
                 const SizedBox(height: 30),
-                Center(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        'assets/images/QuestionBoy.png',
-                        width: 100,
-                      ),
-                      const SizedBox(width: 16),
-                      const Expanded(
-                        child: Text(
-                          '💬 키워드를 눌러 보세요!',
-                          style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
+                if (messages.isEmpty) // 초기 상태일 때만 이미지와 안내문 표시
+                  Center(
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/images/QuestionBoy.png',
+                          width: 100,
+                        ),
+                        const SizedBox(width: 16),
+                        const Expanded(
+                          child: Text(
+                            '💬 키워드를 눌러 보세요!',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
               ],
             )
                 : Column(
