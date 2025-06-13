@@ -30,7 +30,7 @@ dependencies:
   dchs_flutter_beacon: ^0.6.4
 
   cloud_firestore: ^5.6.8
-  firebase_auth: ^5.5.4           # ✅ Firestore 데이터베이스
+  #firebase_auth: ^5.5.4           # ✅ Firestore 데이터베이스
   firebase_core: ^3.13.1          # ✅ Firebase 초기화용
 
   # ✅ 권한 요청 (BLE, 위치, 카메라 등)
