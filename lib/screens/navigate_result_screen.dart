@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../data/room_floor_table.dart';
 
 class NavigateResultScreen extends StatefulWidget {
@@ -137,11 +138,10 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
         title: const Text('경로 안내', style: TextStyle(color: Colors.black)),
-        //backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
-        elevation: 1,
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
