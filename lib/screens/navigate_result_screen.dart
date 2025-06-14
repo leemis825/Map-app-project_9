@@ -49,12 +49,23 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
             ),
-            title: const Text(
-              "출발지와 도착지를 입력하세요",
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  "출발지와 도착지를 입력하세요",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                IconButton(
+                  icon: const Icon(Icons.close, color: Colors.black),
+                  onPressed: () {
+                    Navigator.of(context).pop(); // 닫기
+                  },
+                ),
+              ],
             ),
             content: Column(
               mainAxisSize: MainAxisSize.min,
@@ -128,6 +139,7 @@ class _NavigateResultScreenState extends State<NavigateResultScreen> {
         title: const Text('경로 안내', style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         iconTheme: const IconThemeData(color: Colors.black),
+        elevation: 0,
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),

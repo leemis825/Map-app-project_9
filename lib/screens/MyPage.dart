@@ -112,6 +112,8 @@ class MyPageScreen extends StatelessWidget {
                             ),
                             const SizedBox(height: 16),
                             Row(
+                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                              textBaseline: TextBaseline.alphabetic,
                               children: [
                                 Text(
                                   student['name'] ?? '',
