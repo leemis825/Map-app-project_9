@@ -163,33 +163,6 @@ class _CampusMapScreenState extends State<CampusMapScreen> {
               child: QrButton(onFloorDetected: _handleFloorDetected),
             ),
           ),
-          // ✅ 경로안내 버튼 (기본 FAB도 동일한 사이즈로 감싸기)
-          /*Positioned(
-            right: 5,
-            bottom: 3,
-            child: SizedBox(
-              width: 56,
-              height: 56,
-              child: FloatingActionButton(
-                heroTag: 'campus-navigate',
-                backgroundColor: const Color(0xFF1E88E5),
-                child: const Icon(Icons.navigation),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder:
-                          (_) => const NavigateResultScreen(
-                            startRoom: '',
-                            endRoom: '',
-                            pathSteps: [],
-                          ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),*/
         ],
       ),
     );

@@ -40,6 +40,7 @@ class LectureDataManager {
             'end': lecture['end'],
             'subject': lecture['subject'],
             'professor': lecture['professor'],
+            'college': lecture['college'],
           });
         }
       }
@@ -61,6 +62,7 @@ class LectureDataManager {
           'end': lecture['end'],
           'subject': lecture['subject'],
           'professor': lecture['professor'],
+          'college': lecture['college'],
         });
       }
     });

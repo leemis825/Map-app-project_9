@@ -43,6 +43,14 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
     '19:30',
   ];
 
+  String? getCollegeForRoom(String roomName) {
+    final lectures = LectureDataManager.getLecturesForRoom(roomName);
+    if (lectures.isNotEmpty) {
+      return lectures.first['college'];
+    }
+    return null;
+  }
+
   final Map<String, Color> subjectColors = {};
   final List<Color> colorPool = [
     const Color(0xFF7DA7D9),
@@ -82,7 +90,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
           },
         ),
         title: Text(
-          '$currentRoomName 강의실 시간표',
+          '$currentRoomName 강의실 시간표(${getCollegeForRoom(currentRoomName) ?? ""})',
           style: const TextStyle(color: Colors.black), // 글씨 흰색
         ),
       ),
@@ -244,7 +252,7 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                 final height = (endIdx - startIdx) * rowHeight;
 
                 final key =
-                    '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}';
+                    '${lecture['subject']}_${lecture['professor']}_${lecture['day']}_${lecture['start']}_${lecture['college']}';
                 if (rendered.contains(key)) return const SizedBox.shrink();
                 rendered.add(key);
 
@@ -291,7 +299,9 @@ class _LectureScheduleScreenState extends State<LectureScheduleScreen> {
                             textAlign: TextAlign.center,
                           ),
                           Text(
-                            lecture['professor'] ?? '',
+                            lecture['professor'] != null
+                                ? '${lecture['professor']}'
+                                : '',
                             style: TextStyle(color: textColor, fontSize: 9),
                             textAlign: TextAlign.center,
                           ),

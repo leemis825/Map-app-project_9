@@ -150,7 +150,7 @@ class _SearchBarWithResultsState extends State<SearchBarWithResults> {
                   }
                   return ListTile(
                     title: Text('📘 ${item['subject']} (${item['roomName']})'),
-                    subtitle: Text('👨‍🏫 ${item['professor']}'),
+                    subtitle: Text('👨‍🏫 ${item['professor']} (${item['college']})'),
                     onTap: () {
                       widget.onRoomSelected(item['roomName']);
                       _controller.text = item['roomName'];

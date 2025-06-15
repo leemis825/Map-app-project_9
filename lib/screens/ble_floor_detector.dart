@@ -25,6 +25,7 @@ class BeaconInfo {
 
 class BleFloorDetector {
   // ✅ MAC → BeaconInfo (건물명 + 층수) 매핑
+  // 1단계: 사전 등록된 비콘 목록 (MAC → 건물/층수)
   final Map<String, BeaconInfo> beaconMap = {
     'C3:00:00:3F:47:49': BeaconInfo(building: "IT융합대학", floor: 1),
     'C3:00:00:3F:47:3C': BeaconInfo(building: "IT융합대학", floor: 1),
@@ -48,10 +49,11 @@ class BleFloorDetector {
     await Permission.bluetoothScan.request();
     await Permission.bluetoothConnect.request();
     await Permission.locationWhenInUse.request();
-
+// 2단계: BLE 스캔 시작
     await FlutterBluePlus.startScan(timeout: const Duration(seconds: 4));
 
     final subscription = FlutterBluePlus.scanResults.listen((results) {
+      // 3단계: 스캔된 신호 중 beaconMap에 등록된 MAC만 필터링
       for (ScanResult result in results) {
         final mac = result.device.id.id;
         final rssi = result.rssi;
@@ -82,14 +84,14 @@ class BleFloorDetector {
 
       return null;
     }
-
+// 4단계: 신호 강도(RSSI) 가장 높은 MAC을 선택
     final strongest = filtered.reduce((a, b) => a.value > b.value ? a : b);
     final strongestMac = strongest.key;
     final beaconInfo = beaconMap[strongestMac]!;
 
     print("🏁 최종 선택 비콘: $strongestMac, RSSI: ${strongest.value}");
     print("📍 건물: ${beaconInfo.building}, 층: ${beaconInfo.floor}");
-
+// 5단계: 해당 MAC에 매핑된 층수 반환
     return BeaconDetectionResult(
       mac: strongestMac,
       building: beaconInfo.building,

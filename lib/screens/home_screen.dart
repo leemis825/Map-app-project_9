@@ -4,12 +4,13 @@ import '../data/lecture_data.dart';
 import '../widgets/search_bar_with_results.dart';
 import 'AppDrawer.dart';
 import '../widgets/locate_button.dart'; // ✅ 위치 추정용 버튼
-import '../widgets/navigate_button.dart'; // ✅ 길찾기 버튼
+import '../widgets/qr_button.dart'; // ✅ QR 코드 버튼
 import '../beacon/beacon_scanner.dart';
-import 'campus_map_screen.dart'; // ✅ 비콘 스캐너 로직 추가
+import 'campus_map_screen.dart';
+import 'menu.dart'; // ✅ MenuScreen으로 이동하기 위함
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key}); // 생성자에 추가
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -27,13 +28,15 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {});
     });
 
-    // ✅ 앱 시작 시 BLE 비콘 스캔 및 팝업 출력
+    // ✅ 앱 시작 시 BLE 비콘 스캔 및 팝업 출력 (디버깅용)
+    /*
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _scanBeaconsAndShowPopup(context);
     });
+    */
   }
 
-  /// ✅ BLE 비콘 5개 스캔 후 팝업으로 정보 표시
+  // ✅ BLE 비콘 5개 정보 디버깅 팝업 함수 (선택적으로 주석 처리됨)
   Future<void> _scanBeaconsAndShowPopup(BuildContext context) async {
     final scanner = BeaconScanner();
 
@@ -50,11 +53,8 @@ class _HomeScreenState extends State<HomeScreen> {
     await Future.delayed(const Duration(seconds: 4));
     scanner.stopScanning();
 
-    if (rssiMap.isEmpty) {
-      return;
-    }
+    if (rssiMap.isEmpty) return;
 
-    // ✅ 감지된 비콘 정보를 정렬 후 텍스트로 정리
     final entries = rssiMap.entries
         .map((e) {
           final mac = e.key;
@@ -64,35 +64,21 @@ class _HomeScreenState extends State<HomeScreen> {
         })
         .join('\n');
 
-    // ✅ 팝업으로 정보 보여주기
     if (context.mounted) {
       showDialog(
         context: context,
-        builder:
-            (_) => AlertDialog(
-              title: const Text('감지된 BLE 비콘 (최대 5개)'),
-              content: SingleChildScrollView(child: Text(entries)),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text('확인'),
-                ),
-              ],
+        builder: (_) => AlertDialog(
+          title: const Text('감지된 BLE 비콘 (최대 5개)'),
+          content: SingleChildScrollView(child: Text(entries)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: const Text('확인'),
             ),
+          ],
+        ),
       );
     }
-  }
-
-  void _showHelp() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("여기는 본관 / IT융합대학 설명 페이지입니다.")));
-  }
-
-  void moveToCurrentLocation() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("현재 위치 기능은 준비 중입니다.")));
   }
 
   void _navigateToRoom(String roomName) {
@@ -119,7 +105,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0, // 그림자 없애기
+        elevation: 0, // ✅ 그림자 제거
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.pop(context),
@@ -148,7 +134,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             const SizedBox(height: 16),
 
-            // 🏛️ 건물 설명 텍스트
+            // 🏛️ 본문 내용 영역 (업데이트 예정 문구)
             const Expanded(
               child: Center(
                 child: Text('업데이트 예정입니다.', style: TextStyle(fontSize: 18)),
@@ -158,19 +144,46 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
 
-      // 📍 위치 버튼 + 길찾기 버튼 함께 배치
+      // 📍 BLE 버튼 및 QR 버튼 (CampusMapScreen과 동일한 위치에 배치)
       floatingActionButton: Stack(
         children: [
           Positioned(
-            left: 32,
-            bottom: 16,
-            child: const LocateButton(), // ✅ BLE 기반 층 추정
+            right: 70,
+            bottom: 3,
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: LocateButton(
+                // ✅ BLE 감지 후 MenuScreen으로 전환
+                onFloorDetected: (floor) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MenuScreen(initialFloor: floor),
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
-          /*Positioned(
-            right: 32,
-            bottom: 16,
-            child: const NavigateButton(), // ✅ QR 기반 길찾기
-          ),*/
+          Positioned(
+            right: 5,
+            bottom: 3,
+            child: SizedBox(
+              width: 56,
+              height: 56,
+              child: QrButton(
+                onFloorDetected: (floor) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => MenuScreen(initialFloor: floor),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
         ],
       ),
     );
